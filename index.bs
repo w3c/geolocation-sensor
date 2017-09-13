@@ -1,0 +1,220 @@
+<pre class="metadata">
+Title: Geolocation Sensor
+Level: none
+Status: ED
+ED: https://anssiko.github.io/geolocation-sensor/
+Shortname: geolocation-sensor
+Editor: Anssi Kostiainen 41974, Intel Corporation, https://intel.com/
+Group: dap
+Abstract:
+  This specification defines the {{GeolocationSensor}} interface for obtaining
+  [=geolocation=] of the hosting device.
+!Participate: <a href="https://github.com/anssiko/geolocation-sensor">GitHub</a>
+Indent: 2
+Markup Shorthands: markdown on
+Inline Github Issues: true
+!Tests: <a href="https://github.com/w3c/web-platform-tests/tree/master/geolocation-sensor">web-platform-tests</a>
+Boilerplate: omit issues-index, omit conformance, omit feedback-header
+Default Biblio Status: current
+Note class: note
+</pre>
+<pre class="anchors">
+urlPrefix: https://w3c.github.io/sensors; spec: GENERIC-SENSOR
+  type: dfn
+    text: high-level
+    text: sensor
+    text: latest reading
+    text: default sensor
+    text: construct a sensor object; url: construct-sensor-object
+    text: sensor type
+    text: security and privacy; url: security-and-privacy
+    text: extensible; url: extensibility
+</pre>
+<pre class="biblio">
+{
+  "WGS84": {
+    "authors": [
+      "National Imagery and Mapping Agency"
+    ],
+    "href": "http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf",
+    "title": "Department of Defence World Geodetic System 1984",
+    "status": "Technical Report, Third Edition",
+    "publisher": "National Imagery and Mapping Agency"
+  }
+}
+</pre>
+
+Introduction {#intro}
+============
+
+The {{GeolocationSensor}} API extends the {{Sensor}} interface [[GENERIC-SENSOR]] to provide
+information about the [=geolocation=] of the hosting device.
+
+The feature set of the {{GeolocationSensor}} is similar to that of the Geolocation API
+[[GEOLOCATION-API]], but it is surfaced through a modern API that is consistent across
+<a href="https://www.w3.org/2009/dap/#sensors">contemporary sensor APIs</a>, improves
+<a>security and privacy</a>, and is <a>extensible</a>. The API aims to be
+<a href="https://github.com/w3c/sensors/blob/master/polyfills/geolocation.js">
+polyfillable</a> on top of the existing Geolocation API.
+
+Examples {#examples}
+========
+
+<div class="example">
+  <pre highlight="js">
+  let geo = new GeolocationSensor();
+  geo.start();
+
+  geo.onreading = () => console.log(\`lat: ${geo.latitude}, long: ${geo.longitude}\`);
+
+  geo.onerror = event => console.error(event.error.name, event.error.message);
+  </pre>
+</div>
+
+Security and Privacy Considerations {#security-and-privacy}
+===================================
+
+Note: Investigate any geolocation-specific security and privacy considerations that are not
+mitigated by the Generic Sensor API [[!GENERIC-SENSOR]], and define geolocation-specific
+mitigations.
+
+Model {#model}
+=====
+
+The term <dfn>geolocation</dfn> refers to the real-world geographic location of the
+hosting device represented in geographic coordinates [[!WGS84]].
+
+The <dfn>Geolocation Sensor</dfn> <a>sensor type</a>'s associated {{Sensor}} subclass is the
+{{GeolocationSensor}} class.
+
+The <a>Geolocation Sensor</a> has a [=default sensor=], which is the device's <dfn>main
+geolocation sensor</dfn>.
+
+Note: An implementation can use multiple location information sources in its <a>main geolocation
+sensor</a>.
+
+The <a>Geolocation Sensor</a> has an associated {{PermissionName}} which is
+<a for="PermissionName" enum-value>"geolocation"</a>.
+
+A [=latest reading=] per [=sensor=] of <a>Geolocation Sensor</a> <a>sensor type</a> includes seven
+[=map/entries=] whose [=map/keys=] are "latitude", "longitude", "altitude", "accuracy",
+"altitudeAccuracy", "heading", "speed" and whose [=map/values=] contain device's [=geolocation=].
+
+Note: Consider adding a visual of the standard coordinate system for the Earth.
+
+API {#api}
+===
+
+The GeolocationSensor Interface {#geolocationsensor-interface}
+-------------------------------
+
+<pre class="idl">
+  [Constructor(optional SensorOptions options), Exposed=Window]
+  interface GeolocationSensor : Sensor {
+    readonly attribute unrestricted double? latitude;
+    readonly attribute unrestricted double? longitude;
+    readonly attribute unrestricted double? altitude;
+    readonly attribute unrestricted double? accuracy;
+    readonly attribute unrestricted double? altitudeAccuracy;
+    readonly attribute unrestricted double? heading;
+    readonly attribute unrestricted double? speed;
+  };
+</pre>
+
+<div class="note">
+Normative changes to the <code>
+<a href="https://dev.w3.org/geo/api/spec-source.html#coordinates_interface">
+Coordinates</a></code> interface of the Geolocation API are the following:
+<ul>
+  <li>Use <a href="https://heycam.github.io/webidl/#idl-unrestricted-double">
+  unrestricted double</a> to not throw TypeError on NaN, +Infinity or −Infinity.
+  (Geolocation API defines NaN as a valid value for heading, yet uses double as its type.)
+  <li>Use <a href="https://heycam.github.io/webidl/#dfn-nullable-type">nullable</a> to allow
+  all attributes to default to null. (Geolocation API does not provide synchronous means to
+  access these attributes, thus latitude, longitude and altitude are not nullable and "must be
+  supported by all implementations".)
+</ul>
+</div>
+
+To <dfn>construct a <a>Geolocation Sensor</a> object</dfn> the user agent must invoke the
+[=construct a Sensor object=] abstract operation.
+
+### GeolocationSensor.latitude ### {#geolocationsensor-latitude}
+
+The {{GeolocationSensor/latitude!!attribute}} attribute of the {{GeolocationSensor}} interface
+represents the latitude coordinate of the [=geolocation=] in decimal degrees [[!WGS84]]. This
+attribute returns [=map/value=] for [=latest reading=]["latitude"] [=map/entry=]. Initially, its
+value must be null.
+
+### GeolocationSensor.longitude ### {#geolocationsensor-longitude}
+
+The {{GeolocationSensor/longitude!!attribute}} attribute of the {{GeolocationSensor}} interface
+represents the longitude coordinate of the [=geolocation=] in decimal degrees [[!WGS84]]. This 
+attribute returns [=map/value=] for [=latest reading=]["longitude"] [=map/entry=]. Initially, its
+value must be null.
+
+### GeolocationSensor.altitude ### {#geolocationsensor-altitude}
+
+The {{GeolocationSensor/altitude!!attribute}} attribute of the {{GeolocationSensor}} interface
+represents the altitude of the [=geolocation=] in meters above the WGS 84 ellipsoid [[!WGS84]].
+This attribute returns [=map/value=] for [=latest reading=]["altitude"] [=map/entry=]. Initially,
+its value must be null.
+
+### GeolocationSensor.accuracy ### {#geolocationsensor-accuracy}
+
+The {{GeolocationSensor/accuracy!!attribute}} attribute of the {{GeolocationSensor}} interface
+represents the accuracy of the value of [=latest reading=]["longitude"] [=map/entry=] and
+value of [=latest reading=]["altitude"] [=map/entry=] in meters with a 95% confidence level.
+Initially, its value must be null.
+
+### GeolocationSensor.altitudeAccuracy ### {#geolocationsensor-altitudeaccuracy}
+
+The {{GeolocationSensor/altitudeAccuracy!!attribute}} attribute of the {{GeolocationSensor}}
+interface represents the accuracy of the value of [=latest reading=]["altitude"] [=map/entry=] in
+meters with a 95% confidence level. Initially, its value must be null.
+
+### GeolocationSensor.heading ### {#geolocationsensor-heading}
+
+The {{GeolocationSensor/heading!!attribute}} attribute of the {{GeolocationSensor}} interface
+represents the direction of travel in degrees counting clockwise relative to the true north
+in the range 0 ≤ heading ≤ 360. Initially, its value must be null.
+
+### GeolocationSensor.speed ### {#geolocationsensor-speed}
+
+The {{GeolocationSensor/speed!!attribute}} attribute of the {{GeolocationSensor}} interface
+represents the magnitude of the horizontal component of the velocity in meters per second.
+Initially, its value must be null.
+
+Open Issues {#open-issues}
+===========
+
+These inline issues will be moved to GitHub, they are documented in the spec to start with.
+
+Issue: <a href="https://dev.w3.org/geo/api/spec-source.html#req_oneshot">One-shot position
+updates</a>. Addressed by <code>
+<a href="https://dev.w3.org/geo/api/spec-source.html#get-current-position">getCurrentPosition()
+</a></code> in the Geolocation API. Define a modernized version of this convenience method that
+returns a promise. Add it either to the Generic Sensor API if deemed generic or to the
+derived {{GeolocationSensor}} if considered a special case. See
+<a href="https://github.com/w3c/sensors/issues/88">w3c/sensors issue #88</a>.
+
+Issue: <a href="https://dev.w3.org/geo/api/spec-source.html#req_last_known">Cached readings</a>.
+Consider adding <code><a href="https://dev.w3.org/geo/api/spec-source.html#max-age">
+maximumAge</a></code> or an equivalent to <code>GeolocationSensorOptions</code>.
+
+Issue: <a href="https://dev.w3.org/geo/api/spec-source.html#timeout">Timeout</a>. Investigate use
+cases, implementer and web developer feedback. To be added to <code>GeolocationSensorOptions</code>
+if warranted.
+
+Issue: <a href="https://dev.w3.org/geo/api/spec-source.html#high-accuracy">High accuracy mode</a>.
+This feature has known issues and is not implemented in an interoperable manner. Investigated whether
+this should be dropped from the modernized API.
+
+Issue: <a href="https://dev.w3.org/geo/api/spec-source.html#requirements_section">
+Satisfy Geolocation API requirements</a>. Evaluate and satisfy all requirements that are still 
+considered valid.
+
+Acknowledgements {#acknowledgements}
+================
+
+Tobie Langel for the work on Generic Sensor API and the geolocation.js polyfill.
