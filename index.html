@@ -1431,7 +1431,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Geolocation Sensor</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2017-09-15">15 September 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2017-09-18">18 September 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1444,6 +1444,8 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
      <dd><span><a href="https://github.com/anssiko/geolocation-sensor">GitHub</a></span>
      <dt>Tests:
      <dd><span><a href="https://github.com/w3c/web-platform-tests/tree/master/geolocation-sensor">web-platform-tests</a></span>
+     <dt>Polyfill:
+     <dd><span><a href="https://github.com/w3c/sensors/blob/master/polyfills/geolocation.js">geolocation.js</a></span>
     </dl>
    </div>
    <div data-fill-with="warning"></div>
@@ -1519,7 +1521,8 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
    <h2 class="heading settled" data-level="1" id="intro"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#intro"></a></h2>
    <p>The <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor①">GeolocationSensor</a></code> API extends the <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor">Sensor</a></code> interface <a data-link-type="biblio" href="#biblio-generic-sensor">[GENERIC-SENSOR]</a> to provide
 information about the <a data-link-type="dfn" href="#geolocation" id="ref-for-geolocation①">geolocation</a> of the hosting device.</p>
-   <p>The feature set of the <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor②">GeolocationSensor</a></code> is similar to that of the Geolocation API <a data-link-type="biblio" href="#biblio-geolocation-api">[GEOLOCATION-API]</a>, but it is surfaced through a modern API that is consistent across <a href="https://www.w3.org/2009/dap/#sensors">contemporary sensor APIs</a>, improves <a data-link-type="dfn" href="https://w3c.github.io/sensors#security-and-privacy" id="ref-for-security-and-privacy">security and privacy</a>, and is <a data-link-type="dfn" href="https://w3c.github.io/sensors#extensibility" id="ref-for-extensibility">extensible</a>. The API aims to be <a href="https://github.com/w3c/sensors/blob/master/polyfills/geolocation.js"> polyfillable</a> on top of the existing Geolocation API.</p>
+   <p>The feature set of the <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor②">GeolocationSensor</a></code> is similar to that of the Geolocation API <a data-link-type="biblio" href="#biblio-geolocation-api">[GEOLOCATION-API]</a>, but it is surfaced through a modern API that is consistent across <a href="https://www.w3.org/2009/dap/#sensors">contemporary sensor APIs</a>, improves <a data-link-type="dfn" href="https://w3c.github.io/sensors#security-and-privacy" id="ref-for-security-and-privacy">security and privacy</a>, and is <a data-link-type="dfn" href="https://w3c.github.io/sensors#extensibility" id="ref-for-extensibility">extensible</a>. The API aims to be <a href="https://github.com/w3c/sensors/blob/master/polyfills/geolocation.js">polyfillable</a> (<a href="https://w3c.github.io/sensors/examples/realtime-positioning/">example</a>)
+on top of the existing Geolocation API.</p>
    <h2 class="heading settled" data-level="2" id="examples"><span class="secno">2. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
    <div class="example" id="example-51397c7c">
     <a class="self-link" href="#example-51397c7c"></a> 
