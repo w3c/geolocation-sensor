@@ -5,7 +5,7 @@ Status: ED
 ED: https://anssiko.github.io/geolocation-sensor/
 Shortname: geolocation-sensor
 Editor: Anssi Kostiainen 41974, Intel Corporation, https://intel.com/
-Group: dap
+Group: wicg
 Abstract:
   This specification defines the {{GeolocationSensor}} interface for obtaining
   [=geolocation=] of the hosting device.
