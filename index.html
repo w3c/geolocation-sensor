@@ -1178,7 +1178,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version df778ba2d9793f77f64705dbba65d0c50f68e0d9" name="generator">
   <link href="https://anssiko.github.io/geolocation-sensor/" rel="canonical">
-  <meta content="9512526b7a5b63e13589e070e97157d3fcb72bb8" name="document-revision">
+  <meta content="6158df64842ab8fb375cd3e5766f6f5ac414e266" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1524,14 +1524,12 @@ mitigations.</p>
    <h2 class="heading settled" data-level="4" id="model"><span class="secno">4. </span><span class="content">Model</span><a class="self-link" href="#model"></a></h2>
    <p>The term <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="geolocation">geolocation</dfn> refers to the real-world geographic location of the
 hosting device represented in geographic coordinates <a data-link-type="biblio" href="#biblio-wgs84">[WGS84]</a>.</p>
+   <p class="note" role="note"><span>Note:</span> An implementation can use multiple location information sources to acquire <a data-link-type="dfn" href="#geolocation" id="ref-for-geolocation②">geolocation</a> information, and this specification is agnostic with respect
+to those sources.</p>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="geolocation-sensor">Geolocation Sensor</dfn> <a data-link-type="dfn" href="https://w3c.github.io/sensors#sensor-type" id="ref-for-sensor-type">sensor type</a>’s associated <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor①">Sensor</a></code> subclass is the <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor③">GeolocationSensor</a></code> class.</p>
-   <p>The <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor">Geolocation Sensor</a> has a <a data-link-type="dfn" href="https://w3c.github.io/sensors#default-sensor" id="ref-for-default-sensor">default sensor</a>, which is the device’s <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="main geolocation sensor" data-noexport="" id="main-geolocation-sensor">main
-geolocation sensor</dfn>.</p>
-   <p class="note" role="note"><span>Note:</span> An implementation can use multiple location information sources in its <a data-link-type="dfn" href="#main-geolocation-sensor" id="ref-for-main-geolocation-sensor">main geolocation
-sensor</a>.</p>
-   <p>The <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor①">Geolocation Sensor</a> has an associated <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/permissions/#enumdef-permissionname" id="ref-for-enumdef-permissionname">PermissionName</a></code> which is <a class="idl-code" data-link-type="enum-value" href="https://w3c.github.io/permissions/#dom-permissionname-geolocation" id="ref-for-dom-permissionname-geolocation">"geolocation"</a>.</p>
-   <p>A <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading" id="ref-for-latest-reading">latest reading</a> for a <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor②">Sensor</a></code> of <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor②">Geolocation Sensor</a> <a data-link-type="dfn" href="https://w3c.github.io/sensors#sensor-type" id="ref-for-sensor-type①">sensor type</a> includes seven <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry" id="ref-for-map-entry">entries</a> whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-key" id="ref-for-map-key">keys</a> are "latitude", "longitude", "altitude", "accuracy",
-"altitudeAccuracy", "heading", "speed" and whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-value" id="ref-for-map-value">values</a> contain device’s <a data-link-type="dfn" href="#geolocation" id="ref-for-geolocation②">geolocation</a>.</p>
+   <p>The <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor">Geolocation Sensor</a> has an associated <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/permissions/#enumdef-permissionname" id="ref-for-enumdef-permissionname">PermissionName</a></code> which is <a class="idl-code" data-link-type="enum-value" href="https://w3c.github.io/permissions/#dom-permissionname-geolocation" id="ref-for-dom-permissionname-geolocation">"geolocation"</a>.</p>
+   <p>A <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading" id="ref-for-latest-reading">latest reading</a> for a <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor②">Sensor</a></code> of <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor①">Geolocation Sensor</a> <a data-link-type="dfn" href="https://w3c.github.io/sensors#sensor-type" id="ref-for-sensor-type①">sensor type</a> includes seven <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry" id="ref-for-map-entry">entries</a> whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-key" id="ref-for-map-key">keys</a> are "latitude", "longitude", "altitude", "accuracy",
+"altitudeAccuracy", "heading", "speed" and whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-value" id="ref-for-map-value">values</a> contain device’s <a data-link-type="dfn" href="#geolocation" id="ref-for-geolocation③">geolocation</a>.</p>
    <p class="note" role="note"><span>Note:</span> Consider adding a visual of the standard coordinate system for the Earth.</p>
    <h2 class="heading settled" data-level="5" id="api"><span class="secno">5. </span><span class="content">API</span><a class="self-link" href="#api"></a></h2>
    <h3 class="heading settled" data-level="5.1" id="geolocationsensor-interface"><span class="secno">5.1. </span><span class="content">The GeolocationSensor Interface</span><a class="self-link" href="#geolocationsensor-interface"></a></h3>
@@ -1557,20 +1555,20 @@ sensor</a>.</p>
   supported by all implementations".) 
     </ul>
    </div>
-   <p>To <dfn data-dfn-type="dfn" data-noexport="" id="construct-a-geolocation-sensor-object">construct a <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor③">Geolocation Sensor</a> object<a class="self-link" href="#construct-a-geolocation-sensor-object"></a></dfn> the user agent must invoke the <a data-link-type="dfn" href="https://w3c.github.io/sensors#construct-sensor-object" id="ref-for-construct-sensor-object">construct a Sensor object</a> abstract operation.</p>
+   <p>To <dfn data-dfn-type="dfn" data-noexport="" id="construct-a-geolocation-sensor-object">construct a <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor②">Geolocation Sensor</a> object<a class="self-link" href="#construct-a-geolocation-sensor-object"></a></dfn> the user agent must invoke the <a data-link-type="dfn" href="https://w3c.github.io/sensors#construct-sensor-object" id="ref-for-construct-sensor-object">construct a Sensor object</a> abstract operation.</p>
    <h4 class="heading settled" data-level="5.1.1" id="geolocationsensor-latitude"><span class="secno">5.1.1. </span><span class="content">GeolocationSensor.latitude</span><a class="self-link" href="#geolocationsensor-latitude"></a></h4>
    <p>The <code class="idl"><a class="idl-code" data-link-type="attribute" href="#dom-geolocationsensor-latitude" id="ref-for-dom-geolocationsensor-latitude">latitude</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor④">GeolocationSensor</a></code> interface
-represents the latitude coordinate of the <a data-link-type="dfn" href="#geolocation" id="ref-for-geolocation③">geolocation</a> in decimal degrees <a data-link-type="biblio" href="#biblio-wgs84">[WGS84]</a>. This
+represents the latitude coordinate of the <a data-link-type="dfn" href="#geolocation" id="ref-for-geolocation④">geolocation</a> in decimal degrees <a data-link-type="biblio" href="#biblio-wgs84">[WGS84]</a>. This
 attribute returns <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-value" id="ref-for-map-value①">value</a> for <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading" id="ref-for-latest-reading①">latest reading</a>["latitude"] <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry" id="ref-for-map-entry①">entry</a>. Initially, its
 value must be null.</p>
    <h4 class="heading settled" data-level="5.1.2" id="geolocationsensor-longitude"><span class="secno">5.1.2. </span><span class="content">GeolocationSensor.longitude</span><a class="self-link" href="#geolocationsensor-longitude"></a></h4>
    <p>The <code class="idl"><a class="idl-code" data-link-type="attribute" href="#dom-geolocationsensor-longitude" id="ref-for-dom-geolocationsensor-longitude">longitude</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor⑤">GeolocationSensor</a></code> interface
-represents the longitude coordinate of the <a data-link-type="dfn" href="#geolocation" id="ref-for-geolocation④">geolocation</a> in decimal degrees <a data-link-type="biblio" href="#biblio-wgs84">[WGS84]</a>. This 
+represents the longitude coordinate of the <a data-link-type="dfn" href="#geolocation" id="ref-for-geolocation⑤">geolocation</a> in decimal degrees <a data-link-type="biblio" href="#biblio-wgs84">[WGS84]</a>. This 
 attribute returns <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-value" id="ref-for-map-value②">value</a> for <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading" id="ref-for-latest-reading②">latest reading</a>["longitude"] <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry" id="ref-for-map-entry②">entry</a>. Initially, its
 value must be null.</p>
    <h4 class="heading settled" data-level="5.1.3" id="geolocationsensor-altitude"><span class="secno">5.1.3. </span><span class="content">GeolocationSensor.altitude</span><a class="self-link" href="#geolocationsensor-altitude"></a></h4>
    <p>The <code class="idl"><a class="idl-code" data-link-type="attribute" href="#dom-geolocationsensor-altitude" id="ref-for-dom-geolocationsensor-altitude">altitude</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor⑥">GeolocationSensor</a></code> interface
-represents the altitude of the <a data-link-type="dfn" href="#geolocation" id="ref-for-geolocation⑤">geolocation</a> in meters above the WGS 84 ellipsoid <a data-link-type="biblio" href="#biblio-wgs84">[WGS84]</a>.
+represents the altitude of the <a data-link-type="dfn" href="#geolocation" id="ref-for-geolocation⑥">geolocation</a> in meters above the WGS 84 ellipsoid <a data-link-type="biblio" href="#biblio-wgs84">[WGS84]</a>.
 This attribute returns <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-value" id="ref-for-map-value③">value</a> for <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading" id="ref-for-latest-reading③">latest reading</a>["altitude"] <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry" id="ref-for-map-entry③">entry</a>. Initially,
 its value must be null.</p>
    <h4 class="heading settled" data-level="5.1.4" id="geolocationsensor-accuracy"><span class="secno">5.1.4. </span><span class="content">GeolocationSensor.accuracy</span><a class="self-link" href="#geolocationsensor-accuracy"></a></h4>
@@ -1751,7 +1749,6 @@ considered valid.</p>
    <li><a href="#dom-geolocationsensor-heading">heading</a><span>, in §5.1</span>
    <li><a href="#dom-geolocationsensor-latitude">latitude</a><span>, in §5.1</span>
    <li><a href="#dom-geolocationsensor-longitude">longitude</a><span>, in §5.1</span>
-   <li><a href="#main-geolocation-sensor">main geolocation sensor</a><span>, in §4</span>
    <li><a href="#dom-geolocationsensor-speed">speed</a><span>, in §5.1</span>
   </ul>
   <h3 class="no-num no-ref heading settled" id="index-defined-elsewhere"><span class="content">Terms defined by reference</span><a class="self-link" href="#index-defined-elsewhere"></a></h3>
@@ -1760,7 +1757,6 @@ considered valid.</p>
     <a data-link-type="biblio">[GENERIC-SENSOR]</a> defines the following terms:
     <ul>
      <li><a href="https://w3c.github.io/sensors#construct-sensor-object">construct a sensor object</a>
-     <li><a href="https://w3c.github.io/sensors#default-sensor">default sensor</a>
      <li><a href="https://w3c.github.io/sensors#extensibility">extensible</a>
      <li><a href="https://w3c.github.io/sensors#latest-reading">latest reading</a>
      <li><a href="https://w3c.github.io/sensors#security-and-privacy">security and privacy</a>
@@ -1832,23 +1828,17 @@ considered valid.</p>
    <b><a href="#geolocation">#geolocation</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-geolocation①">1. Introduction</a>
-    <li><a href="#ref-for-geolocation②">4. Model</a>
-    <li><a href="#ref-for-geolocation③">5.1.1. GeolocationSensor.latitude</a>
-    <li><a href="#ref-for-geolocation④">5.1.2. GeolocationSensor.longitude</a>
-    <li><a href="#ref-for-geolocation⑤">5.1.3. GeolocationSensor.altitude</a>
+    <li><a href="#ref-for-geolocation②">4. Model</a> <a href="#ref-for-geolocation③">(2)</a>
+    <li><a href="#ref-for-geolocation④">5.1.1. GeolocationSensor.latitude</a>
+    <li><a href="#ref-for-geolocation⑤">5.1.2. GeolocationSensor.longitude</a>
+    <li><a href="#ref-for-geolocation⑥">5.1.3. GeolocationSensor.altitude</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="geolocation-sensor">
    <b><a href="#geolocation-sensor">#geolocation-sensor</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-geolocation-sensor">4. Model</a> <a href="#ref-for-geolocation-sensor①">(2)</a> <a href="#ref-for-geolocation-sensor②">(3)</a>
-    <li><a href="#ref-for-geolocation-sensor③">5.1. The GeolocationSensor Interface</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="main-geolocation-sensor">
-   <b><a href="#main-geolocation-sensor">#main-geolocation-sensor</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-main-geolocation-sensor">4. Model</a>
+    <li><a href="#ref-for-geolocation-sensor">4. Model</a> <a href="#ref-for-geolocation-sensor①">(2)</a>
+    <li><a href="#ref-for-geolocation-sensor②">5.1. The GeolocationSensor Interface</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="geolocationsensor">

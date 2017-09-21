@@ -86,14 +86,12 @@ Model {#model}
 The term <dfn>geolocation</dfn> refers to the real-world geographic location of the
 hosting device represented in geographic coordinates [[!WGS84]].
 
+Note: An implementation can use multiple location information sources to acquire
+<a>geolocation</a> information, and this specification is agnostic with respect
+to those sources.
+
 The <dfn>Geolocation Sensor</dfn> <a>sensor type</a>'s associated {{Sensor}} subclass is the
 {{GeolocationSensor}} class.
-
-The <a>Geolocation Sensor</a> has a [=default sensor=], which is the device's <dfn>main
-geolocation sensor</dfn>.
-
-Note: An implementation can use multiple location information sources in its <a>main geolocation
-sensor</a>.
 
 The <a>Geolocation Sensor</a> has an associated {{PermissionName}} which is
 <a for="PermissionName" enum-value>"geolocation"</a>.
