@@ -98,7 +98,7 @@ sensor</a>.
 The <a>Geolocation Sensor</a> has an associated {{PermissionName}} which is
 <a for="PermissionName" enum-value>"geolocation"</a>.
 
-A [=latest reading=] per [=sensor=] of <a>Geolocation Sensor</a> <a>sensor type</a> includes seven
+A [=latest reading=] for a {{Sensor}} of <a>Geolocation Sensor</a> <a>sensor type</a> includes seven
 [=map/entries=] whose [=map/keys=] are "latitude", "longitude", "altitude", "accuracy",
 "altitudeAccuracy", "heading", "speed" and whose [=map/values=] contain device's [=geolocation=].
 
