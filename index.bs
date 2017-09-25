@@ -142,48 +142,52 @@ To <dfn>construct a <a>Geolocation Sensor</a> object</dfn> the user agent must i
 ### GeolocationSensor.latitude ### {#geolocationsensor-latitude}
 
 The {{GeolocationSensor/latitude!!attribute}} attribute of the {{GeolocationSensor}} interface
-represents the latitude coordinate of the [=geolocation=] in decimal degrees [[!WGS84]]. This
-attribute returns [=map/value=] for [=latest reading=]["latitude"] [=map/entry=]. Initially, its
-value must be null.
+returns the result of invoking [=get value from latest reading=] with `this` and "latitude" as
+arguments. Initially, its value must be null. It represents the latitude coordinate of the
+[=geolocation=] in decimal degrees [[!WGS84]].
 
 ### GeolocationSensor.longitude ### {#geolocationsensor-longitude}
 
 The {{GeolocationSensor/longitude!!attribute}} attribute of the {{GeolocationSensor}} interface
-represents the longitude coordinate of the [=geolocation=] in decimal degrees [[!WGS84]]. This 
-attribute returns [=map/value=] for [=latest reading=]["longitude"] [=map/entry=]. Initially, its
-value must be null.
+returns the result of invoking [=get value from latest reading=] with `this` and "longitude" as
+arguments. Initially, its value must be null. It represents the longitude coordinate of the
+[=geolocation=] in decimal degrees [[!WGS84]].
 
 ### GeolocationSensor.altitude ### {#geolocationsensor-altitude}
 
 The {{GeolocationSensor/altitude!!attribute}} attribute of the {{GeolocationSensor}} interface
-represents the altitude of the [=geolocation=] in meters above the WGS 84 ellipsoid [[!WGS84]].
-This attribute returns [=map/value=] for [=latest reading=]["altitude"] [=map/entry=]. Initially,
-its value must be null.
+returns the result of invoking [=get value from latest reading=] with `this` and "altitude" as
+arguments. Initially, its value must be null. It represents the [=geolocation=] in meters above
+the WGS 84 ellipsoid [[!WGS84]].
 
 ### GeolocationSensor.accuracy ### {#geolocationsensor-accuracy}
 
 The {{GeolocationSensor/accuracy!!attribute}} attribute of the {{GeolocationSensor}} interface
-represents the accuracy of the value of [=latest reading=]["longitude"] [=map/entry=] and
-value of [=latest reading=]["altitude"] [=map/entry=] in meters with a 95% confidence level.
-Initially, its value must be null.
+returns the result of invoking [=get value from latest reading=] with `this` and "accuracy" as
+arguments. Initially, its value must be null. It represents the accuracy of the
+[=latest reading=]["latitude"] value and [=latest reading=]["longitude"] value in meters with a
+95% confidence level.
 
 ### GeolocationSensor.altitudeAccuracy ### {#geolocationsensor-altitudeaccuracy}
 
 The {{GeolocationSensor/altitudeAccuracy!!attribute}} attribute of the {{GeolocationSensor}}
-interface represents the accuracy of the value of [=latest reading=]["altitude"] [=map/entry=] in
-meters with a 95% confidence level. Initially, its value must be null.
+interface returns the result of invoking [=get value from latest reading=] with `this` and
+"altitudeAccuracy" as arguments. Initially, its value must be null. It represents the accuracy
+of the [=latest reading=]["altitude"] value in meters with a 95% confidence level.
 
 ### GeolocationSensor.heading ### {#geolocationsensor-heading}
 
 The {{GeolocationSensor/heading!!attribute}} attribute of the {{GeolocationSensor}} interface
-represents the direction of travel in degrees counting clockwise relative to the true north
-in the range 0 ≤ heading ≤ 360. Initially, its value must be null.
+returns the result of invoking [=get value from latest reading=] with `this` and "heading" as
+arguments. Initially, its value must be null. It represents the direction of travel in degrees
+counting clockwise relative to the true north in the range 0 ≤ heading ≤ 360.
 
 ### GeolocationSensor.speed ### {#geolocationsensor-speed}
 
 The {{GeolocationSensor/speed!!attribute}} attribute of the {{GeolocationSensor}} interface
-represents the magnitude of the horizontal component of the velocity in meters per second.
-Initially, its value must be null.
+returns the result of invoking [=get value from latest reading=] with `this` and "speed" as
+arguments. Initially, its value must be null. It represents the magnitude of the horizontal
+component of the velocity in meters per second.
 
 Open Issues {#open-issues}
 ===========
