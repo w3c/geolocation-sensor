@@ -1178,7 +1178,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version df778ba2d9793f77f64705dbba65d0c50f68e0d9" name="generator">
   <link href="https://anssiko.github.io/geolocation-sensor/" rel="canonical">
-  <meta content="64074280e4c0d8c9a774920e166d87cc88657124" name="document-revision">
+  <meta content="0e63916e82d58d8b2f36109d25608c5fff126c84" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1572,9 +1572,12 @@ arguments. It represents the <a data-link-type="dfn" href="#geolocation" id="ref
    <p>The <code class="idl"><a class="idl-code" data-link-type="attribute" href="#dom-geolocationsensor-accuracy" id="ref-for-dom-geolocationsensor-accuracy">accuracy</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor⑦">GeolocationSensor</a></code> interface
 returns the result of invoking <a data-link-type="dfn" href="https://w3c.github.io/sensors/#get-value-from-latest-reading" id="ref-for-get-value-from-latest-reading③">get value from latest reading</a> with <code>this</code> and "accuracy" as
 arguments. It represents the accuracy of the <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading" id="ref-for-latest-reading①">latest reading</a>["latitude"] value and <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading" id="ref-for-latest-reading②">latest reading</a>["longitude"] value in meters with a 95% confidence level.</p>
+   <p>If the <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading" id="ref-for-latest-reading③">latest reading</a>["latitude"] value is null or <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading" id="ref-for-latest-reading④">latest reading</a>["longitude"] value is
+null, it must return null.</p>
    <h4 class="heading settled" data-level="5.1.5" id="geolocationsensor-altitudeaccuracy"><span class="secno">5.1.5. </span><span class="content">GeolocationSensor.altitudeAccuracy</span><a class="self-link" href="#geolocationsensor-altitudeaccuracy"></a></h4>
    <p>The <code class="idl"><a class="idl-code" data-link-type="attribute" href="#dom-geolocationsensor-altitudeaccuracy" id="ref-for-dom-geolocationsensor-altitudeaccuracy">altitudeAccuracy</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor⑧">GeolocationSensor</a></code> interface returns the result of invoking <a data-link-type="dfn" href="https://w3c.github.io/sensors/#get-value-from-latest-reading" id="ref-for-get-value-from-latest-reading④">get value from latest reading</a> with <code>this</code> and
-"altitudeAccuracy" as arguments. It represents the accuracy of the <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading" id="ref-for-latest-reading③">latest reading</a>["altitude"] value in meters with a 95% confidence level.</p>
+"altitudeAccuracy" as arguments. It represents the accuracy of the <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading" id="ref-for-latest-reading⑤">latest reading</a>["altitude"] value in meters with a 95% confidence level.</p>
+   <p>If the <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading" id="ref-for-latest-reading⑥">latest reading</a>["altitude"] value is null, it must return null.</p>
    <h4 class="heading settled" data-level="5.1.6" id="geolocationsensor-heading"><span class="secno">5.1.6. </span><span class="content">GeolocationSensor.heading</span><a class="self-link" href="#geolocationsensor-heading"></a></h4>
    <p>The <code class="idl"><a class="idl-code" data-link-type="attribute" href="#dom-geolocationsensor-heading" id="ref-for-dom-geolocationsensor-heading">heading</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor⑨">GeolocationSensor</a></code> interface
 returns the result of invoking <a data-link-type="dfn" href="https://w3c.github.io/sensors/#get-value-from-latest-reading" id="ref-for-get-value-from-latest-reading⑤">get value from latest reading</a> with <code>this</code> and "heading" as

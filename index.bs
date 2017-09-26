@@ -166,12 +166,17 @@ returns the result of invoking [=get value from latest reading=] with `this` and
 arguments. It represents the accuracy of the [=latest reading=]["latitude"] value and
 [=latest reading=]["longitude"] value in meters with a 95% confidence level.
 
+If the [=latest reading=]["latitude"] value is null or [=latest reading=]["longitude"] value is
+null, it must return null.
+
 ### GeolocationSensor.altitudeAccuracy ### {#geolocationsensor-altitudeaccuracy}
 
 The {{GeolocationSensor/altitudeAccuracy!!attribute}} attribute of the {{GeolocationSensor}}
 interface returns the result of invoking [=get value from latest reading=] with `this` and
 "altitudeAccuracy" as arguments. It represents the accuracy of the
 [=latest reading=]["altitude"] value in meters with a 95% confidence level.
+
+If the [=latest reading=]["altitude"] value is null, it must return null.
 
 ### GeolocationSensor.heading ### {#geolocationsensor-heading}
 
