@@ -143,51 +143,49 @@ To <dfn>construct a <a>Geolocation Sensor</a> object</dfn> the user agent must i
 
 The {{GeolocationSensor/latitude!!attribute}} attribute of the {{GeolocationSensor}} interface
 returns the result of invoking [=get value from latest reading=] with `this` and "latitude" as
-arguments. Initially, its value must be null. It represents the latitude coordinate of the
-[=geolocation=] in decimal degrees [[!WGS84]].
+arguments. It represents the latitude coordinate of the [=geolocation=] in decimal degrees
+[[!WGS84]].
 
 ### GeolocationSensor.longitude ### {#geolocationsensor-longitude}
 
 The {{GeolocationSensor/longitude!!attribute}} attribute of the {{GeolocationSensor}} interface
 returns the result of invoking [=get value from latest reading=] with `this` and "longitude" as
-arguments. Initially, its value must be null. It represents the longitude coordinate of the
-[=geolocation=] in decimal degrees [[!WGS84]].
+arguments. It represents the longitude coordinate of the [=geolocation=] in decimal degrees
+[[!WGS84]].
 
 ### GeolocationSensor.altitude ### {#geolocationsensor-altitude}
 
 The {{GeolocationSensor/altitude!!attribute}} attribute of the {{GeolocationSensor}} interface
 returns the result of invoking [=get value from latest reading=] with `this` and "altitude" as
-arguments. Initially, its value must be null. It represents the [=geolocation=] in meters above
-the WGS 84 ellipsoid [[!WGS84]].
+arguments. It represents the [=geolocation=] in meters above the WGS 84 ellipsoid [[!WGS84]].
 
 ### GeolocationSensor.accuracy ### {#geolocationsensor-accuracy}
 
 The {{GeolocationSensor/accuracy!!attribute}} attribute of the {{GeolocationSensor}} interface
 returns the result of invoking [=get value from latest reading=] with `this` and "accuracy" as
-arguments. Initially, its value must be null. It represents the accuracy of the
-[=latest reading=]["latitude"] value and [=latest reading=]["longitude"] value in meters with a
-95% confidence level.
+arguments. It represents the accuracy of the [=latest reading=]["latitude"] value and
+[=latest reading=]["longitude"] value in meters with a 95% confidence level.
 
 ### GeolocationSensor.altitudeAccuracy ### {#geolocationsensor-altitudeaccuracy}
 
 The {{GeolocationSensor/altitudeAccuracy!!attribute}} attribute of the {{GeolocationSensor}}
 interface returns the result of invoking [=get value from latest reading=] with `this` and
-"altitudeAccuracy" as arguments. Initially, its value must be null. It represents the accuracy
-of the [=latest reading=]["altitude"] value in meters with a 95% confidence level.
+"altitudeAccuracy" as arguments. It represents the accuracy of the
+[=latest reading=]["altitude"] value in meters with a 95% confidence level.
 
 ### GeolocationSensor.heading ### {#geolocationsensor-heading}
 
 The {{GeolocationSensor/heading!!attribute}} attribute of the {{GeolocationSensor}} interface
 returns the result of invoking [=get value from latest reading=] with `this` and "heading" as
-arguments. Initially, its value must be null. It represents the direction of travel in degrees
-counting clockwise relative to the true north in the range 0 ≤ heading ≤ 360.
+arguments. It represents the direction of travel in degrees counting clockwise relative to the
+true north in the range 0 ≤ heading ≤ 360.
 
 ### GeolocationSensor.speed ### {#geolocationsensor-speed}
 
 The {{GeolocationSensor/speed!!attribute}} attribute of the {{GeolocationSensor}} interface
 returns the result of invoking [=get value from latest reading=] with `this` and "speed" as
-arguments. Initially, its value must be null. It represents the magnitude of the horizontal
-component of the velocity in meters per second.
+arguments. It represents the magnitude of the horizontal component of the velocity in meters
+per second.
 
 Open Issues {#open-issues}
 ===========
