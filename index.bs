@@ -2,14 +2,14 @@
 Title: Geolocation Sensor
 Level: none
 Status: ED
-ED: https://anssiko.github.io/geolocation-sensor/
+ED: https://wicg.github.io/geolocation-sensor/
 Shortname: geolocation-sensor
 Editor: Anssi Kostiainen 41974, Intel Corporation, https://intel.com/
 Group: wicg
 Abstract:
   This specification defines the {{GeolocationSensor}} interface for obtaining
   [=geolocation=] of the hosting device.
-!Participate: <a href="https://github.com/anssiko/geolocation-sensor">GitHub</a>
+!Participate: <a href="https://github.com/wicg/geolocation-sensor">GitHub</a>
 Indent: 2
 Markup Shorthands: markdown on
 Inline Github Issues: true

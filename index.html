@@ -1176,9 +1176,9 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version df778ba2d9793f77f64705dbba65d0c50f68e0d9" name="generator">
-  <link href="https://anssiko.github.io/geolocation-sensor/" rel="canonical">
-  <meta content="0e63916e82d58d8b2f36109d25608c5fff126c84" name="document-revision">
+  <meta content="Bikeshed version b6673ffeec5d413f06f072c4e836aeb981424403" name="generator">
+  <link href="https://wicg.github.io/geolocation-sensor/" rel="canonical">
+  <meta content="28ac2214c0109fb2b1821af44a319051ed33a8cf" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1425,15 +1425,15 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">Geolocation Sensor</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2017-09-26">26 September 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2017-10-06">6 October 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
-     <dd><a class="u-url" href="https://anssiko.github.io/geolocation-sensor/">https://anssiko.github.io/geolocation-sensor/</a>
+     <dd><a class="u-url" href="https://wicg.github.io/geolocation-sensor/">https://wicg.github.io/geolocation-sensor/</a>
      <dt class="editor">Editor:
      <dd class="editor p-author h-card vcard" data-editor-id="41974"><a class="p-name fn u-url url" href="https://intel.com/">Anssi Kostiainen</a> (<span class="p-org org">Intel Corporation</span>)
      <dt>Participate:
-     <dd><a href="https://github.com/anssiko/geolocation-sensor">GitHub</a>
+     <dd><a href="https://github.com/wicg/geolocation-sensor">GitHub</a>
      <dt>Tests:
      <dd><a href="https://github.com/w3c/web-platform-tests/tree/master/geolocation-sensor">web-platform-tests</a>
      <dt>Polyfill:
@@ -1512,9 +1512,9 @@ on top of the existing Geolocation API.</p>
 <pre class="highlight"><span class="kd">let</span> geo <span class="o">=</span> <span class="k">new</span> GeolocationSensor<span class="p">();</span>
 geo<span class="p">.</span>start<span class="p">();</span>
 
-geo<span class="p">.</span>onreading <span class="o">=</span> <span class="p">()</span> <span class="o">=></span> console<span class="p">.</span>log<span class="p">(</span><span class="sb">`lat: </span><span class="si">${</span>geo<span class="p">.</span>latitude<span class="si">}</span><span class="sb">, long: </span><span class="si">${</span>geo<span class="p">.</span>longitude<span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+geo<span class="p">.</span>onreading <span class="o">=</span> <span class="p">()</span> <span class="p">=></span> console<span class="p">.</span>log<span class="p">(</span><span class="sb">`lat: </span><span class="si">${</span>geo<span class="p">.</span>latitude<span class="si">}</span><span class="sb">, long: </span><span class="si">${</span>geo<span class="p">.</span>longitude<span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 
-geo<span class="p">.</span>onerror <span class="o">=</span> event <span class="o">=></span> console<span class="p">.</span>error<span class="p">(</span>event<span class="p">.</span>error<span class="p">.</span>name<span class="p">,</span> event<span class="p">.</span>error<span class="p">.</span>message<span class="p">);</span>
+geo<span class="p">.</span>onerror <span class="o">=</span> event <span class="p">=></span> console<span class="p">.</span>error<span class="p">(</span>event<span class="p">.</span>error<span class="p">.</span>name<span class="p">,</span> event<span class="p">.</span>error<span class="p">.</span>message<span class="p">);</span>
 </pre>
    </div>
    <h2 class="heading settled" data-level="3" id="security-and-privacy"><span class="secno">3. </span><span class="content">Security and Privacy Considerations</span><a class="self-link" href="#security-and-privacy"></a></h2>
@@ -1757,18 +1757,14 @@ considered valid.</p>
    <li>
     <a data-link-type="biblio">[GENERIC-SENSOR]</a> defines the following terms:
     <ul>
+     <li><a href="https://w3c.github.io/sensors/#sensor">Sensor</a>
+     <li><a href="https://w3c.github.io/sensors/#dictdef-sensoroptions">SensorOptions</a>
      <li><a href="https://w3c.github.io/sensors#construct-sensor-object">construct a sensor object</a>
      <li><a href="https://w3c.github.io/sensors#extensibility">extensible</a>
+     <li><a href="https://w3c.github.io/sensors/#get-value-from-latest-reading">get value from latest reading</a>
      <li><a href="https://w3c.github.io/sensors#latest-reading">latest reading</a>
      <li><a href="https://w3c.github.io/sensors#security-and-privacy">security and privacy</a>
      <li><a href="https://w3c.github.io/sensors#sensor-type">sensor type</a>
-    </ul>
-   <li>
-    <a data-link-type="biblio">[generic-sensor-1]</a> defines the following terms:
-    <ul>
-     <li><a href="https://w3c.github.io/sensors/#sensor">Sensor</a>
-     <li><a href="https://w3c.github.io/sensors/#dictdef-sensoroptions">SensorOptions</a>
-     <li><a href="https://w3c.github.io/sensors/#get-value-from-latest-reading">get value from latest reading</a>
     </ul>
    <li>
     <a data-link-type="biblio">[INFRA]</a> defines the following terms:
@@ -1780,12 +1776,8 @@ considered valid.</p>
    <li>
     <a data-link-type="biblio">[permissions]</a> defines the following terms:
     <ul>
-     <li><a href="https://w3c.github.io/permissions/#enumdef-permissionname">PermissionName</a>
-    </ul>
-   <li>
-    <a data-link-type="biblio">[permissions-1]</a> defines the following terms:
-    <ul>
      <li><a href="https://w3c.github.io/permissions/#dom-permissionname-geolocation">"geolocation"</a>
+     <li><a href="https://w3c.github.io/permissions/#enumdef-permissionname">PermissionName</a>
     </ul>
    <li>
     <a data-link-type="biblio">[WebIDL]</a> defines the following terms:
@@ -1802,7 +1794,7 @@ considered valid.</p>
    <dt id="biblio-infra">[INFRA]
    <dd>Anne van Kesteren; Domenic Denicola. <a href="https://infra.spec.whatwg.org/">Infra Standard</a>. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
    <dt id="biblio-permissions">[PERMISSIONS]
-   <dd>Mounir Lamouri; Marcos Caceres. <a href="https://w3c.github.io/permissions/">The Permissions API</a>. URL: <a href="https://w3c.github.io/permissions/">https://w3c.github.io/permissions/</a>
+   <dd>Mounir Lamouri; Marcos Caceres; Jeffrey Yasskin. <a href="https://w3c.github.io/permissions/">Permissions</a>. URL: <a href="https://w3c.github.io/permissions/">https://w3c.github.io/permissions/</a>
    <dt id="biblio-webidl">[WebIDL]
    <dd>Cameron McCormack; Boris Zbarsky; Tobie Langel. <a href="https://heycam.github.io/webidl/">Web IDL</a>. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
    <dt id="biblio-wgs84">[WGS84]
