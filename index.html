@@ -1178,7 +1178,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version b6673ffeec5d413f06f072c4e836aeb981424403" name="generator">
   <link href="https://wicg.github.io/geolocation-sensor/" rel="canonical">
-  <meta content="28ac2214c0109fb2b1821af44a319051ed33a8cf" name="document-revision">
+  <meta content="1d939e511d1a7f1890951cab3db8292182586108" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1425,7 +1425,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">Geolocation Sensor</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2017-10-06">6 October 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2017-10-09">9 October 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1433,7 +1433,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
      <dt class="editor">Editor:
      <dd class="editor p-author h-card vcard" data-editor-id="41974"><a class="p-name fn u-url url" href="https://intel.com/">Anssi Kostiainen</a> (<span class="p-org org">Intel Corporation</span>)
      <dt>Participate:
-     <dd><a href="https://github.com/wicg/geolocation-sensor">GitHub</a>
+     <dd><a href="https://github.com/wicg/geolocation-sensor">GitHub</a> (<a href="https://github.com/WICG/geolocation-sensor/issues/new">new issue</a>, <a href="https://github.com/wicg/geolocation-sensor/issues">open issues</a>)
      <dt>Tests:
      <dd><a href="https://github.com/w3c/web-platform-tests/tree/master/geolocation-sensor">web-platform-tests</a>
      <dt>Polyfill:
@@ -1483,8 +1483,7 @@ A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/
         <li><a href="#geolocationsensor-speed"><span class="secno">5.1.7</span> <span class="content">GeolocationSensor.speed</span></a>
        </ol>
      </ol>
-    <li><a href="#open-issues"><span class="secno">6</span> <span class="content">Open Issues</span></a>
-    <li><a href="#acknowledgements"><span class="secno">7</span> <span class="content">Acknowledgements</span></a>
+    <li><a href="#acknowledgements"><span class="secno">6</span> <span class="content">Acknowledgements</span></a>
     <li>
      <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
      <ol class="toc">
@@ -1588,22 +1587,7 @@ true north in the range 0 ≤ heading ≤ 360.</p>
 returns the result of invoking <a data-link-type="dfn" href="https://w3c.github.io/sensors/#get-value-from-latest-reading" id="ref-for-get-value-from-latest-reading⑥">get value from latest reading</a> with <code>this</code> and "speed" as
 arguments. It represents the magnitude of the horizontal component of the velocity in meters
 per second.</p>
-   <h2 class="heading settled" data-level="6" id="open-issues"><span class="secno">6. </span><span class="content">Open Issues</span><a class="self-link" href="#open-issues"></a></h2>
-   <p>These inline issues will be moved to GitHub, they are documented in the spec to start with.</p>
-   <p class="issue" id="issue-32dd0b3f"><a class="self-link" href="#issue-32dd0b3f"></a> <a href="https://dev.w3.org/geo/api/spec-source.html#req_oneshot">One-shot position
-updates</a>. Addressed by <code> <a href="https://dev.w3.org/geo/api/spec-source.html#get-current-position">getCurrentPosition() </a></code> in the Geolocation API. Define a modernized version of this convenience method that
-returns a promise. Add it either to the Generic Sensor API if deemed generic or to the
-derived <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor①①">GeolocationSensor</a></code> if considered a special case. See <a href="https://github.com/w3c/sensors/issues/88">w3c/sensors issue #88</a>.</p>
-   <p class="issue" id="issue-8de675b5"><a class="self-link" href="#issue-8de675b5"></a> <a href="https://dev.w3.org/geo/api/spec-source.html#req_last_known">Cached readings</a>.
-Consider adding <code><a href="https://dev.w3.org/geo/api/spec-source.html#max-age"> maximumAge</a></code> or an equivalent to <code>GeolocationSensorOptions</code>.</p>
-   <p class="issue" id="issue-9b9cfaaa"><a class="self-link" href="#issue-9b9cfaaa"></a> <a href="https://dev.w3.org/geo/api/spec-source.html#timeout">Timeout</a>. Investigate use
-cases, implementer and web developer feedback. To be added to <code>GeolocationSensorOptions</code> if warranted.</p>
-   <p class="issue" id="issue-917f86c4"><a class="self-link" href="#issue-917f86c4"></a> <a href="https://dev.w3.org/geo/api/spec-source.html#high-accuracy">High accuracy mode</a>.
-This feature has known issues and is not implemented in an interoperable manner. Investigated whether
-this should be dropped from the modernized API.</p>
-   <p class="issue" id="issue-d23676a4"><a class="self-link" href="#issue-d23676a4"></a> <a href="https://dev.w3.org/geo/api/spec-source.html#requirements_section"> Satisfy Geolocation API requirements</a>. Evaluate and satisfy all requirements that are still 
-considered valid.</p>
-   <h2 class="heading settled" data-level="7" id="acknowledgements"><span class="secno">7. </span><span class="content">Acknowledgements</span><a class="self-link" href="#acknowledgements"></a></h2>
+   <h2 class="heading settled" data-level="6" id="acknowledgements"><span class="secno">6. </span><span class="content">Acknowledgements</span><a class="self-link" href="#acknowledgements"></a></h2>
    <p>Tobie Langel for the work on Generic Sensor API and the geolocation.js polyfill.</p>
   </main>
 <script>
@@ -1847,7 +1831,6 @@ considered valid.</p>
     <li><a href="#ref-for-geolocationsensor⑧">5.1.5. GeolocationSensor.altitudeAccuracy</a>
     <li><a href="#ref-for-geolocationsensor⑨">5.1.6. GeolocationSensor.heading</a>
     <li><a href="#ref-for-geolocationsensor①⓪">5.1.7. GeolocationSensor.speed</a>
-    <li><a href="#ref-for-geolocationsensor①①">6. Open Issues</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-geolocationsensor-latitude">

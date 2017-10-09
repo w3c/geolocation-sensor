@@ -9,7 +9,7 @@ Group: wicg
 Abstract:
   This specification defines the {{GeolocationSensor}} interface for obtaining
   [=geolocation=] of the hosting device.
-!Participate: <a href="https://github.com/wicg/geolocation-sensor">GitHub</a>
+!Participate: <a href="https://github.com/wicg/geolocation-sensor">GitHub</a> (<a href="https://github.com/WICG/geolocation-sensor/issues/new">new issue</a>, <a href="https://github.com/wicg/geolocation-sensor/issues">open issues</a>)
 Indent: 2
 Markup Shorthands: markdown on
 Inline Github Issues: true
@@ -191,35 +191,6 @@ The {{GeolocationSensor/speed!!attribute}} attribute of the {{GeolocationSensor}
 returns the result of invoking [=get value from latest reading=] with `this` and "speed" as
 arguments. It represents the magnitude of the horizontal component of the velocity in meters
 per second.
-
-Open Issues {#open-issues}
-===========
-
-These inline issues will be moved to GitHub, they are documented in the spec to start with.
-
-Issue: <a href="https://dev.w3.org/geo/api/spec-source.html#req_oneshot">One-shot position
-updates</a>. Addressed by <code>
-<a href="https://dev.w3.org/geo/api/spec-source.html#get-current-position">getCurrentPosition()
-</a></code> in the Geolocation API. Define a modernized version of this convenience method that
-returns a promise. Add it either to the Generic Sensor API if deemed generic or to the
-derived {{GeolocationSensor}} if considered a special case. See
-<a href="https://github.com/w3c/sensors/issues/88">w3c/sensors issue #88</a>.
-
-Issue: <a href="https://dev.w3.org/geo/api/spec-source.html#req_last_known">Cached readings</a>.
-Consider adding <code><a href="https://dev.w3.org/geo/api/spec-source.html#max-age">
-maximumAge</a></code> or an equivalent to <code>GeolocationSensorOptions</code>.
-
-Issue: <a href="https://dev.w3.org/geo/api/spec-source.html#timeout">Timeout</a>. Investigate use
-cases, implementer and web developer feedback. To be added to <code>GeolocationSensorOptions</code>
-if warranted.
-
-Issue: <a href="https://dev.w3.org/geo/api/spec-source.html#high-accuracy">High accuracy mode</a>.
-This feature has known issues and is not implemented in an interoperable manner. Investigated whether
-this should be dropped from the modernized API.
-
-Issue: <a href="https://dev.w3.org/geo/api/spec-source.html#requirements_section">
-Satisfy Geolocation API requirements</a>. Evaluate and satisfy all requirements that are still 
-considered valid.
 
 Acknowledgements {#acknowledgements}
 ================
