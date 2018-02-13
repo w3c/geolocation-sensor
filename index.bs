@@ -30,6 +30,10 @@ urlPrefix: https://w3c.github.io/sensors; spec: GENERIC-SENSOR
     text: sensor type
     text: security and privacy; url: security-and-privacy
     text: extensible; url: extensibility
+urlPrefix: https://dom.spec.whatwg.org; spec: DOM
+  type: dfn
+    text: add the following abort steps; url: abortsignal-add
+    text: aborted flag; url: abortsignal-aborted-flag
 </pre>
 <pre class="biblio">
 {
@@ -62,14 +66,28 @@ on top of the existing Geolocation API.
 Examples {#examples}
 ========
 
+<p>
+  Get a new geolocation update every second:
+</p>
 <div class="example">
   <pre highlight="js">
-  let geo = new GeolocationSensor();
+  let geo = new GeolocationSensor({ frequency: 1 });
   geo.start();
 
   geo.onreading = () => console.log(\`lat: ${geo.latitude}, long: ${geo.longitude}\`);
 
   geo.onerror = event => console.error(event.error.name, event.error.message);
+  </pre>
+</div>
+
+<p>
+  Get a one-shot geolocation update:
+</p>
+<div class="example">
+  <pre highlight="js">
+  GeolocationSensor.read()
+    .then(geo => console.log(\`lat: ${geo.latitude}, long: ${geo.longitude}\`))
+    .catch(error => console.error(error.name));
   </pre>
 </div>
 
@@ -96,9 +114,10 @@ The <dfn>Geolocation Sensor</dfn> <a>sensor type</a>'s associated {{Sensor}} sub
 The <a>Geolocation Sensor</a> has an associated {{PermissionName}} which is
 <a for="PermissionName" enum-value>"geolocation"</a>.
 
-A [=latest reading=] for a {{Sensor}} of <a>Geolocation Sensor</a> <a>sensor type</a> includes seven
-[=map/entries=] whose [=map/keys=] are "latitude", "longitude", "altitude", "accuracy",
-"altitudeAccuracy", "heading", "speed" and whose [=map/values=] contain device's [=geolocation=].
+A <dfn>latest geolocation reading</dfn> is a [=latest reading=] for a {{Sensor}} of
+<a>Geolocation Sensor</a> <a>sensor type</a>. It includes seven [=map/entries=] whose [=map/keys=]
+are "latitude", "longitude", "altitude", "accuracy", "altitudeAccuracy", "heading", "speed"
+and whose [=map/values=] contain device's [=geolocation=].
 
 Note: Consider adding a visual of the standard coordinate system for the Earth.
 
@@ -109,8 +128,9 @@ The GeolocationSensor Interface {#geolocationsensor-interface}
 -------------------------------
 
 <pre class="idl">
-  [Constructor(optional SensorOptions options), SecureContext, Exposed=Window]
+  [Constructor(optional GeolocationSensorOptions options), SecureContext, Exposed=Window]
   interface GeolocationSensor : Sensor {
+    static Promise&lt;object&gt; read(optional ReadOptions readOptions);
     readonly attribute unrestricted double? latitude;
     readonly attribute unrestricted double? longitude;
     readonly attribute unrestricted double? altitude;
@@ -118,6 +138,14 @@ The GeolocationSensor Interface {#geolocationsensor-interface}
     readonly attribute unrestricted double? altitudeAccuracy;
     readonly attribute unrestricted double? heading;
     readonly attribute unrestricted double? speed;
+  };
+
+  dictionary GeolocationSensorOptions : SensorOptions {
+    // placeholder for GeolocationSensor-specific options
+  };
+
+  dictionary ReadOptions : GeolocationSensorOptions {
+    AbortSignal? signal;
   };
 </pre>
 
@@ -137,7 +165,34 @@ Coordinates</a></code> interface of the Geolocation API are the following:
 </div>
 
 To <dfn>construct a <a>Geolocation Sensor</a> object</dfn> the user agent must invoke the
-[=construct a Sensor object=] abstract operation.
+[=construct a Sensor object=] abstract operation for the {{GeolocationSensor}} interface.
+
+### GeolocationSensor.read() ### {#geolocationsensor-read}
+
+The {{GeolocationSensor/read()}} method, when called, must run the following algorithm:
+
+<div algorithm="read">
+<!-- https://dom.spec.whatwg.org/#abortcontroller-api-integration -->
+
+    : input
+    :: |options|, a {{ReadOptions}} object.
+    : output
+    :: |p|, a promise.
+
+    1. Let |p| be a new promise.
+    1. Let |options| be the first argument.
+    1. Let |signal| be the |options|' dictionary member of the same name if present, or null otherwise.
+    1. Run these steps <a>in parallel</a>:
+      1. Let |geo| be the result of invoking <a>construct a Geolocation Sensor object</a> with |options|.
+      1. Invoke |geo|.{{Sensor/start()}}.
+      1. If <a>notify error</a> is invoked with |geo| as input, reject |p| with the {{DOMException}} passed as input to <a>notify error</a>.
+      1. If |signal|'s <a>aborted flag</a> is set, then reject |p| with an "{{AbortError!!exception}}" {{DOMException}}.
+      1. If |signal| is not null, then <a>add the following abort steps</a> to |signal|:
+        1. Invoke |geo|.{{Sensor/stop()}}.
+        1. Reject |p| with an "{{AbortError!!exception}}" {{DOMException}} and abort these steps. 
+      1. Resolve |p| with <a>latest geolocation reading</a> of |geo|.
+    1. Return |p|.
+</div>
 
 ### GeolocationSensor.latitude ### {#geolocationsensor-latitude}
 
