@@ -1178,7 +1178,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 6aa3aaa1336714f1530c976b6df9a86c683d5968" name="generator">
   <link href="https://wicg.github.io/geolocation-sensor/" rel="canonical">
-  <meta content="b5db26a1008b545203d259d30ece9e6b093d73a8" name="document-revision">
+  <meta content="36ec587d3c776426b176047150052d7e9a6200f9" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1425,7 +1425,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">Geolocation Sensor</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-02-15">15 February 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-02-19">19 February 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1622,7 +1622,7 @@ and whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-value
       <p>Run these steps <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel" id="ref-for-in-parallel">in parallel</a>:</p>
       <ol>
        <li data-md="">
-        <p>If <a data-link-type="dfn" href="https://w3c.github.io/sensors/#notify-error" id="ref-for-notify-error">notify error</a> is invoked with <var>geo</var>, reject <var>p</var> with the <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#idl-DOMException" id="ref-for-idl-DOMException④">DOMException</a></code> passed as input to <a data-link-type="dfn" href="https://w3c.github.io/sensors/#notify-error" id="ref-for-notify-error①">notify error</a>.</p>
+        <p>If <a data-link-type="dfn" href="https://w3c.github.io/sensors/#notify-error" id="ref-for-notify-error">notify error</a> is invoked with <var>geo</var>, invoke <var>geo</var>.<code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#dom-sensor-stop" id="ref-for-dom-sensor-stop①">stop()</a></code>, and reject <var>p</var> with the <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#idl-DOMException" id="ref-for-idl-DOMException④">DOMException</a></code> passed as input to <a data-link-type="dfn" href="https://w3c.github.io/sensors/#notify-error" id="ref-for-notify-error①">notify error</a>.</p>
        <li data-md="">
         <p>If <a data-link-type="dfn" href="https://w3c.github.io/sensors/#notify-new-reading" id="ref-for-notify-new-reading">notify new reading</a> is invoked with <var>geo</var>, then <a data-link-type="dfn" href="#resolve-geolocation-promise" id="ref-for-resolve-geolocation-promise">resolve geolocation promise</a> with <var>geo</var> and <var>p</var>.</p>
       </ol>
@@ -1636,15 +1636,15 @@ and whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-value
     <li data-md="">
      <p>Let <var>reading</var> be a <code class="idl"><a data-link-type="idl" href="#dictdef-geolocationsensorreading" id="ref-for-dictdef-geolocationsensorreading①">GeolocationSensorReading</a></code>.</p>
     <li data-md="">
-     <p>For each <var>key</var> → <var>value</var> of <a data-link-type="dfn" href="#latest-geolocation-reading" id="ref-for-latest-geolocation-reading">latest geolocation reading</a>:</p>
+     <p><a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-iterate" id="ref-for-list-iterate">For each</a> <var>key</var> → <var>value</var> of <a data-link-type="dfn" href="#latest-geolocation-reading" id="ref-for-latest-geolocation-reading">latest geolocation reading</a>:</p>
      <ol>
       <li data-md="">
-       <p>Set <var>reading</var>[key] to <var>value</var>.</p>
+       <p><a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-set" id="ref-for-map-set">Set</a> <var>reading</var>[key] to <var>value</var>.</p>
      </ol>
     <li data-md="">
-     <p>Resolve <var>p</var> with <var>reading</var>.</p>
+     <p>Invoke <var>geo</var>.<code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#dom-sensor-stop" id="ref-for-dom-sensor-stop②">stop()</a></code>.</p>
     <li data-md="">
-     <p>invoke <var>geo</var>.<code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#dom-sensor-stop" id="ref-for-dom-sensor-stop①">stop()</a></code>.</p>
+     <p>Resolve <var>p</var> with <var>reading</var>.</p>
    </ol>
    <h4 class="heading settled" data-level="5.1.2" id="geolocationsensor-latitude"><span class="secno">5.1.2. </span><span class="content">GeolocationSensor.latitude</span><a class="self-link" href="#geolocationsensor-latitude"></a></h4>
    <p>The <code class="idl"><a class="idl-code" data-link-type="attribute" href="#dom-geolocationsensor-latitude" id="ref-for-dom-geolocationsensor-latitude">latitude</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor⑤">GeolocationSensor</a></code> interface
@@ -1910,7 +1910,9 @@ per second.</p>
     <a data-link-type="biblio">[INFRA]</a> defines the following terms:
     <ul>
      <li><a href="https://infra.spec.whatwg.org/#map-entry">entry</a>
+     <li><a href="https://infra.spec.whatwg.org/#list-iterate">for each</a>
      <li><a href="https://infra.spec.whatwg.org/#map-key">key</a>
+     <li><a href="https://infra.spec.whatwg.org/#map-set">set</a>
      <li><a href="https://infra.spec.whatwg.org/#map-value">value</a>
     </ul>
    <li>
