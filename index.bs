@@ -28,9 +28,11 @@ urlPrefix: https://w3c.github.io/sensors; spec: GENERIC-SENSOR
     text: latest reading
     text: default sensor
     text: construct a sensor object; url: construct-sensor-object
+    text: initialize a sensor object; url: initialize-a-sensor-object
     text: sensor type
     text: security and privacy; url: security-and-privacy
     text: extensible; url: extensibility
+    text: check sensor policy-controlled features; url: check-sensor-policy-controlled-features
 urlPrefix: https://dom.spec.whatwg.org; spec: DOM
   type: dfn
     text: add the following abort steps; url: abortsignal-add
@@ -181,8 +183,8 @@ Coordinates</a></code> interface of the Geolocation API are the following:
 </ul>
 </div>
 
-To <dfn>construct a <a>Geolocation Sensor</a> object</dfn> the user agent must invoke the
-[=construct a Sensor object=] abstract operation for the {{GeolocationSensor}} interface.
+To construct a {{GeolocationSensor}} object the user agent must invoke the
+[=construct a geolocation sensor object=] abstract operation.
 
 ### GeolocationSensor.read() ### {#geolocationsensor-read}
 
@@ -275,6 +277,27 @@ The {{GeolocationSensor/speed!!attribute}} attribute of the {{GeolocationSensor}
 returns the result of invoking [=get value from latest reading=] with `this` and "speed" as
 arguments. It represents the magnitude of the horizontal component of the velocity in meters
 per second.
+
+Abstract Operations {#abstract-operations}
+===================
+
+<h3 dfn export>Construct a geolocation sensor object</h3>
+
+<div algorithm="construct a geolocation sensor object">
+
+    : input
+    :: |options|, a {{GeolocationSensorOptions}} object.
+    : output
+    :: A {{GeolocationSensor}} object.
+
+    1.  Let |allowed| be the result of invoking [=check sensor policy-controlled features=]
+        with {{GeolocationSensor}}.
+    1.  If |allowed| is false, then:
+        1.  [=Throw=] a {{SecurityError}} {{DOMException}}.
+    1.  Let |geo| be the new {{GeolocationSensor}} object.
+    1.  Invoke [=initialize a sensor object=] with |geo| and |options|.
+    1.  Return |geo|.
+</div>
 
 Acknowledgements {#acknowledgements}
 ================
