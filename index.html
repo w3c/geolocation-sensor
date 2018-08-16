@@ -992,57 +992,93 @@ Possible extra rowspan handling
 	.toc > li li          { font-weight: normal; }
 	.toc > li li li       { font-size:   95%;    }
 	.toc > li li li li    { font-size:   90%;    }
+	.toc > li li li li .secno { font-size: 85%; }
 	.toc > li li li li li { font-size:   85%;    }
+	.toc > li li li li li .secno { font-size: 100%; }
 
-	.toc > li             { margin: 1.5rem 0;    }
-	.toc > li li          { margin: 0.3rem 0;    }
-	.toc > li li li       { margin-left: 2rem;   }
+	/* @supports not (display:grid) { */
+		.toc > li             { margin: 1.5rem 0;    }
+		.toc > li li          { margin: 0.3rem 0;    }
+		.toc > li li li       { margin-left: 2rem;   }
 
-	/* Section numbers in a column of their own */
-	.toc .secno {
-		float: left;
-		width: 4rem;
-		white-space: nowrap;
-	}
-	.toc > li li li li .secno {
-		font-size: 85%;
-	}
-	.toc > li li li li li .secno {
-		font-size: 100%;
-	}
+		/* Section numbers in a column of their own */
+		.toc .secno {
+			float: left;
+			width: 4rem;
+			white-space: nowrap;
+		}
 
-	:not(li) > .toc              { margin-left:  5rem; }
-	.toc .secno                  { margin-left: -5rem; }
-	.toc > li li li .secno       { margin-left: -7rem; }
-	.toc > li li li li .secno    { margin-left: -9rem; }
-	.toc > li li li li li .secno { margin-left: -11rem; }
+		.toc li {
+			clear: both;
+		}
 
-	/* Tighten up indentation in narrow ToCs */
-	@media (max-width: 30em) {
-		:not(li) > .toc              { margin-left:  4rem; }
-		.toc .secno                  { margin-left: -4rem; }
-		.toc > li li li              { margin-left:  1rem; }
-		.toc > li li li .secno       { margin-left: -5rem; }
-		.toc > li li li li .secno    { margin-left: -6rem; }
-		.toc > li li li li li .secno { margin-left: -7rem; }
-	}
-	@media screen and (min-width: 78em) {
-		body:not(.toc-inline) :not(li) > .toc              { margin-left:  4rem; }
-		body:not(.toc-inline) .toc .secno                  { margin-left: -4rem; }
-		body:not(.toc-inline) .toc > li li li              { margin-left:  1rem; }
-		body:not(.toc-inline) .toc > li li li .secno       { margin-left: -5rem; }
-		body:not(.toc-inline) .toc > li li li li .secno    { margin-left: -6rem; }
-		body:not(.toc-inline) .toc > li li li li li .secno { margin-left: -7rem; }
-	}
-	body.toc-sidebar #toc :not(li) > .toc              { margin-left:  4rem; }
-	body.toc-sidebar #toc .toc .secno                  { margin-left: -4rem; }
-	body.toc-sidebar #toc .toc > li li li              { margin-left:  1rem; }
-	body.toc-sidebar #toc .toc > li li li .secno       { margin-left: -5rem; }
-	body.toc-sidebar #toc .toc > li li li li .secno    { margin-left: -6rem; }
-	body.toc-sidebar #toc .toc > li li li li li .secno { margin-left: -7rem; }
+		:not(li) > .toc              { margin-left:  5rem; }
+		.toc .secno                  { margin-left: -5rem; }
+		.toc > li li li .secno       { margin-left: -7rem; }
+		.toc > li li li li .secno    { margin-left: -9rem; }
+		.toc > li li li li li .secno { margin-left: -11rem; }
 
-	.toc li {
-		clear: both;
+		/* Tighten up indentation in narrow ToCs */
+		@media (max-width: 30em) {
+			:not(li) > .toc              { margin-left:  4rem; }
+			.toc .secno                  { margin-left: -4rem; }
+			.toc > li li li              { margin-left:  1rem; }
+			.toc > li li li .secno       { margin-left: -5rem; }
+			.toc > li li li li .secno    { margin-left: -6rem; }
+			.toc > li li li li li .secno { margin-left: -7rem; }
+		}
+	/* } */
+
+	@supports (display:grid) {
+		/* Use #toc over .toc to override non-@supports rules. */
+		#toc {
+			display: grid;
+			align-content: start;
+			grid-template-columns: auto 1fr;
+			grid-column-gap: 1rem;
+			column-gap: 1rem;
+			grid-row-gap: .6rem;
+			row-gap: .6rem;
+		}
+		#toc h2 {
+			grid-column: 1 / -1;
+			margin-bottom: 0;
+		}
+		#toc ol,
+		#toc li,
+		#toc a {
+			display: contents;
+			/* Switch <a> to subgrid when supported */
+		}
+		#toc span {
+			margin: 0;
+		}
+		#toc > .toc > li > a > span {
+			/* The spans of the top-level list,
+			   comprising the first items of each top-level section. */
+			margin-top: 1.1rem;
+		}
+		#toc#toc .secno { /* Ugh, need more specificity to override base.css */
+			grid-column: 1;
+			width: auto;
+			margin-left: 0;
+		}
+		#toc .content {
+			grid-column: 2;
+			width: auto;
+			margin-right: 1rem;
+		}
+		#toc .content:hover {
+			background: rgba(75%, 75%, 75%, .25);
+			border-bottom: 3px solid #054572;
+			margin-bottom: -3px;
+		}
+		#toc li li li .content {
+			margin-left: 1rem;
+		}
+		#toc li li li li .content {
+			margin-left: 2rem;
+		}
 	}
 
 
@@ -1176,9 +1212,9 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version 66a76cd06d4fa9e491630583356008a71a166760" name="generator">
+  <meta content="Bikeshed version aab07fa3563472bb567b6a05ef64a9084da53327" name="generator">
   <link href="https://wicg.github.io/geolocation-sensor/" rel="canonical">
-  <meta content="ec57442ec8db5a84a33bb658cde1b9e0ef9e2cb8" name="document-revision">
+  <meta content="0703c5bc2b1c1f66edd6a8ef4172a94b8067e205" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1264,6 +1300,17 @@ figcaption {
 figcaption:not(.no-marker)::before {
     content: "Figure " counter(figure) " ";
 }</style>
+<style>/* style-var-click-highlighting */
+
+    var { cursor: pointer; }
+    var.selected0 { background-color: #F4D200; box-shadow: 0 0 0 2px #F4D200; }
+    var.selected1 { background-color: #FF87A2; box-shadow: 0 0 0 2px #FF87A2; }
+    var.selected2 { background-color: #96E885; box-shadow: 0 0 0 2px #96E885; }
+    var.selected3 { background-color: #3EEED2; box-shadow: 0 0 0 2px #3EEED2; }
+    var.selected4 { background-color: #EACFB6; box-shadow: 0 0 0 2px #EACFB6; }
+    var.selected5 { background-color: #82DDFF; box-shadow: 0 0 0 2px #82DDFF; }
+    var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
+    </style>
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -1328,104 +1375,104 @@ pre .property::before, pre .property::after {
 }</style>
 <style>/* style-dfn-panel */
 
-        .dfn-panel {
-            position: absolute;
-            z-index: 35;
-            height: auto;
-            width: -webkit-fit-content;
-            width: fit-content;
-            max-width: 300px;
-            max-height: 500px;
-            overflow: auto;
-            padding: 0.5em 0.75em;
-            font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
-            background: #DDDDDD;
-            color: black;
-            border: outset 0.2em;
-        }
-        .dfn-panel:not(.on) { display: none; }
-        .dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
-        .dfn-panel > b { display: block; }
-        .dfn-panel a { color: black; }
-        .dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
-        .dfn-panel > b + b { margin-top: 0.25em; }
-        .dfn-panel ul { padding: 0; }
-        .dfn-panel li { list-style: inside; }
-        .dfn-panel.activated {
-            display: inline-block;
-            position: fixed;
-            left: .5em;
-            bottom: 2em;
-            margin: 0 auto;
-            max-width: calc(100vw - 1.5em - .4em - .5em);
-            max-height: 30vh;
-        }
+.dfn-panel {
+    position: absolute;
+    z-index: 35;
+    height: auto;
+    width: -webkit-fit-content;
+    width: fit-content;
+    max-width: 300px;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.75em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: #DDDDDD;
+    color: black;
+    border: outset 0.2em;
+}
+.dfn-panel:not(.on) { display: none; }
+.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
+.dfn-panel > b { display: block; }
+.dfn-panel a { color: black; }
+.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+.dfn-panel > b + b { margin-top: 0.25em; }
+.dfn-panel ul { padding: 0; }
+.dfn-panel li { list-style: inside; }
+.dfn-panel.activated {
+    display: inline-block;
+    position: fixed;
+    left: .5em;
+    bottom: 2em;
+    margin: 0 auto;
+    max-width: calc(100vw - 1.5em - .4em - .5em);
+    max-height: 30vh;
+}
 
-        .dfn-paneled { cursor: pointer; }
-        </style>
+.dfn-paneled { cursor: pointer; }
+</style>
 <style>/* style-syntax-highlighting */
 pre.idl.highlight { color: #708090; }
 .highlight:not(.idl) { background: hsl(24, 20%, 95%); }
 code.highlight { padding: .1em; border-radius: .3em; }
 pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0; }
-.highlight .c { color: #708090 } /* Comment */
-.highlight .k { color: #990055 } /* Keyword */
-.highlight .l { color: #000000 } /* Literal */
-.highlight .n { color: #0077aa } /* Name */
-.highlight .o { color: #999999 } /* Operator */
-.highlight .p { color: #999999 } /* Punctuation */
-.highlight .cm { color: #708090 } /* Comment.Multiline */
-.highlight .cp { color: #708090 } /* Comment.Preproc */
-.highlight .c1 { color: #708090 } /* Comment.Single */
-.highlight .cs { color: #708090 } /* Comment.Special */
-.highlight .kc { color: #990055 } /* Keyword.Constant */
-.highlight .kd { color: #990055 } /* Keyword.Declaration */
-.highlight .kn { color: #990055 } /* Keyword.Namespace */
-.highlight .kp { color: #990055 } /* Keyword.Pseudo */
-.highlight .kr { color: #990055 } /* Keyword.Reserved */
-.highlight .kt { color: #990055 } /* Keyword.Type */
-.highlight .ld { color: #000000 } /* Literal.Date */
-.highlight .m { color: #000000 } /* Literal.Number */
-.highlight .s { color: #a67f59 } /* Literal.String */
-.highlight .na { color: #0077aa } /* Name.Attribute */
-.highlight .nc { color: #0077aa } /* Name.Class */
-.highlight .no { color: #0077aa } /* Name.Constant */
-.highlight .nd { color: #0077aa } /* Name.Decorator */
-.highlight .ni { color: #0077aa } /* Name.Entity */
-.highlight .ne { color: #0077aa } /* Name.Exception */
-.highlight .nf { color: #0077aa } /* Name.Function */
-.highlight .nl { color: #0077aa } /* Name.Label */
-.highlight .nn { color: #0077aa } /* Name.Namespace */
-.highlight .py { color: #0077aa } /* Name.Property */
-.highlight .nt { color: #669900 } /* Name.Tag */
-.highlight .nv { color: #222222 } /* Name.Variable */
-.highlight .ow { color: #999999 } /* Operator.Word */
-.highlight .mb { color: #000000 } /* Literal.Number.Bin */
-.highlight .mf { color: #000000 } /* Literal.Number.Float */
-.highlight .mh { color: #000000 } /* Literal.Number.Hex */
-.highlight .mi { color: #000000 } /* Literal.Number.Integer */
-.highlight .mo { color: #000000 } /* Literal.Number.Oct */
-.highlight .sb { color: #a67f59 } /* Literal.String.Backtick */
-.highlight .sc { color: #a67f59 } /* Literal.String.Char */
-.highlight .sd { color: #a67f59 } /* Literal.String.Doc */
-.highlight .s2 { color: #a67f59 } /* Literal.String.Double */
-.highlight .se { color: #a67f59 } /* Literal.String.Escape */
-.highlight .sh { color: #a67f59 } /* Literal.String.Heredoc */
-.highlight .si { color: #a67f59 } /* Literal.String.Interpol */
-.highlight .sx { color: #a67f59 } /* Literal.String.Other */
-.highlight .sr { color: #a67f59 } /* Literal.String.Regex */
-.highlight .s1 { color: #a67f59 } /* Literal.String.Single */
-.highlight .ss { color: #a67f59 } /* Literal.String.Symbol */
-.highlight .vc { color: #0077aa } /* Name.Variable.Class */
-.highlight .vg { color: #0077aa } /* Name.Variable.Global */
-.highlight .vi { color: #0077aa } /* Name.Variable.Instance */
-.highlight .il { color: #000000 } /* Literal.Number.Integer.Long */
+c-[a] { color: #990055 } /* Keyword.Declaration */
+c-[b] { color: #990055 } /* Keyword.Type */
+c-[c] { color: #708090 } /* Comment */
+c-[d] { color: #708090 } /* Comment.Multiline */
+c-[e] { color: #0077aa } /* Name.Attribute */
+c-[f] { color: #669900 } /* Name.Tag */
+c-[g] { color: #222222 } /* Name.Variable */
+c-[k] { color: #990055 } /* Keyword */
+c-[l] { color: #000000 } /* Literal */
+c-[m] { color: #000000 } /* Literal.Number */
+c-[n] { color: #0077aa } /* Name */
+c-[o] { color: #999999 } /* Operator */
+c-[p] { color: #999999 } /* Punctuation */
+c-[s] { color: #a67f59 } /* Literal.String */
+c-[t] { color: #a67f59 } /* Literal.String.Single */
+c-[u] { color: #a67f59 } /* Literal.String.Double */
+c-[cp] { color: #708090 } /* Comment.Preproc */
+c-[c1] { color: #708090 } /* Comment.Single */
+c-[cs] { color: #708090 } /* Comment.Special */
+c-[kc] { color: #990055 } /* Keyword.Constant */
+c-[kn] { color: #990055 } /* Keyword.Namespace */
+c-[kp] { color: #990055 } /* Keyword.Pseudo */
+c-[kr] { color: #990055 } /* Keyword.Reserved */
+c-[ld] { color: #000000 } /* Literal.Date */
+c-[nc] { color: #0077aa } /* Name.Class */
+c-[no] { color: #0077aa } /* Name.Constant */
+c-[nd] { color: #0077aa } /* Name.Decorator */
+c-[ni] { color: #0077aa } /* Name.Entity */
+c-[ne] { color: #0077aa } /* Name.Exception */
+c-[nf] { color: #0077aa } /* Name.Function */
+c-[nl] { color: #0077aa } /* Name.Label */
+c-[nn] { color: #0077aa } /* Name.Namespace */
+c-[py] { color: #0077aa } /* Name.Property */
+c-[ow] { color: #999999 } /* Operator.Word */
+c-[mb] { color: #000000 } /* Literal.Number.Bin */
+c-[mf] { color: #000000 } /* Literal.Number.Float */
+c-[mh] { color: #000000 } /* Literal.Number.Hex */
+c-[mi] { color: #000000 } /* Literal.Number.Integer */
+c-[mo] { color: #000000 } /* Literal.Number.Oct */
+c-[sb] { color: #a67f59 } /* Literal.String.Backtick */
+c-[sc] { color: #a67f59 } /* Literal.String.Char */
+c-[sd] { color: #a67f59 } /* Literal.String.Doc */
+c-[se] { color: #a67f59 } /* Literal.String.Escape */
+c-[sh] { color: #a67f59 } /* Literal.String.Heredoc */
+c-[si] { color: #a67f59 } /* Literal.String.Interpol */
+c-[sx] { color: #a67f59 } /* Literal.String.Other */
+c-[sr] { color: #a67f59 } /* Literal.String.Regex */
+c-[ss] { color: #a67f59 } /* Literal.String.Symbol */
+c-[vc] { color: #0077aa } /* Name.Variable.Class */
+c-[vg] { color: #0077aa } /* Name.Variable.Global */
+c-[vi] { color: #0077aa } /* Name.Variable.Instance */
+c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </style>
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">Geolocation Sensor</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-06-18">18 June 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-08-16">16 August 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1513,22 +1560,22 @@ information about the <a data-link-type="dfn" href="#geolocation" id="ref-for-ge
 on top of the existing Geolocation API.</p>
    <h2 class="heading settled" data-level="2" id="examples"><span class="secno">2. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
    <p> Get a new geolocation reading every second: </p>
-   <div class="example" id="example-253b3707">
-    <a class="self-link" href="#example-253b3707"></a> 
-<pre class="highlight"><span class="kd">let</span> geo <span class="o">=</span> <span class="k">new</span> GeolocationSensor<span class="p">({</span> frequency<span class="o">:</span> <span class="mi">1</span> <span class="p">});</span>
-geo<span class="p">.</span>start<span class="p">();</span>
+   <div class="example" id="example-d5ced9c4">
+    <a class="self-link" href="#example-d5ced9c4"></a> 
+<pre class="highlight"><c- a>let</c-> geo <c- o>=</c-> <c- k>new</c-> GeolocationSensor<c- p>({</c-> frequency<c- o>:</c-> <c- mi>1</c-> <c- p>});</c->
+geo<c- p>.</c->start<c- p>();</c->
 
-geo<span class="p">.</span>onreading <span class="o">=</span> <span class="p">()</span> <span class="p">=></span> console<span class="p">.</span>log<span class="p">(</span><span class="sb">`lat: </span><span class="si">${</span>geo<span class="p">.</span>latitude<span class="si">}</span><span class="sb">, long: </span><span class="si">${</span>geo<span class="p">.</span>longitude<span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+geo<c- p>.</c->onreading <c- o>=</c-> <c- p>()</c-> <c- p>=></c-> console<c- p>.</c->log<c- p>(</c-><c- sb>`lat: </c-><c- si>${</c->geo<c- p>.</c->latitude<c- si>}</c-><c- sb>, long: </c-><c- si>${</c->geo<c- p>.</c->longitude<c- si>}</c-><c- sb>`</c-><c- p>);</c->
 
-geo<span class="p">.</span>onerror <span class="o">=</span> event <span class="p">=></span> console<span class="p">.</span>error<span class="p">(</span>event<span class="p">.</span>error<span class="p">.</span>name<span class="p">,</span> event<span class="p">.</span>error<span class="p">.</span>message<span class="p">);</span>
+geo<c- p>.</c->onerror <c- o>=</c-> event <c- p>=></c-> console<c- p>.</c->error<c- p>(</c->event<c- p>.</c->error<c- p>.</c->name<c- p>,</c-> event<c- p>.</c->error<c- p>.</c->message<c- p>);</c->
 </pre>
    </div>
    <p> Get a one-shot geolocation reading: </p>
-   <div class="example" id="example-3acd388a">
-    <a class="self-link" href="#example-3acd388a"></a> 
-<pre class="highlight">GeolocationSensor<span class="p">.</span>read<span class="p">()</span>
-  <span class="p">.</span>then<span class="p">(</span>geo <span class="p">=></span> console<span class="p">.</span>log<span class="p">(</span><span class="sb">`lat: </span><span class="si">${</span>geo<span class="p">.</span>latitude<span class="si">}</span><span class="sb">, long: </span><span class="si">${</span>geo<span class="p">.</span>longitude<span class="si">}</span><span class="sb">`</span><span class="p">))</span>
-  <span class="p">.</span><span class="k">catch</span><span class="p">(</span>error <span class="p">=></span> console<span class="p">.</span>error<span class="p">(</span>error<span class="p">.</span>name<span class="p">));</span>
+   <div class="example" id="example-9488bb9f">
+    <a class="self-link" href="#example-9488bb9f"></a> 
+<pre class="highlight">GeolocationSensor<c- p>.</c->read<c- p>()</c->
+  <c- p>.</c->then<c- p>(</c->geo <c- p>=></c-> console<c- p>.</c->log<c- p>(</c-><c- sb>`lat: </c-><c- si>${</c->geo<c- p>.</c->latitude<c- si>}</c-><c- sb>, long: </c-><c- si>${</c->geo<c- p>.</c->longitude<c- si>}</c-><c- sb>`</c-><c- p>))</c->
+  <c- p>.</c-><c- k>catch</c-><c- p>(</c->error <c- p>=></c-> console<c- p>.</c->error<c- p>(</c->error<c- p>.</c->name<c- p>));</c->
 </pre>
    </div>
    <h2 class="heading settled" data-level="3" id="security-and-privacy"><span class="secno">3. </span><span class="content">Security and Privacy Considerations</span><a class="self-link" href="#security-and-privacy"></a></h2>
@@ -1536,53 +1583,53 @@ geo<span class="p">.</span>onerror <span class="o">=</span> event <span class="p
 mitigated by the Generic Sensor API <a data-link-type="biblio" href="#biblio-generic-sensor">[GENERIC-SENSOR]</a>, and define geolocation-specific
 mitigations.</p>
    <h2 class="heading settled" data-level="4" id="model"><span class="secno">4. </span><span class="content">Model</span><a class="self-link" href="#model"></a></h2>
-   <p>The term <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="geolocation">geolocation</dfn> refers to the real-world geographic location of the
+   <p>The term <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="geolocation">geolocation</dfn> refers to the real-world geographic location of the
 hosting device represented in geographic coordinates <a data-link-type="biblio" href="#biblio-wgs84">[WGS84]</a>.</p>
    <p class="note" role="note"><span>Note:</span> An implementation can use multiple location information sources to acquire <a data-link-type="dfn" href="#geolocation" id="ref-for-geolocation②">geolocation</a> information, and this specification is agnostic with respect
 to those sources.</p>
-   <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="geolocation-sensor">Geolocation Sensor</dfn> <a data-link-type="dfn" href="https://w3c.github.io/sensors#sensor-type" id="ref-for-sensor-type">sensor type</a>’s associated <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor①">Sensor</a></code> subclass is the <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor③">GeolocationSensor</a></code> class.</p>
+   <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="geolocation-sensor">Geolocation Sensor</dfn> <a data-link-type="dfn" href="https://w3c.github.io/sensors#sensor-type" id="ref-for-sensor-type">sensor type</a>’s associated <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor①">Sensor</a></code> subclass is the <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor③">GeolocationSensor</a></code> class.</p>
    <p>The <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor">Geolocation Sensor</a> has an associated <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/permissions/#enumdef-permissionname" id="ref-for-enumdef-permissionname">PermissionName</a></code> which is <a class="idl-code" data-link-type="enum-value" href="https://w3c.github.io/permissions/#dom-permissionname-geolocation" id="ref-for-dom-permissionname-geolocation">"geolocation"</a>.</p>
-   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="latest-geolocation-reading">latest geolocation reading</dfn> is a <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading" id="ref-for-latest-reading">latest reading</a> for a <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor②">Sensor</a></code> of <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor①">Geolocation Sensor</a> <a data-link-type="dfn" href="https://w3c.github.io/sensors#sensor-type" id="ref-for-sensor-type①">sensor type</a>. It includes <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry" id="ref-for-map-entry">entries</a> whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-key" id="ref-for-map-key">keys</a> are "latitude", "longitude", "altitude", "accuracy", "altitudeAccuracy", "heading", "speed"
+   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="latest-geolocation-reading">latest geolocation reading</dfn> is a <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading" id="ref-for-latest-reading">latest reading</a> for a <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor②">Sensor</a></code> of <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor①">Geolocation Sensor</a> <a data-link-type="dfn" href="https://w3c.github.io/sensors#sensor-type" id="ref-for-sensor-type①">sensor type</a>. It includes <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry" id="ref-for-map-entry">entries</a> whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-key" id="ref-for-map-key">keys</a> are "latitude", "longitude", "altitude", "accuracy", "altitudeAccuracy", "heading", "speed"
 and whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-value" id="ref-for-map-value">values</a> contain device’s <a data-link-type="dfn" href="#geolocation" id="ref-for-geolocation③">geolocation</a>.</p>
    <p class="note" role="note"><span>Note:</span> Consider adding a visual of the standard coordinate system for the Earth.</p>
    <h2 class="heading settled" data-level="5" id="api"><span class="secno">5. </span><span class="content">API</span><a class="self-link" href="#api"></a></h2>
    <h3 class="heading settled" data-level="5.1" id="geolocationsensor-interface"><span class="secno">5.1. </span><span class="content">The GeolocationSensor Interface</span><a class="self-link" href="#geolocationsensor-interface"></a></h3>
-<pre class="idl highlight def">[<dfn class="nv idl-code" data-dfn-for="GeolocationSensor" data-dfn-type="constructor" data-export="" data-lt="GeolocationSensor(options)|GeolocationSensor()" id="dom-geolocationsensor-geolocationsensor"><code>Constructor</code><a class="self-link" href="#dom-geolocationsensor-geolocationsensor"></a></dfn>(<span class="kt">optional</span> <a class="n" data-link-type="idl-name" href="#dictdef-geolocationsensoroptions" id="ref-for-dictdef-geolocationsensoroptions">GeolocationSensorOptions</a> <dfn class="nv idl-code" data-dfn-for="GeolocationSensor/GeolocationSensor(options)" data-dfn-type="argument" data-export="" id="dom-geolocationsensor-geolocationsensor-options-options"><code>options</code><a class="self-link" href="#dom-geolocationsensor-geolocationsensor-options-options"></a></dfn>), <a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SecureContext" id="ref-for-SecureContext">SecureContext</a>, <a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed">Exposed</a>=<span class="n">Window</span>]
-<span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="geolocationsensor"><code>GeolocationSensor</code></dfn> : <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor③">Sensor</a> {
-  <span class="kt">static</span> <span class="kt">Promise</span>&lt;<a class="n" data-link-type="idl-name" href="#dictdef-geolocationsensorreading" id="ref-for-dictdef-geolocationsensorreading">GeolocationSensorReading</a>> <dfn class="nv dfn-paneled idl-code" data-dfn-for="GeolocationSensor" data-dfn-type="method" data-export="" data-lt="read(readOptions)|read()" id="dom-geolocationsensor-read"><code>read</code></dfn>(<span class="kt">optional</span> <a class="n" data-link-type="idl-name" href="#dictdef-readoptions" id="ref-for-dictdef-readoptions">ReadOptions</a> <dfn class="nv idl-code" data-dfn-for="GeolocationSensor/read(readOptions), GeolocationSensor/read()" data-dfn-type="argument" data-export="" id="dom-geolocationsensor-read-readoptions-readoptions"><code>readOptions</code><a class="self-link" href="#dom-geolocationsensor-read-readoptions-readoptions"></a></dfn>);
-  <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double"><span class="kt">unrestricted</span> <span class="kt">double</span></a>? <dfn class="nv dfn-paneled idl-code" data-dfn-for="GeolocationSensor" data-dfn-type="attribute" data-export="" data-readonly="" data-type="unrestricted double?" id="dom-geolocationsensor-latitude"><code>latitude</code></dfn>;
-  <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double①"><span class="kt">unrestricted</span> <span class="kt">double</span></a>? <dfn class="nv dfn-paneled idl-code" data-dfn-for="GeolocationSensor" data-dfn-type="attribute" data-export="" data-readonly="" data-type="unrestricted double?" id="dom-geolocationsensor-longitude"><code>longitude</code></dfn>;
-  <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double②"><span class="kt">unrestricted</span> <span class="kt">double</span></a>? <dfn class="nv dfn-paneled idl-code" data-dfn-for="GeolocationSensor" data-dfn-type="attribute" data-export="" data-readonly="" data-type="unrestricted double?" id="dom-geolocationsensor-altitude"><code>altitude</code></dfn>;
-  <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double③"><span class="kt">unrestricted</span> <span class="kt">double</span></a>? <dfn class="nv dfn-paneled idl-code" data-dfn-for="GeolocationSensor" data-dfn-type="attribute" data-export="" data-readonly="" data-type="unrestricted double?" id="dom-geolocationsensor-accuracy"><code>accuracy</code></dfn>;
-  <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double④"><span class="kt">unrestricted</span> <span class="kt">double</span></a>? <dfn class="nv dfn-paneled idl-code" data-dfn-for="GeolocationSensor" data-dfn-type="attribute" data-export="" data-readonly="" data-type="unrestricted double?" id="dom-geolocationsensor-altitudeaccuracy"><code>altitudeAccuracy</code></dfn>;
-  <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double⑤"><span class="kt">unrestricted</span> <span class="kt">double</span></a>? <dfn class="nv dfn-paneled idl-code" data-dfn-for="GeolocationSensor" data-dfn-type="attribute" data-export="" data-readonly="" data-type="unrestricted double?" id="dom-geolocationsensor-heading"><code>heading</code></dfn>;
-  <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double⑥"><span class="kt">unrestricted</span> <span class="kt">double</span></a>? <dfn class="nv dfn-paneled idl-code" data-dfn-for="GeolocationSensor" data-dfn-type="attribute" data-export="" data-readonly="" data-type="unrestricted double?" id="dom-geolocationsensor-speed"><code>speed</code></dfn>;
+<pre class="idl highlight def">[<dfn class="idl-code" data-dfn-for="GeolocationSensor" data-dfn-type="constructor" data-export data-lt="GeolocationSensor(options)|GeolocationSensor()" id="dom-geolocationsensor-geolocationsensor"><code><c- g>Constructor</c-></code><a class="self-link" href="#dom-geolocationsensor-geolocationsensor"></a></dfn>(<c- b>optional</c-> <a class="n" data-link-type="idl-name" href="#dictdef-geolocationsensoroptions" id="ref-for-dictdef-geolocationsensoroptions"><c- n>GeolocationSensorOptions</c-></a> <dfn class="idl-code" data-dfn-for="GeolocationSensor/GeolocationSensor(options)" data-dfn-type="argument" data-export id="dom-geolocationsensor-geolocationsensor-options-options"><code><c- g>options</c-></code><a class="self-link" href="#dom-geolocationsensor-geolocationsensor-options-options"></a></dfn>), <a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SecureContext" id="ref-for-SecureContext"><c- g>SecureContext</c-></a>, <a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed"><c- g>Exposed</c-></a>=<c- n>Window</c->]
+<c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="geolocationsensor"><code><c- g>GeolocationSensor</c-></code></dfn> : <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor③"><c- n>Sensor</c-></a> {
+  <c- b>static</c-> <c- b>Promise</c->&lt;<a class="n" data-link-type="idl-name" href="#dictdef-geolocationsensorreading" id="ref-for-dictdef-geolocationsensorreading"><c- n>GeolocationSensorReading</c-></a>> <dfn class="dfn-paneled idl-code" data-dfn-for="GeolocationSensor" data-dfn-type="method" data-export data-lt="read(readOptions)|read()" id="dom-geolocationsensor-read"><code><c- g>read</c-></code></dfn>(<c- b>optional</c-> <a class="n" data-link-type="idl-name" href="#dictdef-readoptions" id="ref-for-dictdef-readoptions"><c- n>ReadOptions</c-></a> <dfn class="idl-code" data-dfn-for="GeolocationSensor/read(readOptions), GeolocationSensor/read()" data-dfn-type="argument" data-export id="dom-geolocationsensor-read-readoptions-readoptions"><code><c- g>readOptions</c-></code><a class="self-link" href="#dom-geolocationsensor-read-readoptions-readoptions"></a></dfn>);
+  <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double"><c- b>unrestricted</c-> <c- b>double</c-></a>? <dfn class="dfn-paneled idl-code" data-dfn-for="GeolocationSensor" data-dfn-type="attribute" data-export data-readonly data-type="unrestricted double?" id="dom-geolocationsensor-latitude"><code><c- g>latitude</c-></code></dfn>;
+  <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double①"><c- b>unrestricted</c-> <c- b>double</c-></a>? <dfn class="dfn-paneled idl-code" data-dfn-for="GeolocationSensor" data-dfn-type="attribute" data-export data-readonly data-type="unrestricted double?" id="dom-geolocationsensor-longitude"><code><c- g>longitude</c-></code></dfn>;
+  <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double②"><c- b>unrestricted</c-> <c- b>double</c-></a>? <dfn class="dfn-paneled idl-code" data-dfn-for="GeolocationSensor" data-dfn-type="attribute" data-export data-readonly data-type="unrestricted double?" id="dom-geolocationsensor-altitude"><code><c- g>altitude</c-></code></dfn>;
+  <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double③"><c- b>unrestricted</c-> <c- b>double</c-></a>? <dfn class="dfn-paneled idl-code" data-dfn-for="GeolocationSensor" data-dfn-type="attribute" data-export data-readonly data-type="unrestricted double?" id="dom-geolocationsensor-accuracy"><code><c- g>accuracy</c-></code></dfn>;
+  <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double④"><c- b>unrestricted</c-> <c- b>double</c-></a>? <dfn class="dfn-paneled idl-code" data-dfn-for="GeolocationSensor" data-dfn-type="attribute" data-export data-readonly data-type="unrestricted double?" id="dom-geolocationsensor-altitudeaccuracy"><code><c- g>altitudeAccuracy</c-></code></dfn>;
+  <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double⑤"><c- b>unrestricted</c-> <c- b>double</c-></a>? <dfn class="dfn-paneled idl-code" data-dfn-for="GeolocationSensor" data-dfn-type="attribute" data-export data-readonly data-type="unrestricted double?" id="dom-geolocationsensor-heading"><code><c- g>heading</c-></code></dfn>;
+  <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double⑥"><c- b>unrestricted</c-> <c- b>double</c-></a>? <dfn class="dfn-paneled idl-code" data-dfn-for="GeolocationSensor" data-dfn-type="attribute" data-export data-readonly data-type="unrestricted double?" id="dom-geolocationsensor-speed"><code><c- g>speed</c-></code></dfn>;
 };
 
-<span class="kt">dictionary</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="dictionary" data-export="" id="dictdef-geolocationsensoroptions"><code>GeolocationSensorOptions</code></dfn> : <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#dictdef-sensoroptions" id="ref-for-dictdef-sensoroptions">SensorOptions</a> {
+<c- b>dictionary</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="dictionary" data-export id="dictdef-geolocationsensoroptions"><code><c- g>GeolocationSensorOptions</c-></code></dfn> : <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#dictdef-sensoroptions" id="ref-for-dictdef-sensoroptions"><c- n>SensorOptions</c-></a> {
   // placeholder for GeolocationSensor-specific options
 };
 
-<span class="kt">dictionary</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="dictionary" data-export="" id="dictdef-readoptions"><code>ReadOptions</code></dfn> : <a class="n" data-link-type="idl-name" href="#dictdef-geolocationsensoroptions" id="ref-for-dictdef-geolocationsensoroptions①">GeolocationSensorOptions</a> {
-  <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#abortsignal" id="ref-for-abortsignal">AbortSignal</a>? <dfn class="nv idl-code" data-dfn-for="ReadOptions" data-dfn-type="dict-member" data-export="" data-type="AbortSignal? " id="dom-readoptions-signal"><code>signal</code><a class="self-link" href="#dom-readoptions-signal"></a></dfn>;
+<c- b>dictionary</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="dictionary" data-export id="dictdef-readoptions"><code><c- g>ReadOptions</c-></code></dfn> : <a class="n" data-link-type="idl-name" href="#dictdef-geolocationsensoroptions" id="ref-for-dictdef-geolocationsensoroptions①"><c- n>GeolocationSensorOptions</c-></a> {
+  <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#abortsignal" id="ref-for-abortsignal"><c- n>AbortSignal</c-></a>? <dfn class="idl-code" data-dfn-for="ReadOptions" data-dfn-type="dict-member" data-export data-type="AbortSignal? " id="dom-readoptions-signal"><code><c- g>signal</c-></code><a class="self-link" href="#dom-readoptions-signal"></a></dfn>;
 };
 
-<span class="kt">dictionary</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="dictionary" data-export="" id="dictdef-geolocationsensorreading"><code>GeolocationSensorReading</code></dfn> {
-  <a class="n" data-link-type="idl-name" href="http://w3c.github.io/hr-time/#dom-domhighrestimestamp" id="ref-for-dom-domhighrestimestamp">DOMHighResTimeStamp</a>? <dfn class="nv idl-code" data-dfn-for="GeolocationSensorReading" data-dfn-type="dict-member" data-export="" data-type="DOMHighResTimeStamp? " id="dom-geolocationsensorreading-timestamp"><code>timestamp</code><a class="self-link" href="#dom-geolocationsensorreading-timestamp"></a></dfn>;
-  <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double"><span class="kt">double</span></a>? <dfn class="nv idl-code" data-dfn-for="GeolocationSensorReading" data-dfn-type="dict-member" data-export="" data-type="double? " id="dom-geolocationsensorreading-latitude"><code>latitude</code><a class="self-link" href="#dom-geolocationsensorreading-latitude"></a></dfn>;
-  <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double①"><span class="kt">double</span></a>? <dfn class="nv idl-code" data-dfn-for="GeolocationSensorReading" data-dfn-type="dict-member" data-export="" data-type="double? " id="dom-geolocationsensorreading-longitude"><code>longitude</code><a class="self-link" href="#dom-geolocationsensorreading-longitude"></a></dfn>;
-  <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double②"><span class="kt">double</span></a>? <dfn class="nv idl-code" data-dfn-for="GeolocationSensorReading" data-dfn-type="dict-member" data-export="" data-type="double? " id="dom-geolocationsensorreading-altitude"><code>altitude</code><a class="self-link" href="#dom-geolocationsensorreading-altitude"></a></dfn>;
-  <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double③"><span class="kt">double</span></a>? <dfn class="nv idl-code" data-dfn-for="GeolocationSensorReading" data-dfn-type="dict-member" data-export="" data-type="double? " id="dom-geolocationsensorreading-accuracy"><code>accuracy</code><a class="self-link" href="#dom-geolocationsensorreading-accuracy"></a></dfn>;
-  <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double④"><span class="kt">double</span></a>? <dfn class="nv idl-code" data-dfn-for="GeolocationSensorReading" data-dfn-type="dict-member" data-export="" data-type="double? " id="dom-geolocationsensorreading-altitudeaccuracy"><code>altitudeAccuracy</code><a class="self-link" href="#dom-geolocationsensorreading-altitudeaccuracy"></a></dfn>;
-  <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double⑤"><span class="kt">double</span></a>? <dfn class="nv idl-code" data-dfn-for="GeolocationSensorReading" data-dfn-type="dict-member" data-export="" data-type="double? " id="dom-geolocationsensorreading-heading"><code>heading</code><a class="self-link" href="#dom-geolocationsensorreading-heading"></a></dfn>;
-  <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double⑥"><span class="kt">double</span></a>? <dfn class="nv idl-code" data-dfn-for="GeolocationSensorReading" data-dfn-type="dict-member" data-export="" data-type="double? " id="dom-geolocationsensorreading-speed"><code>speed</code><a class="self-link" href="#dom-geolocationsensorreading-speed"></a></dfn>;
+<c- b>dictionary</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="dictionary" data-export id="dictdef-geolocationsensorreading"><code><c- g>GeolocationSensorReading</c-></code></dfn> {
+  <a class="n" data-link-type="idl-name" href="http://w3c.github.io/hr-time/#dom-domhighrestimestamp" id="ref-for-dom-domhighrestimestamp"><c- n>DOMHighResTimeStamp</c-></a>? <dfn class="idl-code" data-dfn-for="GeolocationSensorReading" data-dfn-type="dict-member" data-export data-type="DOMHighResTimeStamp? " id="dom-geolocationsensorreading-timestamp"><code><c- g>timestamp</c-></code><a class="self-link" href="#dom-geolocationsensorreading-timestamp"></a></dfn>;
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double"><c- b>double</c-></a>? <dfn class="idl-code" data-dfn-for="GeolocationSensorReading" data-dfn-type="dict-member" data-export data-type="double? " id="dom-geolocationsensorreading-latitude"><code><c- g>latitude</c-></code><a class="self-link" href="#dom-geolocationsensorreading-latitude"></a></dfn>;
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double①"><c- b>double</c-></a>? <dfn class="idl-code" data-dfn-for="GeolocationSensorReading" data-dfn-type="dict-member" data-export data-type="double? " id="dom-geolocationsensorreading-longitude"><code><c- g>longitude</c-></code><a class="self-link" href="#dom-geolocationsensorreading-longitude"></a></dfn>;
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double②"><c- b>double</c-></a>? <dfn class="idl-code" data-dfn-for="GeolocationSensorReading" data-dfn-type="dict-member" data-export data-type="double? " id="dom-geolocationsensorreading-altitude"><code><c- g>altitude</c-></code><a class="self-link" href="#dom-geolocationsensorreading-altitude"></a></dfn>;
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double③"><c- b>double</c-></a>? <dfn class="idl-code" data-dfn-for="GeolocationSensorReading" data-dfn-type="dict-member" data-export data-type="double? " id="dom-geolocationsensorreading-accuracy"><code><c- g>accuracy</c-></code><a class="self-link" href="#dom-geolocationsensorreading-accuracy"></a></dfn>;
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double④"><c- b>double</c-></a>? <dfn class="idl-code" data-dfn-for="GeolocationSensorReading" data-dfn-type="dict-member" data-export data-type="double? " id="dom-geolocationsensorreading-altitudeaccuracy"><code><c- g>altitudeAccuracy</c-></code><a class="self-link" href="#dom-geolocationsensorreading-altitudeaccuracy"></a></dfn>;
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double⑤"><c- b>double</c-></a>? <dfn class="idl-code" data-dfn-for="GeolocationSensorReading" data-dfn-type="dict-member" data-export data-type="double? " id="dom-geolocationsensorreading-heading"><code><c- g>heading</c-></code><a class="self-link" href="#dom-geolocationsensorreading-heading"></a></dfn>;
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double⑥"><c- b>double</c-></a>? <dfn class="idl-code" data-dfn-for="GeolocationSensorReading" data-dfn-type="dict-member" data-export data-type="double? " id="dom-geolocationsensorreading-speed"><code><c- g>speed</c-></code><a class="self-link" href="#dom-geolocationsensorreading-speed"></a></dfn>;
 };
 
 </pre>
    <div class="note" role="note">
      Normative changes to the <code> <a href="https://dev.w3.org/geo/api/spec-source.html#coordinates_interface"> Coordinates</a></code> interface of the Geolocation API are the following: 
     <ul>
-     <li>Use <a href="https://heycam.github.io/webidl/#idl-unrestricted-double"> unrestricted double</a> to not throw TypeError on NaN, +Infinity or −Infinity.
+     <li>Use <a href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="termref-for-"> unrestricted double</a> to not throw TypeError on NaN, +Infinity or −Infinity.
   (Geolocation API defines NaN as a valid value for heading, yet uses double as its type.) 
      <li>Use <a href="https://heycam.github.io/webidl/#dfn-nullable-type">nullable</a> to allow
   all attributes to default to null. (Geolocation API does not provide synchronous means to
@@ -1595,60 +1642,60 @@ and whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-value
    <p>The <code class="idl"><a data-link-type="idl" href="#dom-geolocationsensor-read" id="ref-for-dom-geolocationsensor-read">read()</a></code> method, when called, must run the following algorithm:</p>
    <div class="algorithm" data-algorithm="read">
     <dl>
-     <dt data-md="">input
-     <dd data-md="">
+     <dt data-md>input
+     <dd data-md>
       <p><var>options</var>, a <code class="idl"><a data-link-type="idl" href="#dictdef-readoptions" id="ref-for-dictdef-readoptions①">ReadOptions</a></code> object.</p>
-     <dt data-md="">output
-     <dd data-md="">
+     <dt data-md>output
+     <dd data-md>
       <p><var>p</var>, a promise.</p>
     </dl>
     <ol>
-     <li data-md="">
+     <li data-md>
       <p>Let <var>p</var> be a new promise.</p>
-     <li data-md="">
+     <li data-md>
       <p>Let <var>options</var> be the first argument.</p>
-     <li data-md="">
+     <li data-md>
       <p>Let <var>signal</var> be the <var>options</var>’ dictionary member of the same name if present, or null otherwise.</p>
-     <li data-md="">
+     <li data-md>
       <p>If <var>signal</var>’s <a data-link-type="dfn" href="https://dom.spec.whatwg.org#abortsignal-aborted-flag" id="ref-for-abortsignal-aborted-flag">aborted flag</a> is set, then reject <var>p</var> with an "<code class="idl"><a class="idl-code" data-link-type="exception" href="https://heycam.github.io/webidl/#aborterror" id="ref-for-aborterror">AbortError</a></code>" <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#idl-DOMException" id="ref-for-idl-DOMException">DOMException</a></code> and return <var>p</var>.</p>
-     <li data-md="">
+     <li data-md>
       <p>Let <var>geo</var> be the result of invoking <a data-link-type="dfn" href="#construct-a-geolocation-sensor-object" id="ref-for-construct-a-geolocation-sensor-object①">construct a Geolocation Sensor object</a> with <var>options</var>. If this throws a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#idl-DOMException" id="ref-for-idl-DOMException①">DOMException</a></code>, catch it, reject <var>p</var> with that <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#idl-DOMException" id="ref-for-idl-DOMException②">DOMException</a></code>, and return <var>p</var>.</p>
-     <li data-md="">
+     <li data-md>
       <p>Invoke <var>geo</var>.<code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#dom-sensor-start" id="ref-for-dom-sensor-start">start()</a></code>.</p>
-     <li data-md="">
+     <li data-md>
       <p>If <var>signal</var> is not null, then <a data-link-type="dfn" href="https://dom.spec.whatwg.org#abortsignal-add" id="ref-for-abortsignal-add">add the following abort steps</a> to <var>signal</var>:</p>
       <ol>
-       <li data-md="">
+       <li data-md>
         <p>Invoke <var>geo</var>.<code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#dom-sensor-stop" id="ref-for-dom-sensor-stop">stop()</a></code>.</p>
-       <li data-md="">
+       <li data-md>
         <p>Reject <var>p</var> with an "<code class="idl"><a class="idl-code" data-link-type="exception" href="https://heycam.github.io/webidl/#aborterror" id="ref-for-aborterror①">AbortError</a></code>" <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#idl-DOMException" id="ref-for-idl-DOMException③">DOMException</a></code> and abort these steps.</p>
       </ol>
-     <li data-md="">
+     <li data-md>
       <p>Run these steps <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel" id="ref-for-in-parallel">in parallel</a>:</p>
       <ol>
-       <li data-md="">
+       <li data-md>
         <p>If <a data-link-type="dfn" href="https://w3c.github.io/sensors/#notify-error" id="ref-for-notify-error">notify error</a> is invoked with <var>geo</var>, invoke <var>geo</var>.<code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#dom-sensor-stop" id="ref-for-dom-sensor-stop①">stop()</a></code>, and reject <var>p</var> with the <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#idl-DOMException" id="ref-for-idl-DOMException④">DOMException</a></code> passed as input to <a data-link-type="dfn" href="https://w3c.github.io/sensors/#notify-error" id="ref-for-notify-error①">notify error</a>.</p>
-       <li data-md="">
+       <li data-md>
         <p>If <a data-link-type="dfn" href="https://w3c.github.io/sensors/#notify-new-reading" id="ref-for-notify-new-reading">notify new reading</a> is invoked with <var>geo</var>, then <a data-link-type="dfn" href="#resolve-geolocation-promise" id="ref-for-resolve-geolocation-promise">resolve geolocation promise</a> with <var>geo</var> and <var>p</var>.</p>
       </ol>
-     <li data-md="">
+     <li data-md>
       <p>Return <var>p</var>.</p>
     </ol>
    </div>
    <p class="note" role="note"> Implementations can reuse the same promise for multiple concurrent calls within the same browsing context if the arguments passed to <code class="idl"><a data-link-type="idl" href="#dom-geolocationsensor-read" id="ref-for-dom-geolocationsensor-read①">read()</a></code> are the same. </p>
-   <p>To <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="resolve-geolocation-promise">resolve geolocation promise</dfn> means to run the following steps:</p>
+   <p>To <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="resolve-geolocation-promise">resolve geolocation promise</dfn> means to run the following steps:</p>
    <ol>
-    <li data-md="">
+    <li data-md>
      <p>Let <var>reading</var> be a <code class="idl"><a data-link-type="idl" href="#dictdef-geolocationsensorreading" id="ref-for-dictdef-geolocationsensorreading①">GeolocationSensorReading</a></code>.</p>
-    <li data-md="">
+    <li data-md>
      <p><a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-iterate" id="ref-for-list-iterate">For each</a> <var>key</var> → <var>value</var> of <a data-link-type="dfn" href="#latest-geolocation-reading" id="ref-for-latest-geolocation-reading">latest geolocation reading</a>:</p>
      <ol>
-      <li data-md="">
+      <li data-md>
        <p><a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-set" id="ref-for-map-set">Set</a> <var>reading</var>[key] to <var>value</var>.</p>
      </ol>
-    <li data-md="">
+    <li data-md>
      <p>Invoke <var>geo</var>.<code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#dom-sensor-stop" id="ref-for-dom-sensor-stop②">stop()</a></code>.</p>
-    <li data-md="">
+    <li data-md>
      <p>Resolve <var>p</var> with <var>reading</var>.</p>
    </ol>
    <h4 class="heading settled" data-level="5.1.2" id="geolocationsensor-latitude"><span class="secno">5.1.2. </span><span class="content">GeolocationSensor.latitude</span><a class="self-link" href="#geolocationsensor-latitude"></a></h4>
@@ -1684,30 +1731,30 @@ returns the result of invoking <a data-link-type="dfn" href="https://w3c.github.
 arguments. It represents the magnitude of the horizontal component of the velocity in meters
 per second.</p>
    <h2 class="heading settled" data-level="6" id="abstract-operations"><span class="secno">6. </span><span class="content">Abstract Operations</span><a class="self-link" href="#abstract-operations"></a></h2>
-   <h3 class="heading settled dfn-paneled" data-dfn-type="dfn" data-export="" data-level="6.1" data-lt="Construct a geolocation sensor object" id="construct-a-geolocation-sensor-object"><span class="secno">6.1. </span><span class="content">Construct a geolocation sensor object</span></h3>
+   <h3 class="heading settled dfn-paneled" data-dfn-type="dfn" data-export data-level="6.1" data-lt="Construct a geolocation sensor object" id="construct-a-geolocation-sensor-object"><span class="secno">6.1. </span><span class="content">Construct a geolocation sensor object</span></h3>
    <div class="algorithm" data-algorithm="construct a geolocation sensor object">
     <dl>
-     <dt data-md="">input
-     <dd data-md="">
+     <dt data-md>input
+     <dd data-md>
       <p><var>options</var>, a <code class="idl"><a data-link-type="idl" href="#dictdef-geolocationsensoroptions" id="ref-for-dictdef-geolocationsensoroptions②">GeolocationSensorOptions</a></code> object.</p>
-     <dt data-md="">output
-     <dd data-md="">
+     <dt data-md>output
+     <dd data-md>
       <p>A <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor①②">GeolocationSensor</a></code> object.</p>
     </dl>
     <ol>
-     <li data-md="">
+     <li data-md>
       <p>Let <var>allowed</var> be the result of invoking <a data-link-type="dfn" href="https://w3c.github.io/sensors#check-sensor-policy-controlled-features" id="ref-for-check-sensor-policy-controlled-features">check sensor policy-controlled features</a> with <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor①③">GeolocationSensor</a></code>.</p>
-     <li data-md="">
+     <li data-md>
       <p>If <var>allowed</var> is false, then:</p>
       <ol>
-       <li data-md="">
+       <li data-md>
         <p><a data-link-type="dfn" href="https://heycam.github.io/webidl/#dfn-throw" id="ref-for-dfn-throw">Throw</a> a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#securityerror" id="ref-for-securityerror">SecurityError</a></code> <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#idl-DOMException" id="ref-for-idl-DOMException⑤">DOMException</a></code>.</p>
       </ol>
-     <li data-md="">
+     <li data-md>
       <p>Let <var>geo</var> be the new <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor①④">GeolocationSensor</a></code> object.</p>
-     <li data-md="">
+     <li data-md>
       <p>Invoke <a data-link-type="dfn" href="https://w3c.github.io/sensors#initialize-a-sensor-object" id="ref-for-initialize-a-sensor-object">initialize a sensor object</a> with <var>geo</var> and <var>options</var>.</p>
-     <li data-md="">
+     <li data-md>
       <p>Return <var>geo</var>.</p>
     </ol>
    </div>
@@ -1904,68 +1951,277 @@ per second.</p>
     </ul>
    <li><a href="#dom-geolocationsensorreading-timestamp">timestamp</a><span>, in §5.1</span>
   </ul>
+  <aside class="dfn-panel" data-for="term-for-abortsignal">
+   <a href="https://dom.spec.whatwg.org/#abortsignal">https://dom.spec.whatwg.org/#abortsignal</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-abortsignal">5.1. The GeolocationSensor Interface</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-abortsignal-aborted-flag">
+   <a href="https://dom.spec.whatwg.org#abortsignal-aborted-flag">https://dom.spec.whatwg.org#abortsignal-aborted-flag</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-abortsignal-aborted-flag">5.1.1. GeolocationSensor.read()</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-abortsignal-add">
+   <a href="https://dom.spec.whatwg.org#abortsignal-add">https://dom.spec.whatwg.org#abortsignal-add</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-abortsignal-add">5.1.1. GeolocationSensor.read()</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-sensor">
+   <a href="https://w3c.github.io/sensors/#sensor">https://w3c.github.io/sensors/#sensor</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-sensor">1. Introduction</a>
+    <li><a href="#ref-for-sensor①">4. Model</a> <a href="#ref-for-sensor②">(2)</a>
+    <li><a href="#ref-for-sensor③">5.1. The GeolocationSensor Interface</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-dictdef-sensoroptions">
+   <a href="https://w3c.github.io/sensors/#dictdef-sensoroptions">https://w3c.github.io/sensors/#dictdef-sensoroptions</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dictdef-sensoroptions">5.1. The GeolocationSensor Interface</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-check-sensor-policy-controlled-features">
+   <a href="https://w3c.github.io/sensors#check-sensor-policy-controlled-features">https://w3c.github.io/sensors#check-sensor-policy-controlled-features</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-check-sensor-policy-controlled-features">6.1. Construct a geolocation sensor object</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-extensibility">
+   <a href="https://w3c.github.io/sensors#extensibility">https://w3c.github.io/sensors#extensibility</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-extensibility">1. Introduction</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-get-value-from-latest-reading">
+   <a href="https://w3c.github.io/sensors/#get-value-from-latest-reading">https://w3c.github.io/sensors/#get-value-from-latest-reading</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-get-value-from-latest-reading">5.1.2. GeolocationSensor.latitude</a>
+    <li><a href="#ref-for-get-value-from-latest-reading①">5.1.3. GeolocationSensor.longitude</a>
+    <li><a href="#ref-for-get-value-from-latest-reading②">5.1.4. GeolocationSensor.altitude</a>
+    <li><a href="#ref-for-get-value-from-latest-reading③">5.1.5. GeolocationSensor.accuracy</a>
+    <li><a href="#ref-for-get-value-from-latest-reading④">5.1.6. GeolocationSensor.altitudeAccuracy</a>
+    <li><a href="#ref-for-get-value-from-latest-reading⑤">5.1.7. GeolocationSensor.heading</a>
+    <li><a href="#ref-for-get-value-from-latest-reading⑥">5.1.8. GeolocationSensor.speed</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-initialize-a-sensor-object">
+   <a href="https://w3c.github.io/sensors#initialize-a-sensor-object">https://w3c.github.io/sensors#initialize-a-sensor-object</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-initialize-a-sensor-object">6.1. Construct a geolocation sensor object</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-latest-reading">
+   <a href="https://w3c.github.io/sensors#latest-reading">https://w3c.github.io/sensors#latest-reading</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-latest-reading">4. Model</a>
+    <li><a href="#ref-for-latest-reading①">5.1.5. GeolocationSensor.accuracy</a> <a href="#ref-for-latest-reading②">(2)</a> <a href="#ref-for-latest-reading③">(3)</a> <a href="#ref-for-latest-reading④">(4)</a>
+    <li><a href="#ref-for-latest-reading⑤">5.1.6. GeolocationSensor.altitudeAccuracy</a> <a href="#ref-for-latest-reading⑥">(2)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-notify-error">
+   <a href="https://w3c.github.io/sensors/#notify-error">https://w3c.github.io/sensors/#notify-error</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-notify-error">5.1.1. GeolocationSensor.read()</a> <a href="#ref-for-notify-error①">(2)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-notify-new-reading">
+   <a href="https://w3c.github.io/sensors/#notify-new-reading">https://w3c.github.io/sensors/#notify-new-reading</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-notify-new-reading">5.1.1. GeolocationSensor.read()</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-security-and-privacy">
+   <a href="https://w3c.github.io/sensors#security-and-privacy">https://w3c.github.io/sensors#security-and-privacy</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-security-and-privacy">1. Introduction</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-sensor-type">
+   <a href="https://w3c.github.io/sensors#sensor-type">https://w3c.github.io/sensors#sensor-type</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-sensor-type">4. Model</a> <a href="#ref-for-sensor-type①">(2)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-dom-sensor-start">
+   <a href="https://w3c.github.io/sensors/#dom-sensor-start">https://w3c.github.io/sensors/#dom-sensor-start</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-sensor-start">5.1.1. GeolocationSensor.read()</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-dom-sensor-stop">
+   <a href="https://w3c.github.io/sensors/#dom-sensor-stop">https://w3c.github.io/sensors/#dom-sensor-stop</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-sensor-stop">5.1.1. GeolocationSensor.read()</a> <a href="#ref-for-dom-sensor-stop①">(2)</a> <a href="#ref-for-dom-sensor-stop②">(3)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-dom-domhighrestimestamp">
+   <a href="http://w3c.github.io/hr-time/#dom-domhighrestimestamp">http://w3c.github.io/hr-time/#dom-domhighrestimestamp</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-domhighrestimestamp">5.1. The GeolocationSensor Interface</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-in-parallel">
+   <a href="https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel">https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-in-parallel">5.1.1. GeolocationSensor.read()</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-map-entry">
+   <a href="https://infra.spec.whatwg.org/#map-entry">https://infra.spec.whatwg.org/#map-entry</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-map-entry">4. Model</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-list-iterate">
+   <a href="https://infra.spec.whatwg.org/#list-iterate">https://infra.spec.whatwg.org/#list-iterate</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-list-iterate">5.1.1. GeolocationSensor.read()</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-map-key">
+   <a href="https://infra.spec.whatwg.org/#map-key">https://infra.spec.whatwg.org/#map-key</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-map-key">4. Model</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-map-set">
+   <a href="https://infra.spec.whatwg.org/#map-set">https://infra.spec.whatwg.org/#map-set</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-map-set">5.1.1. GeolocationSensor.read()</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-map-value">
+   <a href="https://infra.spec.whatwg.org/#map-value">https://infra.spec.whatwg.org/#map-value</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-map-value">4. Model</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-dom-permissionname-geolocation">
+   <a href="https://w3c.github.io/permissions/#dom-permissionname-geolocation">https://w3c.github.io/permissions/#dom-permissionname-geolocation</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-permissionname-geolocation">4. Model</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-enumdef-permissionname">
+   <a href="https://w3c.github.io/permissions/#enumdef-permissionname">https://w3c.github.io/permissions/#enumdef-permissionname</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-enumdef-permissionname">4. Model</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-aborterror">
+   <a href="https://heycam.github.io/webidl/#aborterror">https://heycam.github.io/webidl/#aborterror</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-aborterror">5.1.1. GeolocationSensor.read()</a> <a href="#ref-for-aborterror①">(2)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-idl-DOMException">
+   <a href="https://heycam.github.io/webidl/#idl-DOMException">https://heycam.github.io/webidl/#idl-DOMException</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-idl-DOMException">5.1.1. GeolocationSensor.read()</a> <a href="#ref-for-idl-DOMException①">(2)</a> <a href="#ref-for-idl-DOMException②">(3)</a> <a href="#ref-for-idl-DOMException③">(4)</a> <a href="#ref-for-idl-DOMException④">(5)</a>
+    <li><a href="#ref-for-idl-DOMException⑤">6.1. Construct a geolocation sensor object</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-Exposed">
+   <a href="https://heycam.github.io/webidl/#Exposed">https://heycam.github.io/webidl/#Exposed</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-Exposed">5.1. The GeolocationSensor Interface</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-SecureContext">
+   <a href="https://heycam.github.io/webidl/#SecureContext">https://heycam.github.io/webidl/#SecureContext</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-SecureContext">5.1. The GeolocationSensor Interface</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-securityerror">
+   <a href="https://heycam.github.io/webidl/#securityerror">https://heycam.github.io/webidl/#securityerror</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-securityerror">6.1. Construct a geolocation sensor object</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-idl-double">
+   <a href="https://heycam.github.io/webidl/#idl-double">https://heycam.github.io/webidl/#idl-double</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-idl-double">5.1. The GeolocationSensor Interface</a> <a href="#ref-for-idl-double①">(2)</a> <a href="#ref-for-idl-double②">(3)</a> <a href="#ref-for-idl-double③">(4)</a> <a href="#ref-for-idl-double④">(5)</a> <a href="#ref-for-idl-double⑤">(6)</a> <a href="#ref-for-idl-double⑥">(7)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-dfn-throw">
+   <a href="https://heycam.github.io/webidl/#dfn-throw">https://heycam.github.io/webidl/#dfn-throw</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dfn-throw">6.1. Construct a geolocation sensor object</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-idl-unrestricted-double">
+   <a href="https://heycam.github.io/webidl/#idl-unrestricted-double">https://heycam.github.io/webidl/#idl-unrestricted-double</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-idl-unrestricted-double">5.1. The GeolocationSensor Interface</a> <a href="#ref-for-idl-unrestricted-double①">(2)</a> <a href="#ref-for-idl-unrestricted-double②">(3)</a> <a href="#ref-for-idl-unrestricted-double③">(4)</a> <a href="#ref-for-idl-unrestricted-double④">(5)</a> <a href="#ref-for-idl-unrestricted-double⑤">(6)</a> <a href="#ref-for-idl-unrestricted-double⑥">(7)</a> <a href="#termref-for-">(8)</a>
+   </ul>
+  </aside>
   <h3 class="no-num no-ref heading settled" id="index-defined-elsewhere"><span class="content">Terms defined by reference</span><a class="self-link" href="#index-defined-elsewhere"></a></h3>
   <ul class="index">
    <li>
     <a data-link-type="biblio">[DOM]</a> defines the following terms:
     <ul>
-     <li><a href="https://dom.spec.whatwg.org/#abortsignal">AbortSignal</a>
-     <li><a href="https://dom.spec.whatwg.org#abortsignal-aborted-flag">aborted flag</a>
-     <li><a href="https://dom.spec.whatwg.org#abortsignal-add">add the following abort steps</a>
+     <li><span class="dfn-paneled" id="term-for-abortsignal" style="color:initial">AbortSignal</span>
+     <li><span class="dfn-paneled" id="term-for-abortsignal-aborted-flag" style="color:initial">aborted flag</span>
+     <li><span class="dfn-paneled" id="term-for-abortsignal-add" style="color:initial">add the following abort steps</span>
     </ul>
    <li>
     <a data-link-type="biblio">[GENERIC-SENSOR]</a> defines the following terms:
     <ul>
-     <li><a href="https://w3c.github.io/sensors/#sensor">Sensor</a>
-     <li><a href="https://w3c.github.io/sensors/#dictdef-sensoroptions">SensorOptions</a>
-     <li><a href="https://w3c.github.io/sensors#check-sensor-policy-controlled-features">check sensor policy-controlled features</a>
-     <li><a href="https://w3c.github.io/sensors#extensibility">extensible</a>
-     <li><a href="https://w3c.github.io/sensors/#get-value-from-latest-reading">get value from latest reading</a>
-     <li><a href="https://w3c.github.io/sensors#initialize-a-sensor-object">initialize a sensor object</a>
-     <li><a href="https://w3c.github.io/sensors#latest-reading">latest reading</a>
-     <li><a href="https://w3c.github.io/sensors/#notify-error">notify error</a>
-     <li><a href="https://w3c.github.io/sensors/#notify-new-reading">notify new reading</a>
-     <li><a href="https://w3c.github.io/sensors#security-and-privacy">security and privacy</a>
-     <li><a href="https://w3c.github.io/sensors#sensor-type">sensor type</a>
-     <li><a href="https://w3c.github.io/sensors/#dom-sensor-start">start()</a>
-     <li><a href="https://w3c.github.io/sensors/#dom-sensor-stop">stop()</a>
+     <li><span class="dfn-paneled" id="term-for-sensor" style="color:initial">Sensor</span>
+     <li><span class="dfn-paneled" id="term-for-dictdef-sensoroptions" style="color:initial">SensorOptions</span>
+     <li><span class="dfn-paneled" id="term-for-check-sensor-policy-controlled-features" style="color:initial">check sensor policy-controlled features</span>
+     <li><span class="dfn-paneled" id="term-for-extensibility" style="color:initial">extensible</span>
+     <li><span class="dfn-paneled" id="term-for-get-value-from-latest-reading" style="color:initial">get value from latest reading</span>
+     <li><span class="dfn-paneled" id="term-for-initialize-a-sensor-object" style="color:initial">initialize a sensor object</span>
+     <li><span class="dfn-paneled" id="term-for-latest-reading" style="color:initial">latest reading</span>
+     <li><span class="dfn-paneled" id="term-for-notify-error" style="color:initial">notify error</span>
+     <li><span class="dfn-paneled" id="term-for-notify-new-reading" style="color:initial">notify new reading</span>
+     <li><span class="dfn-paneled" id="term-for-security-and-privacy" style="color:initial">security and privacy</span>
+     <li><span class="dfn-paneled" id="term-for-sensor-type" style="color:initial">sensor type</span>
+     <li><span class="dfn-paneled" id="term-for-dom-sensor-start" style="color:initial">start()</span>
+     <li><span class="dfn-paneled" id="term-for-dom-sensor-stop" style="color:initial">stop()</span>
     </ul>
    <li>
     <a data-link-type="biblio">[hr-time-2]</a> defines the following terms:
     <ul>
-     <li><a href="http://w3c.github.io/hr-time/#dom-domhighrestimestamp">DOMHighResTimeStamp</a>
+     <li><span class="dfn-paneled" id="term-for-dom-domhighrestimestamp" style="color:initial">DOMHighResTimeStamp</span>
     </ul>
    <li>
     <a data-link-type="biblio">[HTML]</a> defines the following terms:
     <ul>
-     <li><a href="https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel">in parallel</a>
+     <li><span class="dfn-paneled" id="term-for-in-parallel" style="color:initial">in parallel</span>
     </ul>
    <li>
     <a data-link-type="biblio">[INFRA]</a> defines the following terms:
     <ul>
-     <li><a href="https://infra.spec.whatwg.org/#map-entry">entry</a>
-     <li><a href="https://infra.spec.whatwg.org/#list-iterate">for each</a>
-     <li><a href="https://infra.spec.whatwg.org/#map-key">key</a>
-     <li><a href="https://infra.spec.whatwg.org/#map-set">set</a>
-     <li><a href="https://infra.spec.whatwg.org/#map-value">value</a>
+     <li><span class="dfn-paneled" id="term-for-map-entry" style="color:initial">entry</span>
+     <li><span class="dfn-paneled" id="term-for-list-iterate" style="color:initial">for each</span>
+     <li><span class="dfn-paneled" id="term-for-map-key" style="color:initial">key</span>
+     <li><span class="dfn-paneled" id="term-for-map-set" style="color:initial">set</span>
+     <li><span class="dfn-paneled" id="term-for-map-value" style="color:initial">value</span>
     </ul>
    <li>
     <a data-link-type="biblio">[permissions]</a> defines the following terms:
     <ul>
-     <li><a href="https://w3c.github.io/permissions/#dom-permissionname-geolocation">"geolocation"</a>
-     <li><a href="https://w3c.github.io/permissions/#enumdef-permissionname">PermissionName</a>
+     <li><span class="dfn-paneled" id="term-for-dom-permissionname-geolocation" style="color:initial">"geolocation"</span>
+     <li><span class="dfn-paneled" id="term-for-enumdef-permissionname" style="color:initial">PermissionName</span>
     </ul>
    <li>
     <a data-link-type="biblio">[WebIDL]</a> defines the following terms:
     <ul>
-     <li><a href="https://heycam.github.io/webidl/#aborterror">AbortError</a>
-     <li><a href="https://heycam.github.io/webidl/#idl-DOMException">DOMException</a>
-     <li><a href="https://heycam.github.io/webidl/#Exposed">Exposed</a>
-     <li><a href="https://heycam.github.io/webidl/#SecureContext">SecureContext</a>
-     <li><a href="https://heycam.github.io/webidl/#securityerror">SecurityError</a>
-     <li><a href="https://heycam.github.io/webidl/#idl-double">double</a>
-     <li><a href="https://heycam.github.io/webidl/#dfn-throw">throw</a>
-     <li><a href="https://heycam.github.io/webidl/#idl-unrestricted-double">unrestricted double</a>
+     <li><span class="dfn-paneled" id="term-for-aborterror" style="color:initial">AbortError</span>
+     <li><span class="dfn-paneled" id="term-for-idl-DOMException" style="color:initial">DOMException</span>
+     <li><span class="dfn-paneled" id="term-for-Exposed" style="color:initial">Exposed</span>
+     <li><span class="dfn-paneled" id="term-for-SecureContext" style="color:initial">SecureContext</span>
+     <li><span class="dfn-paneled" id="term-for-securityerror" style="color:initial">SecurityError</span>
+     <li><span class="dfn-paneled" id="term-for-idl-double" style="color:initial">double</span>
+     <li><span class="dfn-paneled" id="term-for-dfn-throw" style="color:initial">throw</span>
+     <li><span class="dfn-paneled" id="term-for-idl-unrestricted-double" style="color:initial">unrestricted double</span>
     </ul>
   </ul>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
@@ -1974,7 +2230,7 @@ per second.</p>
    <dt id="biblio-dom">[DOM]
    <dd>Anne van Kesteren. <a href="https://dom.spec.whatwg.org/">DOM Standard</a>. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
    <dt id="biblio-generic-sensor">[GENERIC-SENSOR]
-   <dd>Rick Waldron; et al. <a href="https://w3c.github.io/sensors/">Generic Sensor API</a>. URL: <a href="https://w3c.github.io/sensors/">https://w3c.github.io/sensors/</a>
+   <dd>Rick Waldron; Mikhail Pozdnyakov; Alexander Shalamov. <a href="https://w3c.github.io/sensors/">Generic Sensor API</a>. URL: <a href="https://w3c.github.io/sensors/">https://w3c.github.io/sensors/</a>
    <dt id="biblio-hr-time-2">[HR-TIME-2]
    <dd>Ilya Grigorik; James Simonsen; Jatinder Mann. <a href="https://w3c.github.io/hr-time/">High Resolution Time Level 2</a>. URL: <a href="https://w3c.github.io/hr-time/">https://w3c.github.io/hr-time/</a>
    <dt id="biblio-html">[HTML]
@@ -1994,35 +2250,35 @@ per second.</p>
    <dd>Andrei Popescu. <a href="http://dev.w3.org/geo/api/spec-source.html">Geolocation API Specification 2nd Edition</a>. URL: <a href="http://dev.w3.org/geo/api/spec-source.html">http://dev.w3.org/geo/api/spec-source.html</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
-<pre class="idl highlight def">[<a class="nv" href="#dom-geolocationsensor-geolocationsensor"><code>Constructor</code></a>(<span class="kt">optional</span> <a class="n" data-link-type="idl-name" href="#dictdef-geolocationsensoroptions" id="ref-for-dictdef-geolocationsensoroptions③">GeolocationSensorOptions</a> <a class="nv" href="#dom-geolocationsensor-geolocationsensor-options-options"><code>options</code></a>), <a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SecureContext" id="ref-for-SecureContext①">SecureContext</a>, <a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed①">Exposed</a>=<span class="n">Window</span>]
-<span class="kt">interface</span> <a class="nv" href="#geolocationsensor"><code>GeolocationSensor</code></a> : <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor③①">Sensor</a> {
-  <span class="kt">static</span> <span class="kt">Promise</span>&lt;<a class="n" data-link-type="idl-name" href="#dictdef-geolocationsensorreading" id="ref-for-dictdef-geolocationsensorreading②">GeolocationSensorReading</a>> <a class="nv" href="#dom-geolocationsensor-read"><code>read</code></a>(<span class="kt">optional</span> <a class="n" data-link-type="idl-name" href="#dictdef-readoptions" id="ref-for-dictdef-readoptions②">ReadOptions</a> <a class="nv" href="#dom-geolocationsensor-read-readoptions-readoptions"><code>readOptions</code></a>);
-  <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double⑦"><span class="kt">unrestricted</span> <span class="kt">double</span></a>? <a class="nv" data-readonly="" data-type="unrestricted double?" href="#dom-geolocationsensor-latitude"><code>latitude</code></a>;
-  <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double①①"><span class="kt">unrestricted</span> <span class="kt">double</span></a>? <a class="nv" data-readonly="" data-type="unrestricted double?" href="#dom-geolocationsensor-longitude"><code>longitude</code></a>;
-  <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double②①"><span class="kt">unrestricted</span> <span class="kt">double</span></a>? <a class="nv" data-readonly="" data-type="unrestricted double?" href="#dom-geolocationsensor-altitude"><code>altitude</code></a>;
-  <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double③①"><span class="kt">unrestricted</span> <span class="kt">double</span></a>? <a class="nv" data-readonly="" data-type="unrestricted double?" href="#dom-geolocationsensor-accuracy"><code>accuracy</code></a>;
-  <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double④①"><span class="kt">unrestricted</span> <span class="kt">double</span></a>? <a class="nv" data-readonly="" data-type="unrestricted double?" href="#dom-geolocationsensor-altitudeaccuracy"><code>altitudeAccuracy</code></a>;
-  <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double⑤①"><span class="kt">unrestricted</span> <span class="kt">double</span></a>? <a class="nv" data-readonly="" data-type="unrestricted double?" href="#dom-geolocationsensor-heading"><code>heading</code></a>;
-  <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double⑥①"><span class="kt">unrestricted</span> <span class="kt">double</span></a>? <a class="nv" data-readonly="" data-type="unrestricted double?" href="#dom-geolocationsensor-speed"><code>speed</code></a>;
+<pre class="idl highlight def">[<a href="#dom-geolocationsensor-geolocationsensor"><code><c- g>Constructor</c-></code></a>(<c- b>optional</c-> <a class="n" data-link-type="idl-name" href="#dictdef-geolocationsensoroptions" id="ref-for-dictdef-geolocationsensoroptions③"><c- n>GeolocationSensorOptions</c-></a> <a href="#dom-geolocationsensor-geolocationsensor-options-options"><code><c- g>options</c-></code></a>), <a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SecureContext" id="ref-for-SecureContext①"><c- g>SecureContext</c-></a>, <a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed①"><c- g>Exposed</c-></a>=<c- n>Window</c->]
+<c- b>interface</c-> <a href="#geolocationsensor"><code><c- g>GeolocationSensor</c-></code></a> : <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor③①"><c- n>Sensor</c-></a> {
+  <c- b>static</c-> <c- b>Promise</c->&lt;<a class="n" data-link-type="idl-name" href="#dictdef-geolocationsensorreading" id="ref-for-dictdef-geolocationsensorreading②"><c- n>GeolocationSensorReading</c-></a>> <a href="#dom-geolocationsensor-read"><code><c- g>read</c-></code></a>(<c- b>optional</c-> <a class="n" data-link-type="idl-name" href="#dictdef-readoptions" id="ref-for-dictdef-readoptions②"><c- n>ReadOptions</c-></a> <a href="#dom-geolocationsensor-read-readoptions-readoptions"><code><c- g>readOptions</c-></code></a>);
+  <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double⑦"><c- b>unrestricted</c-> <c- b>double</c-></a>? <a data-readonly data-type="unrestricted double?" href="#dom-geolocationsensor-latitude"><code><c- g>latitude</c-></code></a>;
+  <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double①①"><c- b>unrestricted</c-> <c- b>double</c-></a>? <a data-readonly data-type="unrestricted double?" href="#dom-geolocationsensor-longitude"><code><c- g>longitude</c-></code></a>;
+  <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double②①"><c- b>unrestricted</c-> <c- b>double</c-></a>? <a data-readonly data-type="unrestricted double?" href="#dom-geolocationsensor-altitude"><code><c- g>altitude</c-></code></a>;
+  <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double③①"><c- b>unrestricted</c-> <c- b>double</c-></a>? <a data-readonly data-type="unrestricted double?" href="#dom-geolocationsensor-accuracy"><code><c- g>accuracy</c-></code></a>;
+  <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double④①"><c- b>unrestricted</c-> <c- b>double</c-></a>? <a data-readonly data-type="unrestricted double?" href="#dom-geolocationsensor-altitudeaccuracy"><code><c- g>altitudeAccuracy</c-></code></a>;
+  <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double⑤①"><c- b>unrestricted</c-> <c- b>double</c-></a>? <a data-readonly data-type="unrestricted double?" href="#dom-geolocationsensor-heading"><code><c- g>heading</c-></code></a>;
+  <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unrestricted-double" id="ref-for-idl-unrestricted-double⑥①"><c- b>unrestricted</c-> <c- b>double</c-></a>? <a data-readonly data-type="unrestricted double?" href="#dom-geolocationsensor-speed"><code><c- g>speed</c-></code></a>;
 };
 
-<span class="kt">dictionary</span> <a class="nv" href="#dictdef-geolocationsensoroptions"><code>GeolocationSensorOptions</code></a> : <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#dictdef-sensoroptions" id="ref-for-dictdef-sensoroptions①">SensorOptions</a> {
+<c- b>dictionary</c-> <a href="#dictdef-geolocationsensoroptions"><code><c- g>GeolocationSensorOptions</c-></code></a> : <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#dictdef-sensoroptions" id="ref-for-dictdef-sensoroptions①"><c- n>SensorOptions</c-></a> {
   // placeholder for GeolocationSensor-specific options
 };
 
-<span class="kt">dictionary</span> <a class="nv" href="#dictdef-readoptions"><code>ReadOptions</code></a> : <a class="n" data-link-type="idl-name" href="#dictdef-geolocationsensoroptions" id="ref-for-dictdef-geolocationsensoroptions①①">GeolocationSensorOptions</a> {
-  <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#abortsignal" id="ref-for-abortsignal①">AbortSignal</a>? <a class="nv" data-type="AbortSignal? " href="#dom-readoptions-signal"><code>signal</code></a>;
+<c- b>dictionary</c-> <a href="#dictdef-readoptions"><code><c- g>ReadOptions</c-></code></a> : <a class="n" data-link-type="idl-name" href="#dictdef-geolocationsensoroptions" id="ref-for-dictdef-geolocationsensoroptions①①"><c- n>GeolocationSensorOptions</c-></a> {
+  <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#abortsignal" id="ref-for-abortsignal①"><c- n>AbortSignal</c-></a>? <a data-type="AbortSignal? " href="#dom-readoptions-signal"><code><c- g>signal</c-></code></a>;
 };
 
-<span class="kt">dictionary</span> <a class="nv" href="#dictdef-geolocationsensorreading"><code>GeolocationSensorReading</code></a> {
-  <a class="n" data-link-type="idl-name" href="http://w3c.github.io/hr-time/#dom-domhighrestimestamp" id="ref-for-dom-domhighrestimestamp①">DOMHighResTimeStamp</a>? <a class="nv" data-type="DOMHighResTimeStamp? " href="#dom-geolocationsensorreading-timestamp"><code>timestamp</code></a>;
-  <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double⑦"><span class="kt">double</span></a>? <a class="nv" data-type="double? " href="#dom-geolocationsensorreading-latitude"><code>latitude</code></a>;
-  <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double①①"><span class="kt">double</span></a>? <a class="nv" data-type="double? " href="#dom-geolocationsensorreading-longitude"><code>longitude</code></a>;
-  <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double②①"><span class="kt">double</span></a>? <a class="nv" data-type="double? " href="#dom-geolocationsensorreading-altitude"><code>altitude</code></a>;
-  <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double③①"><span class="kt">double</span></a>? <a class="nv" data-type="double? " href="#dom-geolocationsensorreading-accuracy"><code>accuracy</code></a>;
-  <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double④①"><span class="kt">double</span></a>? <a class="nv" data-type="double? " href="#dom-geolocationsensorreading-altitudeaccuracy"><code>altitudeAccuracy</code></a>;
-  <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double⑤①"><span class="kt">double</span></a>? <a class="nv" data-type="double? " href="#dom-geolocationsensorreading-heading"><code>heading</code></a>;
-  <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double⑥①"><span class="kt">double</span></a>? <a class="nv" data-type="double? " href="#dom-geolocationsensorreading-speed"><code>speed</code></a>;
+<c- b>dictionary</c-> <a href="#dictdef-geolocationsensorreading"><code><c- g>GeolocationSensorReading</c-></code></a> {
+  <a class="n" data-link-type="idl-name" href="http://w3c.github.io/hr-time/#dom-domhighrestimestamp" id="ref-for-dom-domhighrestimestamp①"><c- n>DOMHighResTimeStamp</c-></a>? <a data-type="DOMHighResTimeStamp? " href="#dom-geolocationsensorreading-timestamp"><code><c- g>timestamp</c-></code></a>;
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double⑦"><c- b>double</c-></a>? <a data-type="double? " href="#dom-geolocationsensorreading-latitude"><code><c- g>latitude</c-></code></a>;
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double①①"><c- b>double</c-></a>? <a data-type="double? " href="#dom-geolocationsensorreading-longitude"><code><c- g>longitude</c-></code></a>;
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double②①"><c- b>double</c-></a>? <a data-type="double? " href="#dom-geolocationsensorreading-altitude"><code><c- g>altitude</c-></code></a>;
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double③①"><c- b>double</c-></a>? <a data-type="double? " href="#dom-geolocationsensorreading-accuracy"><code><c- g>accuracy</c-></code></a>;
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double④①"><c- b>double</c-></a>? <a data-type="double? " href="#dom-geolocationsensorreading-altitudeaccuracy"><code><c- g>altitudeAccuracy</c-></code></a>;
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double⑤①"><c- b>double</c-></a>? <a data-type="double? " href="#dom-geolocationsensorreading-heading"><code><c- g>heading</c-></code></a>;
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double⑥①"><c- b>double</c-></a>? <a data-type="double? " href="#dom-geolocationsensorreading-speed"><code><c- g>speed</c-></code></a>;
 };
 
 
@@ -2147,60 +2403,143 @@ per second.</p>
     <li><a href="#ref-for-construct-a-geolocation-sensor-object①">5.1.1. GeolocationSensor.read()</a>
    </ul>
   </aside>
+<script>/* script-var-click-highlighting */
+
+    document.addEventListener("click", e=>{
+        if(e.target.nodeName == "VAR") {
+            highlightSameAlgoVars(e.target);
+        }
+    });
+    {
+        const indexCounts = new Map();
+        const indexNames = new Map();
+        function highlightSameAlgoVars(v) {
+            // Find the algorithm container.
+            let algoContainer = null;
+            let searchEl = v;
+            while(algoContainer == null && searchEl != document.body) {
+                searchEl = searchEl.parentNode;
+                if(searchEl.hasAttribute("data-algorithm")) {
+                    algoContainer = searchEl;
+                }
+            }
+
+            // Not highlighting document-global vars,
+            // too likely to be unrelated.
+            if(algoContainer == null) return;
+
+            const algoName = algoContainer.getAttribute("data-algorithm");
+            const varName = getVarName(v);
+            const addClass = !v.classList.contains("selected");
+            let highlightClass = null;
+            if(addClass) {
+                const index = chooseHighlightIndex(algoName, varName);
+                indexCounts.get(algoName)[index] += 1;
+                indexNames.set(algoName+"///"+varName, index);
+                highlightClass = nameFromIndex(index);
+            } else {
+                const index = previousHighlightIndex(algoName, varName);
+                indexCounts.get(algoName)[index] -= 1;
+                highlightClass = nameFromIndex(index);
+            }
+
+            // Find all same-name vars, and toggle their class appropriately.
+            for(const el of algoContainer.querySelectorAll("var")) {
+                if(getVarName(el) == varName) {
+                    el.classList.toggle("selected", addClass);
+                    el.classList.toggle(highlightClass, addClass);
+                }
+            }
+        }
+        function getVarName(el) {
+            return el.textContent.replace(/(\s| )+/, " ").trim();
+        }
+        function chooseHighlightIndex(algoName, varName) {
+            let indexes = null;
+            if(indexCounts.has(algoName)) {
+                indexes = indexCounts.get(algoName);
+            } else {
+                // 7 classes right now
+                indexes = [0,0,0,0,0,0,0];
+                indexCounts.set(algoName, indexes);
+            }
+
+            // If the element was recently unclicked,
+            // *and* that color is still unclaimed,
+            // give it back the same color.
+            const lastIndex = previousHighlightIndex(algoName, varName);
+            if(indexes[lastIndex] === 0) return lastIndex;
+
+            // Find the earliest index with the lowest count.
+            const minCount = Math.min.apply(null, indexes);
+            let index = null;
+            for(var i = 0; i < indexes.length; i++) {
+                if(indexes[i] == minCount) {
+                    return i;
+                }
+            }
+        }
+        function previousHighlightIndex(algoName, varName) {
+            return indexNames.get(algoName+"///"+varName);
+        }
+        function nameFromIndex(index) {
+            return "selected" + index;
+        }
+    }
+    </script>
 <script>/* script-dfn-panel */
 
-        document.body.addEventListener("click", function(e) {
-            var queryAll = function(sel) { return [].slice.call(document.querySelectorAll(sel)); }
-            // Find the dfn element or panel, if any, that was clicked on.
-            var el = e.target;
-            var target;
-            var hitALink = false;
-            while(el.parentElement) {
-                if(el.tagName == "A") {
-                    // Clicking on a link in a <dfn> shouldn't summon the panel
-                    hitALink = true;
-                }
-                if(el.classList.contains("dfn-paneled")) {
-                    target = "dfn";
-                    break;
-                }
-                if(el.classList.contains("dfn-panel")) {
-                    target = "dfn-panel";
-                    break;
-                }
-                el = el.parentElement;
-            }
-            if(target != "dfn-panel") {
-                // Turn off any currently "on" or "activated" panels.
-                queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(function(el){
-                    el.classList.remove("on");
-                    el.classList.remove("activated");
-                });
-            }
-            if(target == "dfn" && !hitALink) {
-                // open the panel
-                var dfnPanel = document.querySelector(".dfn-panel[data-for='" + el.id + "']");
-                if(dfnPanel) {
-                    console.log(dfnPanel);
-                    dfnPanel.classList.add("on");
-                    var rect = el.getBoundingClientRect();
-                    dfnPanel.style.left = window.scrollX + rect.right + 5 + "px";
-                    dfnPanel.style.top = window.scrollY + rect.top + "px";
-                    var panelRect = dfnPanel.getBoundingClientRect();
-                    var panelWidth = panelRect.right - panelRect.left;
-                    if(panelRect.right > document.body.scrollWidth && (rect.left - (panelWidth + 5)) > 0) {
-                        // Reposition, because the panel is overflowing
-                        dfnPanel.style.left = window.scrollX + rect.left - (panelWidth + 5) + "px";
-                    }
-                } else {
-                    console.log("Couldn't find .dfn-panel[data-for='" + el.id + "']");
-                }
-            } else if(target == "dfn-panel") {
-                // Switch it to "activated" state, which pins it.
-                el.classList.add("activated");
-                el.style.left = null;
-                el.style.top = null;
-            }
-
+document.body.addEventListener("click", function(e) {
+    var queryAll = function(sel) { return [].slice.call(document.querySelectorAll(sel)); }
+    // Find the dfn element or panel, if any, that was clicked on.
+    var el = e.target;
+    var target;
+    var hitALink = false;
+    while(el.parentElement) {
+        if(el.tagName == "A") {
+            // Clicking on a link in a <dfn> shouldn't summon the panel
+            hitALink = true;
+        }
+        if(el.classList.contains("dfn-paneled")) {
+            target = "dfn";
+            break;
+        }
+        if(el.classList.contains("dfn-panel")) {
+            target = "dfn-panel";
+            break;
+        }
+        el = el.parentElement;
+    }
+    if(target != "dfn-panel") {
+        // Turn off any currently "on" or "activated" panels.
+        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(function(el){
+            el.classList.remove("on");
+            el.classList.remove("activated");
         });
-        </script>
+    }
+    if(target == "dfn" && !hitALink) {
+        // open the panel
+        var dfnPanel = document.querySelector(".dfn-panel[data-for='" + el.id + "']");
+        if(dfnPanel) {
+            dfnPanel.classList.add("on");
+            var rect = el.getBoundingClientRect();
+            dfnPanel.style.left = window.scrollX + rect.right + 5 + "px";
+            dfnPanel.style.top = window.scrollY + rect.top + "px";
+            var panelRect = dfnPanel.getBoundingClientRect();
+            var panelWidth = panelRect.right - panelRect.left;
+            if(panelRect.right > document.body.scrollWidth && (rect.left - (panelWidth + 5)) > 0) {
+                // Reposition, because the panel is overflowing
+                dfnPanel.style.left = window.scrollX + rect.left - (panelWidth + 5) + "px";
+            }
+        } else {
+            console.log("Couldn't find .dfn-panel[data-for='" + el.id + "']");
+        }
+    } else if(target == "dfn-panel") {
+        // Switch it to "activated" state, which pins it.
+        el.classList.add("activated");
+        el.style.left = null;
+        el.style.top = null;
+    }
+
+});
+</script>
