@@ -3,6 +3,7 @@ Title: Geolocation Sensor
 Level: none
 Status: ED
 ED: https://w3c.github.io/geolocation-sensor/
+TR: https://www.w3.org/TR/geolocation-sensor/
 Shortname: geolocation-sensor
 Editor: Anssi Kostiainen 41974, Intel Corporation, https://intel.com/
 Group: dap
