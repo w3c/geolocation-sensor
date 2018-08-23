@@ -6,6 +6,7 @@ ED: https://w3c.github.io/geolocation-sensor/
 TR: https://www.w3.org/TR/geolocation-sensor/
 Shortname: geolocation-sensor
 Editor: Anssi Kostiainen 41974, Intel Corporation, https://intel.com/
+Editor: Thomas Steiner 44965, Google Inc., https://google.com/
 Group: dap
 Abstract:
   This specification defines the {{GeolocationSensor}} interface for obtaining
