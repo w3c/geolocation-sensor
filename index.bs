@@ -304,4 +304,10 @@ Abstract Operations {#abstract-operations}
 Acknowledgements {#acknowledgements}
 ================
 
-Tobie Langel for the work on Generic Sensor API and the geolocation.js polyfill.
+Thanks to Tobie Langel for the work on Generic Sensor API and the early geolocation.js polyfill.
+
+Thanks to Kenneth Rohde Christiansen for the geolocation-sensor.js polyfill and design proposals
+during the incubation phase.
+
+Special thanks to the Geolocation Working Group participants for their work on the Geolocation API
+from 2008 until 2017.
