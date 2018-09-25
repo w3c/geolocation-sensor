@@ -10,7 +10,7 @@ Editor: Thomas Steiner 44965, Google Inc., https://google.com/
 Group: dap
 Abstract:
   This specification defines the {{GeolocationSensor}} interface for obtaining
-  [=geolocation=] of the hosting device.
+  the [=geolocation=] of the hosting device.
 !Participate: <a href="https://github.com/w3c/geolocation-sensor">GitHub</a> (<a href="https://github.com/w3c/geolocation-sensor/issues/new">new issue</a>, <a href="https://github.com/w3c/geolocation-sensor/issues">open issues</a>)
 Indent: 2
 Markup Shorthands: markdown on
@@ -80,7 +80,7 @@ Examples {#examples}
 </p>
 <div class="example">
   <pre highlight="js">
-  let geo = new GeolocationSensor({ frequency: 1 });
+  const geo = new GeolocationSensor({ frequency: 1 });
   geo.start();
 
   geo.onreading = () => console.log(\`lat: ${geo.latitude}, long: ${geo.longitude}\`);
@@ -126,7 +126,7 @@ The <a>Geolocation Sensor</a> has an associated {{PermissionName}} which is
 A <dfn>latest geolocation reading</dfn> is a [=latest reading=] for a {{Sensor}} of
 <a>Geolocation Sensor</a> <a>sensor type</a>. It includes [=map/entries=] whose [=map/keys=]
 are "latitude", "longitude", "altitude", "accuracy", "altitudeAccuracy", "heading", "speed"
-and whose [=map/values=] contain device's [=geolocation=].
+and whose [=map/values=] contain the device's [=geolocation=].
 
 Note: Consider adding a visual of the standard coordinate system for the Earth.
 
@@ -180,7 +180,7 @@ Coordinates</a></code> interface of the Geolocation API are the following:
   (Geolocation API defines NaN as a valid value for heading, yet uses double as its type.)
   <li>Use <a href="https://heycam.github.io/webidl/#dfn-nullable-type">nullable</a> to allow
   all attributes to default to null. (Geolocation API does not provide synchronous means to
-  access these attributes, thus latitude, longitude and altitude are not nullable and "must be
+  access these attributes, thus latitude, longitude, and altitude are not nullable and "must be
   supported by all implementations".)
 </ul>
 </div>
@@ -219,7 +219,7 @@ The {{GeolocationSensor/read()}} method, when called, must run the following alg
 Implementations can reuse the same promise for multiple concurrent calls within the same browsing context if the arguments passed to {{read()}} are the same.
 </p>
 
-To <dfn>resolve geolocation promise</dfn> means to run the following steps:
+To <dfn>resolve a geolocation promise</dfn> means to run the following steps:
   1. Let |reading| be a {{GeolocationSensorReading}}.
   1. [=set/For each=] |key| → |value| of <a>latest geolocation reading</a>:
     1. [=map/Set=] |reading|[key] to |value|.
