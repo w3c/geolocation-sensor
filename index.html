@@ -1219,9 +1219,9 @@ Possible extra rowspan handling
       background-attachment: fixed;
     }
   </style>
-  <meta content="Bikeshed version 2f11ef4daf647c3cb228d2af493a42c493579ee0" name="generator">
+  <meta content="Bikeshed version 465b801be4d2d8d27ff05c8248268063a2ecc8e3" name="generator">
   <link href="https://www.w3.org/TR/geolocation-sensor/" rel="canonical">
-  <meta content="6d0107f4328af2d4a0d8e3bcc5e15584b3433bfa" name="document-revision">
+  <meta content="26bf7be4d136169a88354486fd899471c8c8882b" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1479,7 +1479,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Geolocation Sensor</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-08-30">30 August 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-09-26">26 September 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1505,7 +1505,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   </div>
   <div class="p-summary" data-fill-with="abstract">
    <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
-   <p>This specification defines the <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor">GeolocationSensor</a></code> interface for obtaining <a data-link-type="dfn" href="#geolocation" id="ref-for-geolocation">geolocation</a> of the hosting device.</p>
+   <p>This specification defines the <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor">GeolocationSensor</a></code> interface for obtaining
+
+the <a data-link-type="dfn" href="#geolocation" id="ref-for-geolocation">geolocation</a> of the hosting device.</p>
   </div>
   <h2 class="no-num no-toc no-ref heading settled" id="sotd"><span class="content">Status of this document</span></h2>
   <div data-fill-with="status">
@@ -1581,9 +1583,9 @@ information about the <a data-link-type="dfn" href="#geolocation" id="ref-for-ge
 on top of the existing Geolocation API.</p>
    <h2 class="heading settled" data-level="2" id="examples"><span class="secno">2. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
    <p> Get a new geolocation reading every second: </p>
-   <div class="example" id="example-d5ced9c4">
-    <a class="self-link" href="#example-d5ced9c4"></a> 
-<pre class="highlight"><c- a>let</c-> geo <c- o>=</c-> <c- k>new</c-> GeolocationSensor<c- p>({</c-> frequency<c- o>:</c-> <c- mi>1</c-> <c- p>});</c->
+   <div class="example" id="example-c8cdc575">
+    <a class="self-link" href="#example-c8cdc575"></a> 
+<pre class="highlight"><c- kr>const</c-> geo <c- o>=</c-> <c- k>new</c-> GeolocationSensor<c- p>({</c-> frequency<c- o>:</c-> <c- mi>1</c-> <c- p>});</c->
 geo<c- p>.</c->start<c- p>();</c->
 
 geo<c- p>.</c->onreading <c- o>=</c-> <c- p>()</c-> <c- p>=></c-> console<c- p>.</c->log<c- p>(</c-><c- sb>`lat: </c-><c- si>${</c->geo<c- p>.</c->latitude<c- si>}</c-><c- sb>, long: </c-><c- si>${</c->geo<c- p>.</c->longitude<c- si>}</c-><c- sb>`</c-><c- p>);</c->
@@ -1611,7 +1613,7 @@ to those sources.</p>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="geolocation-sensor">Geolocation Sensor</dfn> <a data-link-type="dfn" href="https://w3c.github.io/sensors#sensor-type" id="ref-for-sensor-type">sensor type</a>’s associated <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor①">Sensor</a></code> subclass is the <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor③">GeolocationSensor</a></code> class.</p>
    <p>The <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor">Geolocation Sensor</a> has an associated <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/permissions/#enumdef-permissionname" id="ref-for-enumdef-permissionname">PermissionName</a></code> which is <a class="idl-code" data-link-type="enum-value" href="https://w3c.github.io/permissions/#dom-permissionname-geolocation" id="ref-for-dom-permissionname-geolocation">"geolocation"</a>.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="latest-geolocation-reading">latest geolocation reading</dfn> is a <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading" id="ref-for-latest-reading">latest reading</a> for a <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor②">Sensor</a></code> of <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor①">Geolocation Sensor</a> <a data-link-type="dfn" href="https://w3c.github.io/sensors#sensor-type" id="ref-for-sensor-type①">sensor type</a>. It includes <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry" id="ref-for-map-entry">entries</a> whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-key" id="ref-for-map-key">keys</a> are "latitude", "longitude", "altitude", "accuracy", "altitudeAccuracy", "heading", "speed"
-and whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-value" id="ref-for-map-value">values</a> contain device’s <a data-link-type="dfn" href="#geolocation" id="ref-for-geolocation③">geolocation</a>.</p>
+and whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-value" id="ref-for-map-value">values</a> contain the device’s <a data-link-type="dfn" href="#geolocation" id="ref-for-geolocation③">geolocation</a>.</p>
    <p class="note" role="note"><span>Note:</span> Consider adding a visual of the standard coordinate system for the Earth.</p>
    <h2 class="heading settled" data-level="5" id="api"><span class="secno">5. </span><span class="content">API</span><a class="self-link" href="#api"></a></h2>
    <h3 class="heading settled" data-level="5.1" id="geolocationsensor-interface"><span class="secno">5.1. </span><span class="content">The GeolocationSensor Interface</span><a class="self-link" href="#geolocationsensor-interface"></a></h3>
@@ -1654,7 +1656,7 @@ and whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-value
   (Geolocation API defines NaN as a valid value for heading, yet uses double as its type.) 
      <li>Use <a href="https://heycam.github.io/webidl/#dfn-nullable-type">nullable</a> to allow
   all attributes to default to null. (Geolocation API does not provide synchronous means to
-  access these attributes, thus latitude, longitude and altitude are not nullable and "must be
+  access these attributes, thus latitude, longitude, and altitude are not nullable and "must be
   supported by all implementations".) 
     </ul>
    </div>
@@ -1697,14 +1699,14 @@ and whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-value
        <li data-md>
         <p>If <a data-link-type="dfn" href="https://w3c.github.io/sensors/#notify-error" id="ref-for-notify-error">notify error</a> is invoked with <var>geo</var>, invoke <var>geo</var>.<code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#dom-sensor-stop" id="ref-for-dom-sensor-stop①">stop()</a></code>, and reject <var>p</var> with the <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#idl-DOMException" id="ref-for-idl-DOMException④">DOMException</a></code> passed as input to <a data-link-type="dfn" href="https://w3c.github.io/sensors/#notify-error" id="ref-for-notify-error①">notify error</a>.</p>
        <li data-md>
-        <p>If <a data-link-type="dfn" href="https://w3c.github.io/sensors/#notify-new-reading" id="ref-for-notify-new-reading">notify new reading</a> is invoked with <var>geo</var>, then <a data-link-type="dfn" href="#resolve-geolocation-promise" id="ref-for-resolve-geolocation-promise">resolve geolocation promise</a> with <var>geo</var> and <var>p</var>.</p>
+        <p>If <a data-link-type="dfn" href="https://w3c.github.io/sensors/#notify-new-reading" id="ref-for-notify-new-reading">notify new reading</a> is invoked with <var>geo</var>, then <a data-link-type="dfn">resolve geolocation promise</a> with <var>geo</var> and <var>p</var>.</p>
       </ol>
      <li data-md>
       <p>Return <var>p</var>.</p>
     </ol>
    </div>
    <p class="note" role="note"> Implementations can reuse the same promise for multiple concurrent calls within the same browsing context if the arguments passed to <code class="idl"><a data-link-type="idl" href="#dom-geolocationsensor-read" id="ref-for-dom-geolocationsensor-read①">read()</a></code> are the same. </p>
-   <p>To <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="resolve-geolocation-promise">resolve geolocation promise</dfn> means to run the following steps:</p>
+   <p>To <dfn data-dfn-type="dfn" data-noexport id="resolve-a-geolocation-promise">resolve a geolocation promise<a class="self-link" href="#resolve-a-geolocation-promise"></a></dfn> means to run the following steps:</p>
    <ol>
     <li data-md>
      <p>Let <var>reading</var> be a <code class="idl"><a data-link-type="idl" href="#dictdef-geolocationsensorreading" id="ref-for-dictdef-geolocationsensorreading①">GeolocationSensorReading</a></code>.</p>
@@ -1838,7 +1840,7 @@ from 2008 until 2017.</p>
    <li><a href="#dom-geolocationsensor-read">read()</a><span>, in §5.1</span>
    <li><a href="#dictdef-readoptions">ReadOptions</a><span>, in §5.1</span>
    <li><a href="#dom-geolocationsensor-read">read(readOptions)</a><span>, in §5.1</span>
-   <li><a href="#resolve-geolocation-promise">resolve geolocation promise</a><span>, in §5.1.1</span>
+   <li><a href="#resolve-a-geolocation-promise">resolve a geolocation promise</a><span>, in §5.1.1</span>
    <li><a href="#dom-readoptions-signal">signal</a><span>, in §5.1</span>
    <li>
     speed
@@ -2285,12 +2287,6 @@ from 2008 until 2017.</p>
    <ul>
     <li><a href="#ref-for-dictdef-geolocationsensorreading">5.1. The GeolocationSensor Interface</a>
     <li><a href="#ref-for-dictdef-geolocationsensorreading①">5.1.1. GeolocationSensor.read()</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="resolve-geolocation-promise">
-   <b><a href="#resolve-geolocation-promise">#resolve-geolocation-promise</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-resolve-geolocation-promise">5.1.1. GeolocationSensor.read()</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="construct-a-geolocation-sensor-object">
