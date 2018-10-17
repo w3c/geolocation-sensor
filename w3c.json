@@ -1,5 +1,8 @@
- {
-    "group":      ["43696"]
-,   "contacts":   ["xfq"]
-,   "policy":     "open"
+{
+  "group": 43696,
+  "contacts": [
+    "xfq"
+  ],
+  "policy": "open",
+  "repo-type": "rec-track"
 }
