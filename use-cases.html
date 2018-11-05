@@ -17,6 +17,8 @@
         editors: [
           { name: "Anssi Kostiainen", company: "Intel",
                   companyURL: "http://www.intel.com/" },
+          { name: "Marijn Kruisselbrink", company: "Google",
+                  companyURL: "https://www.google.com/" },
           { name: "Thomas Steiner", company: "Google",
                   companyURL: "https://www.google.com/" },
         ],
@@ -49,7 +51,7 @@
     <section id="abstract">
       <p>
         This document provides a collection of use cases and usage scenarios for
-        web pages and applications using Geolocation.
+        web pages and applications that rely on Geolocation Sensor data.
       </p>
     </section>
     <section id="sotd">
@@ -60,54 +62,57 @@
         <a href="https://github.com/w3c/geolocation-sensor/issues">https://github.com/w3c/geolocation-sensor/issues</a>.
       </p>
     </section>
-    <section>
+    <section id="terminology" class="informative">
       <h2>Terminology</h2>
       <p>
-        Use cases can roughly be grouped in four categories:
+        The mentioned use cases can roughly be grouped into four categories:
       </p>
       <ul>
         <li><strong>Foreground</strong> operations:
           <ul>
             <li>Getting a <strong>one-off geolocation update</strong>.</li>
-            <li>Getting <strong>continuous geolocation updates</strong> (aka. geotracking).</li>
+            <li>Getting <strong>continuous geolocation updates</strong> (<em>aka.</em> foreground geotracking).</li>
           </ul>
         </li>
         <li><strong>Background</strong> operations:
           <ul>
-            <li>Getting <strong>continuous geolocation updates</strong> (aka. geotracking).</li>
-            <li>Getting a <strong>one-off geolocation fence alert</strong> (aka. geofencing).</li>
+            <li>Getting <strong>continuous geolocation updates</strong> (<em>aka.</em> background geotracking).</li>
+            <li>Getting a <strong>one-off geolocation fence alert</strong> (<em>aka.</em> background geofencing).</li>
           </ul>
         </li>
       </ul>
       <p>
-        Core constraints when obtaining gelocation are <strong>accuracy</strong>
+        Core constraints when obtaining the gelocation are <strong>accuracy</strong>
         (<em>how close to the actual position of the user is the determined position</em>) and
         <strong>latency</strong> (<em>how long does the user want to wait for a result</em>).
         Both are tradeoffs: one can trade faster results for lower accuracy and vice versa.
-        A common theme is to first obtain a rough estimation that then gets refined,
+      </p>
+      <p>
+        A common theme is to first obtain a rough estimation that then gets refined over time,
         for example based initially on surrounding WiFi signals (which is fast to obtain)
         and then eventually based on precise GPS data (which may take some time to find a signal).
       </p>
     </section>
-    <section class="informative">
+
+    <section id="use_cases" class="informative">
       <h2>Use Cases</h2>
       <p>
         In the following, we list use cases based on the previously defined categories.
+        We note that the categories are not mutually exclusive and that overlaps exist.
+        A task might start in the foreground, then continue in the background
+        (for example, while the user quickly responds to an incoming email), and then eventually
+        terminate in the foreground when the user multitasks back.
       </p>
 
-      <section>
+      <section id="usecases_oneoff_foreground">
         <h3>Foreground—One-off geolocation update</h3>
 
-        <section id="usecase_social_networking">
-          <h4>Location-tagged status updates in social networking applications</h4>
-
+        <section id="usecases_whereami">
+          <h4>Locate a user on a map</h4>
           <p>
-            A social network application allows its users to automatically tag their
-            status updates with location information. It does this by monitoring the
-            user's position with the Geolocation Sensor API. Each user can control the
-            granularity of the location information (e.g. city or neighborhood level)
-            that is shared with the other users. Any user can also track his network
-            of friends and get real-time updates about their current location.
+            A mapping application can use the Geolocation Sensor API data of a user
+            to locate them on the map, essentially responding to the question
+            "Where am I right now?"
           </p>
         </section>
 
@@ -117,14 +122,14 @@
             Someone visiting a foreign city could access a web application that
             allows users to search or browse through a database of tourist
             attractions. Using the Geolocation Sensor API, the web application has access to
-            the user's approximate position and it is therefore able to rank the
+            the user's approximate current position and is therefore able to rank the
             search results by proximity to the user's location.
           </p>
         </section>
 
       </section>
 
-      <section>
+      <section id="usecases_continuous_foreground">
         <h3>Foreground—Continuous geolocation updates</h3>
 
         <section id="usecase_local_info">
@@ -142,7 +147,7 @@
           <h4>Alerts when points of interest are in the user's vicinity</h4>
 
           <p>
-            A tour-guide web application can use the Geolocation Sensor API to monitor the
+            A tour guide web application can use the Geolocation Sensor API to monitor the
             user's position and trigger visual or audio notifications when interesting
             places are in the vicinity. An online task management system can trigger
             reminders when the user is in the proximity of landmarks that are
@@ -154,18 +159,33 @@
           <h4>Show the user's position on a map</h4>
 
           <p>
-            A user finds themselves in an unfamiliar city area. They want to check their
+            A user finds themselves in an unfamiliar area. They want to check their
             position so they use their handheld device to navigate to a web-based
-            mapping application that can pinpoint their exact location on the city map
+            mapping application that can pinpoint their exact location on the map
             using the Geolocation Sensor API. They then ask the web application to provide
-            driving directions from their current position to their desired destination.
+            driving directions from their current position to their desired destination,
+            essentially responding to the question "Where am I going?".
           </p>
         </section>
 
       </section>
 
-      <section>
+      <section id="usecases_continuous_background">
         <h3>Background—Continuous geolocation updates</h3>
+
+        <section id="usecase_social_networking">
+          <h4>Location-tagged status updates in social networking applications</h4>
+
+          <p>
+            A social networking application allows its users to automatically tag their
+            status updates with location information. It does this by monitoring the
+            user's position with the Geolocation Sensor API. Each user can control the
+            granularity of the location information (e.g., city or neighborhood level)
+            that is shared with the other users. Any user can also see their network
+            of friends and get real-time updates about their current location,
+            granted they have opted in to their location data being shared.
+          </p>
+        </section>
 
         <section id="usecase_turn_by_turn">
           <h4>Turn-by-turn route navigation</h4>
@@ -184,7 +204,7 @@
           </p>
         </section>
 
-        <section>
+        <section id="usecase_sports_tracking">
           <h4>Tracking sports activity</h4>
 
           <p>
@@ -195,44 +215,54 @@
           </p>
         </section>
 
-        <section id="usecase_content_annotation">
-          <h4>Annotating content with location information</h4>
-
-          <p>
-            A group of friends is hiking through the Scottish highlands. Some of
-            them write short notes and take pictures at various points throughout the
-            journey and store them using a web application that can work offline on
-            their handheld devices. Whenever they add new content, the application
-            automatically tags it with location data from the Geolocation Sensor API (which,
-            in turn, uses the on-board GPS device). Every time they reach a town or a
-            village, and they are again within network coverage, the application
-            automatically uploads their notes and pictures to a popular blogging website,
-            which uses the geolocation data to construct links that point to a
-            mapping service. Users who follow the group's trip can click on these
-            links to see a satellite view of the area where the notes were written and
-            the pictures were taken. Another example is a life blog where a user
-            creates content (e.g., images, video, audio) that records their every day
-            experiences. This content can be automatically annotated with information
-            such as time, geographic position or even the user's emotional state at
-            the time of the recording.
-          </p>
-        </section>
-
-        <section>
+        <section id="usecase_real_estate">
           <h4>Real estate search</h4>
           <p>
             A web application on a handheld device can notify a user of interesting
             available properties in a neighborhood they are passing by where the property
             fits the user's previously specified search criteria, for example,
-            3 bedroom apartments with balcony.
+            3&nbsp;bedroom apartments with balcony.
           </p>
         </section>
       </section>
 
-      <section>
+      <section id="usecases_geofencing">
         <h3>Background—One-off geolocation fence alert</h3>
 
-        <section>
+        <section id="usecase_reminder">
+          <h4>Reminder and to-do applications</h4>
+          <p>
+            Reminder and to-do web applications can use a geofence to remind the
+            user to do something when they cross it, for example, to buy milk
+            when they are near the supermarket.
+          </p>
+        </section>
+
+        <section id="usecase_travel">
+          <h4>Travel applications</h4>
+          <p>
+            Travel applications can show venue specific data like WiFi passwords,
+            the user's booking confirmation etc. only within geofence boundaries.
+          </p>
+        </section>
+
+        <section id="usecase_ticketing">
+          <h4>Ticketing or booking confirmations</h4>
+          <p>
+            Ticketing or booking applications can bring up a ticket notification with a QR
+            or bar code once the user is near the venue of a concert or sports event
+            or when they reach their rental car counter or similar.
+          </p>
+        </section>
+
+        <section id="usecase_ride_share">
+          <h4>Ride share applications</h4>
+          <p>
+            Users can be informed if their designated driver reaches a pre-defined pickup point.
+          </p>
+        </section>
+
+        <section id="usecase_retail">
           <h4>Retail special offers</h4>
           <p>
             Given their previous consent, a user with a retailer's web application
@@ -244,44 +274,30 @@
           </p>
         </section>
 
-        <section>
-          <h4>Reminder and to-do applications</h4>
-          <p>
-            Reminder and to-do web applications can use a geofence to remind the
-            user to do something when they cross it, for example, to buy milk
-            when they are near the supermarket.
-          </p>
-        </section>
-
-        <section>
-          <h4>Travel applications</h4>
-          <p>
-            Travel applications can show venue specific data like WiFi passwords,
-            the user's booking confirmation etc. only within geofence boundaries.
-          </p>
-        </section>
-
-        <section>
-          <h4>Ticketing or booking confirmations</h4>
-          <p>
-            Ticketing or booking applications can bring up a ticket notification with a QR
-            or bar code once the user is near the venue of a concert or sports event
-            or when they reach their rental car counter or similar.
-          </p>
-        </section>
-
-        <section>
-          <h4>Ride share applications</h4>
-          <p>
-            Users can be informed if their designated driver reaches a pre-defined pickup point.
-          </p>
-        </section>
       </section>
     </section>
 
     <section id="acknowledgments">
       <h2>Acknowledgments</h2>
-      <p></p>
+      <p>
+        The use cases mentioned in this document are partly based on previous work in
+        <a href="#ref-geolocation_api">[GEOLOCATION]</a>.
+      </p>
     </section>
+
+    <section id="references">
+      <h2 class="no-num">References</h2>
+      <dl>
+        <dt>
+          <a id="ref-geolocation_api">[GEOLOCATION]</a>
+        </dt>
+        <dd>
+          <cite><a href="https://www.w3.org/TR/geolocation-API/">Geolocation API Specification 2nd Edition</a></cite>,
+          W3C Recommendation 8 November 2016 (GitHub reference added 31 January 2018).
+          Andrei Popescu, Editor. World Wide Web Consortium. See https://www.w3.org/TR/geolocation-API/.
+        </dd>
+      </dl>
+    </section>
+
   </body>
 </html>
