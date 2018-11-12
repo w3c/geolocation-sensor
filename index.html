@@ -1219,9 +1219,9 @@ Possible extra rowspan handling
       background-attachment: fixed;
     }
   </style>
-  <meta content="Bikeshed version 018be3f805d3272ce699a232398d6e3902d1ea8d" name="generator">
+  <meta content="Bikeshed version 36c8e210b03bee5c4f253cec43379cce76c8dd3f" name="generator">
   <link href="https://www.w3.org/TR/geolocation-sensor/" rel="canonical">
-  <meta content="e6318bcdfc74f6b84792c743fbdb85aae0687963" name="document-revision">
+  <meta content="01ca2abd3fc140e9c1efd61a339ab96b6a1cec19" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1479,7 +1479,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Geolocation Sensor</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-10-17">17 October 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-11-12">12 November 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1491,6 +1491,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <dt class="editor">Editors:
      <dd class="editor p-author h-card vcard" data-editor-id="41974"><a class="p-name fn u-url url" href="https://intel.com/">Anssi Kostiainen</a> (<span class="p-org org">Intel Corporation</span>)
      <dd class="editor p-author h-card vcard" data-editor-id="44965"><a class="p-name fn u-url url" href="https://google.com/">Thomas Steiner</a> (<span class="p-org org">Google Inc.</span>)
+     <dd class="editor p-author h-card vcard"><a class="p-name fn u-url url" href="https://google.com/">Marijn Kruisselbrink</a> (<span class="p-org org">Google Inc.</span>)
      <dt>Participate:
      <dd><a href="https://github.com/w3c/geolocation-sensor">GitHub</a> (<a href="https://github.com/w3c/geolocation-sensor/issues/new">new issue</a>, <a href="https://github.com/w3c/geolocation-sensor/issues">open issues</a>)
      <dt>Tests:
@@ -1559,7 +1560,42 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <ol class="toc">
       <li><a href="#construct-a-geolocation-sensor-object"><span class="secno">6.1</span> <span class="content">Construct a geolocation sensor object</span></a>
      </ol>
-    <li><a href="#acknowledgements"><span class="secno">7</span> <span class="content">Acknowledgements</span></a>
+    <li>
+     <a href="#use-cases"><span class="secno">7</span> <span class="content">Use Cases</span></a>
+     <ol class="toc">
+      <li><a href="#use-cases-categorization"><span class="secno">7.1</span> <span class="content">Categorization of use cases</span></a>
+      <li>
+       <a href="#use-cases-foreground-one-off"><span class="secno">7.2</span> <span class="content">Foreground—One-off geolocation update</span></a>
+       <ol class="toc">
+        <li><a href="#use-case-locate-a-user-on-a-map"><span class="secno">7.2.1</span> <span class="content">Locate a user on a map</span></a>
+        <li><a href="#use-case-find-points-of-interest-in-the-users-area"><span class="secno">7.2.2</span> <span class="content">Find points of interest in the user’s area</span></a>
+       </ol>
+      <li>
+       <a href="#use-cases-foreground-continuous"><span class="secno">7.3</span> <span class="content">Foreground—Continuous geolocation updates</span></a>
+       <ol class="toc">
+        <li><a href="#use-case-up-to-date-local-information"><span class="secno">7.3.1</span> <span class="content">Up-to-date local information</span></a>
+        <li><a href="#use-case-alerts-when-points-of-interest-are-in-the-users-vicinity"><span class="secno">7.3.2</span> <span class="content">Alerts when points of interest are in the user’s vicinity</span></a>
+        <li><a href="#use-case-show-the-users-position-on-a-map"><span class="secno">7.3.3</span> <span class="content">Show the user’s position on a map</span></a>
+       </ol>
+      <li>
+       <a href="#use-cases-background-continuous"><span class="secno">7.4</span> <span class="content">Background—Continuous geolocation updates</span></a>
+       <ol class="toc">
+        <li><a href="#use-case-location-tagged-status-updates-in-social-networking-applications"><span class="secno">7.4.1</span> <span class="content">Location-tagged status updates in social networking applications</span></a>
+        <li><a href="#use-case-turn-by-turn-route-navigation"><span class="secno">7.4.2</span> <span class="content">Turn-by-turn route navigation</span></a>
+        <li><a href="#use-case-tracking-sports-activity"><span class="secno">7.4.3</span> <span class="content">Tracking sports activity</span></a>
+        <li><a href="#use-case-real-estate-search"><span class="secno">7.4.4</span> <span class="content">Real estate search</span></a>
+       </ol>
+      <li>
+       <a href="#use-cases-background-geofence"><span class="secno">7.5</span> <span class="content">Background—One-off geolocation fence alert</span></a>
+       <ol class="toc">
+        <li><a href="#use-case-reminder-and-todo-applications"><span class="secno">7.5.1</span> <span class="content">Reminder and to-do applications</span></a>
+        <li><a href="#use-case-travel-applications"><span class="secno">7.5.2</span> <span class="content">Travel applications</span></a>
+        <li><a href="#use-case-ticketing-or-booking-confirmations"><span class="secno">7.5.3</span> <span class="content">Ticketing or booking confirmations</span></a>
+        <li><a href="#use-case-ride-share-applications"><span class="secno">7.5.4</span> <span class="content">Ride share applications</span></a>
+        <li><a href="#use-case-retail-special-offers"><span class="secno">7.5.5</span> <span class="content">Retail special offers</span></a>
+       </ol>
+     </ol>
+    <li><a href="#acknowledgements"><span class="secno">8</span> <span class="content">Acknowledgements</span></a>
     <li>
      <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
      <ol class="toc">
@@ -1781,7 +1817,111 @@ per second.</p>
       <p>Return <var>geo</var>.</p>
     </ol>
    </div>
-   <h2 class="heading settled" data-level="7" id="acknowledgements"><span class="secno">7. </span><span class="content">Acknowledgements</span><a class="self-link" href="#acknowledgements"></a></h2>
+   <h2 class="heading settled" data-level="7" id="use-cases"><span class="secno">7. </span><span class="content">Use Cases</span><a class="self-link" href="#use-cases"></a></h2>
+   <h3 class="heading settled" data-level="7.1" id="use-cases-categorization"><span class="secno">7.1. </span><span class="content">Categorization of use cases</span><a class="self-link" href="#use-cases-categorization"></a></h3>
+   <p>The mentioned use cases can roughly be grouped into four categories:</p>
+   <ul>
+    <li data-md>
+     <p><strong>Foreground</strong> operations:</p>
+     <ul>
+      <li data-md>
+       <p>Getting a <strong>one-off geolocation update</strong>.</p>
+      <li data-md>
+       <p>Getting <strong>continuous geolocation updates</strong> (<em>aka.</em> foreground geotracking).</p>
+     </ul>
+    <li data-md>
+     <p><strong>Background</strong> operations:</p>
+     <ul>
+      <li data-md>
+       <p>Getting <strong>continuous geolocation updates</strong> (<em>aka.</em> background geotracking).</p>
+      <li data-md>
+       <p>Getting a <strong>one-off geolocation fence alert</strong> (<em>aka.</em> background geofencing).</p>
+     </ul>
+   </ul>
+   <p class="note" role="note"><span>Note:</span> Only the <strong>foreground operations</strong> were possible with <a data-link-type="biblio" href="#biblio-geolocation-api">[GEOLOCATION-API]</a>,
+the <strong>background operations</strong> are completely novel.</p>
+   <p>Core constraints when obtaining the gelocation are <strong>accuracy</strong> (<em>how close to the
+actual position of the user is the determined position</em>) and <strong>latency</strong> (<em>how long does the user want to wait for a result</em>). Both are tradeoffs:
+one can trade faster results for lower accuracy and vice versa.</p>
+   <p>A common theme is to first obtain a rough estimation that then gets refined over time,
+for example based initially on surrounding WiFi signals (which is fast to obtain)
+and then eventually based on precise GPS data (which may take some time to find a signal).</p>
+   <p>In the following, we list use cases based on the previously defined categories.</p>
+   <p class="note" role="note"><span>Note:</span> The categories are not mutually exclusive and overlaps exist.
+A task might start in the foreground, then continue in the background (for example,
+while the user quickly responds to an incoming email),
+and then eventually terminate in the foreground when the user multitasks back.</p>
+   <h3 class="heading settled" data-level="7.2" id="use-cases-foreground-one-off"><span class="secno">7.2. </span><span class="content">Foreground—One-off geolocation update</span><a class="self-link" href="#use-cases-foreground-one-off"></a></h3>
+   <h4 class="heading settled" data-level="7.2.1" id="use-case-locate-a-user-on-a-map"><span class="secno">7.2.1. </span><span class="content">Locate a user on a map</span><a class="self-link" href="#use-case-locate-a-user-on-a-map"></a></h4>
+   <p>A mapping application can use the Geolocation Sensor API data of a user to locate them
+on the map, essentially responding to the question "Where am I right now?"</p>
+   <h4 class="heading settled" data-level="7.2.2" id="use-case-find-points-of-interest-in-the-users-area"><span class="secno">7.2.2. </span><span class="content">Find points of interest in the user’s area</span><a class="self-link" href="#use-case-find-points-of-interest-in-the-users-area"></a></h4>
+   <p>Someone visiting a foreign city could access a web application that allows users
+to search or browse through a database of tourist attractions. Using the Geolocation Sensor API,
+the web application has access to the user’s approximate current position
+and is therefore able to rank the search results by proximity to the user’s location.</p>
+   <h3 class="heading settled" data-level="7.3" id="use-cases-foreground-continuous"><span class="secno">7.3. </span><span class="content">Foreground—Continuous geolocation updates</span><a class="self-link" href="#use-cases-foreground-continuous"></a></h3>
+   <h4 class="heading settled" data-level="7.3.1" id="use-case-up-to-date-local-information"><span class="secno">7.3.1. </span><span class="content">Up-to-date local information</span><a class="self-link" href="#use-case-up-to-date-local-information"></a></h4>
+   <p>A widget-like web application that shows the weather or news that are relevant
+to the user’s current area can use the Geolocation Sensor API to register for location updates.
+If the user’s position changes, the widget can adapt the content accordingly.</p>
+   <h4 class="heading settled" data-level="7.3.2" id="use-case-alerts-when-points-of-interest-are-in-the-users-vicinity"><span class="secno">7.3.2. </span><span class="content">Alerts when points of interest are in the user’s vicinity</span><a class="self-link" href="#use-case-alerts-when-points-of-interest-are-in-the-users-vicinity"></a></h4>
+   <p>A tour guide web application can use the Geolocation Sensor API to monitor the user’s position
+and trigger visual or audio notifications when interesting places are in the vicinity.
+An online task management system can trigger reminders when the user is in the proximity
+of landmarks that are associated with certain tasks.
+This use case assumes active usage of the application in the foreground.</p>
+   <h4 class="heading settled" data-level="7.3.3" id="use-case-show-the-users-position-on-a-map"><span class="secno">7.3.3. </span><span class="content">Show the user’s position on a map</span><a class="self-link" href="#use-case-show-the-users-position-on-a-map"></a></h4>
+   <p>A user finds themselves in an unfamiliar area. They want to check their position
+so they use their handheld device to navigate to a web-based mapping application
+that can pinpoint their exact location on the map using the Geolocation Sensor API.
+They then ask the web application to provide driving directions from their current position
+to their desired destination, essentially responding to the question "Where am I going?".</p>
+   <h3 class="heading settled" data-level="7.4" id="use-cases-background-continuous"><span class="secno">7.4. </span><span class="content">Background—Continuous geolocation updates</span><a class="self-link" href="#use-cases-background-continuous"></a></h3>
+   <h4 class="heading settled" data-level="7.4.1" id="use-case-location-tagged-status-updates-in-social-networking-applications"><span class="secno">7.4.1. </span><span class="content">Location-tagged status updates in social networking applications</span><a class="self-link" href="#use-case-location-tagged-status-updates-in-social-networking-applications"></a></h4>
+   <p>A social networking application allows its users to automatically tag their status updates with
+location information. It does this by monitoring the user’s position with the Geolocation Sensor API.
+Each user can control the granularity of the location information (e.g., city or neighborhood level)
+that is shared with the other users. Any user can also see their network of friends
+and get real-time updates about their current location,
+granted they have opted in to their location data being shared.
+This use case intentionally conflates foreground location tagging and background location sharing.</p>
+   <h4 class="heading settled" data-level="7.4.2" id="use-case-turn-by-turn-route-navigation"><span class="secno">7.4.2. </span><span class="content">Turn-by-turn route navigation</span><a class="self-link" href="#use-case-turn-by-turn-route-navigation"></a></h4>
+   <p>A mapping application can help the user navigate along a routeby providing detailed turn-by-turn directions.
+The application does this by registering with the Geolocation Sensor API to receive
+repeated location updates of the user’s position. These updates are delivered as soon as the implementing
+user agent determines that the position of the user has changed, which allows the application
+to anticipate any changes of direction that the user might need to do.
+The application can be in the foreground, but likewise can be backgrounded, for example,
+when the user turns their device off to save battery on a long highway route section without side roads.</p>
+   <h4 class="heading settled" data-level="7.4.3" id="use-case-tracking-sports-activity"><span class="secno">7.4.3. </span><span class="content">Tracking sports activity</span><a class="self-link" href="#use-case-tracking-sports-activity"></a></h4>
+   <p>A web application can track a user’s sports activity, for example, a marathon run or a bicycle race.
+Therefore, the application does not need to be on the screen, but would be backgrounded
+while the user performs their activity, maybe with their handheld device strapped to their arm.</p>
+   <h4 class="heading settled" data-level="7.4.4" id="use-case-real-estate-search"><span class="secno">7.4.4. </span><span class="content">Real estate search</span><a class="self-link" href="#use-case-real-estate-search"></a></h4>
+   <p>A web application on a handheld device can notify a user of interesting available properties
+in a neighborhood they are passing by where the property fits the user’s previously specified search criteria,
+for example, 3 bedroom apartments with balcony.
+This is based on the assumption that the number of possible matches is high,
+that is, impossible to realize with geofences as the amount of required geofences would be too high.</p>
+   <h3 class="heading settled" data-level="7.5" id="use-cases-background-geofence"><span class="secno">7.5. </span><span class="content">Background—One-off geolocation fence alert</span><a class="self-link" href="#use-cases-background-geofence"></a></h3>
+   <h4 class="heading settled" data-level="7.5.1" id="use-case-reminder-and-todo-applications"><span class="secno">7.5.1. </span><span class="content">Reminder and to-do applications</span><a class="self-link" href="#use-case-reminder-and-todo-applications"></a></h4>
+   <p>Reminder and to-do web applications can use a geofence to remind the user to do something when they cross it,
+for example, to buy milk when they are near the supermarket.</p>
+   <h4 class="heading settled" data-level="7.5.2" id="use-case-travel-applications"><span class="secno">7.5.2. </span><span class="content">Travel applications</span><a class="self-link" href="#use-case-travel-applications"></a></h4>
+   <p>Travel applications can show venue specific data like WiFi passwords,
+the user’s booking confirmation etc. only within geofence boundaries.</p>
+   <h4 class="heading settled" data-level="7.5.3" id="use-case-ticketing-or-booking-confirmations"><span class="secno">7.5.3. </span><span class="content">Ticketing or booking confirmations</span><a class="self-link" href="#use-case-ticketing-or-booking-confirmations"></a></h4>
+   <p>Ticketing or booking applications can bring up a ticket notification with a QR or bar code
+once the user is near the venue of a concert or sports event or when they reach their rental car counter or similar.</p>
+   <h4 class="heading settled" data-level="7.5.4" id="use-case-ride-share-applications"><span class="secno">7.5.4. </span><span class="content">Ride share applications</span><a class="self-link" href="#use-case-ride-share-applications"></a></h4>
+   <p>Users can be informed if their designated driver reaches a pre-defined pickup point.</p>
+   <h4 class="heading settled" data-level="7.5.5" id="use-case-retail-special-offers"><span class="secno">7.5.5. </span><span class="content">Retail special offers</span><a class="self-link" href="#use-case-retail-special-offers"></a></h4>
+   <p>Given their previous consent, a user with a retailer’s web application installed on their handheld device
+can be alerted about special offers or location-based coupons when they are
+in vicinity of a physical presence of the retailer. Further, the in-store experience can be enriched,
+for example, the retailer can let the user know something they have looked at before is actually available for pick up nearby.</p>
+   <h2 class="heading settled" data-level="8" id="acknowledgements"><span class="secno">8. </span><span class="content">Acknowledgements</span><a class="self-link" href="#acknowledgements"></a></h2>
    <p>Thanks to Tobie Langel for the work on Generic Sensor API and the early geolocation.js polyfill.</p>
    <p>Thanks to Kenneth Rohde Christiansen for the geolocation-sensor.js polyfill and design proposals
 during the incubation phase.</p>
