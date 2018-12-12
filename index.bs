@@ -68,7 +68,7 @@ information about the [=geolocation=] of the hosting device.
 
 The feature set of the {{GeolocationSensor}} is similar to that of the Geolocation API
 [[GEOLOCATION-API]], but it is surfaced through a modern API that is consistent across
-<a href="https://www.w3.org/2009/dap/#sensors">contemporary sensor APIs</a>, improves
+<a href="https://www.w3.org/das/roadmap">contemporary sensor APIs</a>, improves
 <a>security and privacy</a>, and is <a>extensible</a>. The API aims to be
 <a href="https://github.com/kenchris/sensor-polyfills/blob/master/src/geolocation-sensor.js">polyfillable</a>
 (<a href="https://kenchris.github.io/sensor-polyfills/run-geolocation.html">example</a>)
