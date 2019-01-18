@@ -10,6 +10,7 @@ Editor: Anssi Kostiainen 41974, Intel Corporation, https://intel.com/
 Editor: Thomas Steiner 44965, Google Inc., https://google.com/
 Editor: Marijn Kruisselbrink, Google Inc., https://google.com/
 Group: dap
+Status Text: <p class="note" role="note"><span>Note:</span> The work on the Geolocation API [[GEOLOCATION-API]] has been concluded, and as such, any new feature development is happening in this Geolocation Sensor specification. The two specifications are expected to coexist.</p>
 Abstract:
   This specification defines the {{GeolocationSensor}} interface for obtaining
   the [=geolocation=] of the hosting device.
