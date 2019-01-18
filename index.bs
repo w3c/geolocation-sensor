@@ -213,7 +213,7 @@ The {{GeolocationSensor/read()}} method, when called, must run the following alg
       1. Reject |p| with an "{{AbortError!!exception}}" {{DOMException}} and abort these steps.
     1. Run these steps <a>in parallel</a>:
       1. If <a>notify error</a> is invoked with |geo|, invoke |geo|.{{Sensor/stop()}}, and reject |p| with the {{DOMException}} passed as input to <a>notify error</a>.
-      1. If <a>notify new reading</a> is invoked with |geo|, then <a>resolve geolocation promise</a> with |geo| and |p|.
+      1. If <a>notify new reading</a> is invoked with |geo|, then <a>resolve a geolocation promise</a> with |geo| and |p|.
     1. Return |p|.
 </div>
 
