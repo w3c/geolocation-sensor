@@ -1219,9 +1219,9 @@ Possible extra rowspan handling
       background-attachment: fixed;
     }
   </style>
-  <meta content="Bikeshed version a417ab651526c465cf0395da21ea73b0ffc2784e" name="generator">
+  <meta content="Bikeshed version 9c6ae748322940994300e90a77c34437364b40a6" name="generator">
   <link href="https://www.w3.org/TR/geolocation-sensor/" rel="canonical">
-  <meta content="1aea8d66e53382941583d13df2edc6c3344bc03e" name="document-revision">
+  <meta content="8fe584ab674420a22b92420535dc8ec1b05fa271" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1479,7 +1479,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Geolocation Sensor</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-12-13">13 December 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2019-01-18">18 January 2019</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1503,7 +1503,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </dl>
    </div>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2018 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">permissive document license</a> rules apply. </p>
+   <p class="copyright" data-fill-with="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2019 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">permissive document license</a> rules apply. </p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
@@ -1737,14 +1737,14 @@ and whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-value
        <li data-md>
         <p>If <a data-link-type="dfn" href="https://w3c.github.io/sensors/#notify-error" id="ref-for-notify-error">notify error</a> is invoked with <var>geo</var>, invoke <var>geo</var>.<code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#dom-sensor-stop" id="ref-for-dom-sensor-stop①">stop()</a></code>, and reject <var>p</var> with the <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#idl-DOMException" id="ref-for-idl-DOMException④">DOMException</a></code> passed as input to <a data-link-type="dfn" href="https://w3c.github.io/sensors/#notify-error" id="ref-for-notify-error①">notify error</a>.</p>
        <li data-md>
-        <p>If <a data-link-type="dfn" href="https://w3c.github.io/sensors/#notify-new-reading" id="ref-for-notify-new-reading">notify new reading</a> is invoked with <var>geo</var>, then <a data-link-type="dfn">resolve geolocation promise</a> with <var>geo</var> and <var>p</var>.</p>
+        <p>If <a data-link-type="dfn" href="https://w3c.github.io/sensors/#notify-new-reading" id="ref-for-notify-new-reading">notify new reading</a> is invoked with <var>geo</var>, then <a data-link-type="dfn" href="#resolve-a-geolocation-promise" id="ref-for-resolve-a-geolocation-promise">resolve a geolocation promise</a> with <var>geo</var> and <var>p</var>.</p>
       </ol>
      <li data-md>
       <p>Return <var>p</var>.</p>
     </ol>
    </div>
    <p class="note" role="note"> Implementations can reuse the same promise for multiple concurrent calls within the same browsing context if the arguments passed to <code class="idl"><a data-link-type="idl" href="#dom-geolocationsensor-read" id="ref-for-dom-geolocationsensor-read①">read()</a></code> are the same. </p>
-   <p>To <dfn data-dfn-type="dfn" data-noexport id="resolve-a-geolocation-promise">resolve a geolocation promise<a class="self-link" href="#resolve-a-geolocation-promise"></a></dfn> means to run the following steps:</p>
+   <p>To <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="resolve-a-geolocation-promise">resolve a geolocation promise</dfn> means to run the following steps:</p>
    <ol>
     <li data-md>
      <p>Let <var>reading</var> be a <code class="idl"><a data-link-type="idl" href="#dictdef-geolocationsensorreading" id="ref-for-dictdef-geolocationsensorreading①">GeolocationSensorReading</a></code>.</p>
@@ -2429,6 +2429,12 @@ from 2008 until 2017.</p>
    <ul>
     <li><a href="#ref-for-dictdef-geolocationsensorreading">5.1. The GeolocationSensor Interface</a>
     <li><a href="#ref-for-dictdef-geolocationsensorreading①">5.1.1. GeolocationSensor.read()</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="resolve-a-geolocation-promise">
+   <b><a href="#resolve-a-geolocation-promise">#resolve-a-geolocation-promise</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-resolve-a-geolocation-promise">5.1.1. GeolocationSensor.read()</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="construct-a-geolocation-sensor-object">
