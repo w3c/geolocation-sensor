@@ -38,6 +38,9 @@ urlPrefix: https://w3c.github.io/sensors; spec: GENERIC-SENSOR
     text: security and privacy; url: security-and-privacy
     text: extensible; url: extensibility
     text: check sensor policy-controlled features; url: check-sensor-policy-controlled-features
+    text: automation
+    text: mock sensor type
+    text: mock sensor reading values
 urlPrefix: https://dom.spec.whatwg.org; spec: DOM
   type: dfn
     text: add the following abort steps; url: abortsignal-add
@@ -303,6 +306,30 @@ Abstract Operations {#abstract-operations}
     1.  Invoke [=initialize a sensor object=] with |geo| and |options|.
     1.  Return |geo|.
 </div>
+
+Automation {#automation}
+==========
+This section extends the [=automation=] section defined in the Generic Sensor API [[GENERIC-SENSOR]]
+to provide mocking information about the [=geolocation=] of the hosting device for the purposes of
+testing a user agent's implementation of {{GeolocationSensor}} API.
+
+<h3 id="mock-geolocation-sensor-type">Mock Sensor Type</h3>
+
+The {{GeolocationSensor}} class has an associated [=mock sensor type=] which is
+<a for="MockSensorType" enum-value>"geolocation"</a>, its [=mock sensor reading values=]
+dictionary is defined as follows:
+
+<pre class="idl">
+  dictionary GeolocationReadingValues {
+    required double? latitude;
+    required double? longitude;
+    required double? altitude;
+    required double? accuracy;
+    required double? altitudeAccuracy;
+    required double? heading;
+    required double? speed;
+  };
+</pre>
 
 Use Cases {#use-cases}
 =========
