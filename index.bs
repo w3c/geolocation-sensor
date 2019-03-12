@@ -143,7 +143,9 @@ The GeolocationSensor Interface {#geolocationsensor-interface}
 -------------------------------
 
 <pre class="idl">
-  [Constructor(optional GeolocationSensorOptions options), SecureContext, Exposed=Window]
+  [Constructor(optional GeolocationSensorOptions options),
+   SecureContext,
+   Exposed=(DedicatedWorker, Window)]
   interface GeolocationSensor : Sensor {
     static Promise&lt;GeolocationSensorReading&gt; read(optional ReadOptions readOptions);
     readonly attribute unrestricted double? latitude;
