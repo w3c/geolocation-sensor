@@ -439,12 +439,12 @@ for example, 3 bedroom apartments with balcony.
 This is based on the assumption that the number of possible matches is high,
 that is, impossible to realize with geofences as the amount of required geofences would be too high.
 
-## Background—One-off geolocation fence alert ## {#use-cases-background-geofence}
-
 ### Cultural spaces ### {#use-case-cultural-spaces}
 
 In cultural spaces like museums, festivals, exhibitions, etc., web applications can react to where the user is
 or what they are seeing to cue different experiences and content.
+
+## Background—One-off geolocation fence alert ## {#use-cases-background-geofence}
 
 ### Reminder and to-do applications ### {#use-case-reminder-and-todo-applications}
 
