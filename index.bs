@@ -441,6 +441,11 @@ that is, impossible to realize with geofences as the amount of required geofence
 
 ## Background—One-off geolocation fence alert ## {#use-cases-background-geofence}
 
+### Cultural spaces ### {#use-case-cultural-spaces}
+
+In cultural spaces like museums, festivals, exhibitions, etc., web applications can react to where the user is
+or what they are seeing to cue different experiences and content.
+
 ### Reminder and to-do applications ### {#use-case-reminder-and-todo-applications}
 
 Reminder and to-do web applications can use a geofence to remind the user to do something when they cross it,
