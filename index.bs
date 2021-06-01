@@ -17,6 +17,7 @@ Abstract:
 Indent: 2
 Markup Shorthands: markdown on
 Inline Github Issues: true
+!Issue Tracking: <a href="https://github.com/w3c/geolocation-sensor/issues">Issues</a>
 !Tests: <a href="https://github.com/web-platform-tests/wpt/tree/master/geolocation-sensor">web-platform-tests</a>
 !Polyfills: <a href="https://github.com/kenchris/sensor-polyfills/blob/master/src/geolocation-sensor.js">geolocation-sensor.js</a><br><a href="https://github.com/w3c/sensors/blob/main/polyfills/geolocation.js">geolocation.js</a>
 Boilerplate: omit issues-index, omit conformance, omit feedback-header
