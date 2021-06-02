@@ -5,9 +5,9 @@
   <title>Geolocation Sensor</title>
   <meta content="ED" name="w3c-status">
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
-  <meta content="Bikeshed version 2c4431adb, updated Fri Feb 26 07:43:31 2021 -0800" name="generator">
+  <meta content="Bikeshed version 800b43329, updated Tue May 25 14:13:32 2021 -0700" name="generator">
   <link href="https://www.w3.org/TR/geolocation-sensor/" rel="canonical">
-  <meta content="17fa8b061f9468a977f34dc816d9b0a090830102" name="document-revision">
+  <meta content="27fb98f1473808b0483c16f7e6080ab7461d236b" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -114,9 +114,9 @@ pre .property::before, pre .property::after {
     --ins-bg: transparent;
 
     --a-normal-text: #034575;
-    --a-normal-underline: #707070;
+    --a-normal-underline: #bbb;
     --a-visited-text: var(--a-normal-text);
-    --a-visited-underline: #bbb;
+    --a-visited-underline: #707070;
     --a-hover-bg: rgba(75%, 75%, 75%, .25);
     --a-active-text: #c00;
     --a-active-underline: #c00;
@@ -579,23 +579,21 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Geolocation Sensor</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-03-01">1 March 2021</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-06-02">2 June 2021</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
      <dd><a class="u-url" href="https://w3c.github.io/geolocation-sensor/">https://w3c.github.io/geolocation-sensor/</a>
      <dt>Latest published version:
      <dd><a href="https://www.w3.org/TR/geolocation-sensor/">https://www.w3.org/TR/geolocation-sensor/</a>
-     <dt>Previous Versions:
-     <dd><a href="https://www.w3.org/TR/2018/WD-geolocation-sensor-20180821/" rel="prev">https://www.w3.org/TR/2018/WD-geolocation-sensor-20180821/</a>
      <dt>Feedback:
      <dd><span><a href="mailto:public-device-apis@w3.org?subject=%5Bgeolocation-sensor%5D%20YOUR%20TOPIC%20HERE">public-device-apis@w3.org</a> with subject line “<kbd>[geolocation-sensor] <i data-lt>… message topic …</i></kbd>” (<a href="https://lists.w3.org/Archives/Public/public-device-apis/" rel="discussion">archives</a>)</span>
+     <dt>Issue Tracking:
+     <dd><a href="https://github.com/w3c/geolocation-sensor/issues">Geolocation Sensor Issues Repository</a>
      <dt class="editor">Editors:
      <dd class="editor p-author h-card vcard" data-editor-id="41974"><a class="p-name fn u-url url" href="https://intel.com/">Anssi Kostiainen</a> (<span class="p-org org">Intel Corporation</span>)
      <dd class="editor p-author h-card vcard" data-editor-id="44965"><a class="p-name fn u-url url" href="https://google.com/">Thomas Steiner</a> (<span class="p-org org">Google Inc.</span>)
      <dd class="editor p-author h-card vcard"><a class="p-name fn u-url url" href="https://google.com/">Marijn Kruisselbrink</a> (<span class="p-org org">Google Inc.</span>)
-     <dt>Participate:
-     <dd><a href="https://github.com/w3c/geolocation-sensor">GitHub</a> (<a href="https://github.com/w3c/geolocation-sensor/issues/new">new issue</a>, <a href="https://github.com/w3c/geolocation-sensor/issues">open issues</a>)
      <dt>Tests:
      <dd><a href="https://github.com/web-platform-tests/wpt/tree/master/geolocation-sensor">web-platform-tests</a>
      <dt>Polyfills:
@@ -603,7 +601,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </dl>
    </div>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2021 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="https://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2021 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="https://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
@@ -632,7 +630,13 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 	An individual who has actual knowledge of a patent which the individual believes contains <a href="https://www.w3.org/Consortium/Patent-Policy-20200915/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy-20200915/#sec-Disclosure">section 6 of the W3C Patent Policy</a>. </p>
    <p> This document is governed by the <a href="https://www.w3.org/2020/Process-20200915/" id="w3c_process_revision">15 September 2020 W3C Process Document</a>. </p>
    <p></p>
-   <p class="note" role="note"><span>Note:</span> The work on the Geolocation API <a data-link-type="biblio" href="#biblio-geolocation-api">[GEOLOCATION-API]</a> has been concluded, and as such, any new feature development is happening in this Geolocation Sensor specification. The two specifications are expected to coexist.</p>
+   <p>The Devices and Sensors Working Group is pursuing modern security and privacy
+
+reviews for this specification in consideration of the amount of change in both
+this specification and in privacy and security review practices since the
+horizontal reviews took place. Similarly, the group is pursuing an update to the
+Technical Architecture Group review for this specification to account for the
+latest architectural review practices.</p>
   </div>
   <div data-fill-with="at-risk"></div>
   <nav data-fill-with="table-of-contents" id="toc">
