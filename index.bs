@@ -19,13 +19,15 @@ Status Text:
 Abstract:
   This specification defines the {{GeolocationSensor}} interface for obtaining
   the [=geolocation=] of the hosting device.
-!Participate: <a href="https://github.com/w3c/geolocation-sensor">GitHub</a> (<a href="https://github.com/w3c/geolocation-sensor/issues/new">new issue</a>, <a href="https://github.com/w3c/geolocation-sensor/issues">open issues</a>)
 Indent: 2
 Markup Shorthands: markdown on
 Inline Github Issues: true
+Repository: w3c/geolocation-sensor
+Issue Tracking: Geolocation Sensor Issues Repository https://github.com/w3c/geolocation-sensor/issues
 !Tests: <a href="https://github.com/web-platform-tests/wpt/tree/master/geolocation-sensor">web-platform-tests</a>
 !Polyfills: <a href="https://github.com/kenchris/sensor-polyfills/blob/master/src/geolocation-sensor.js">geolocation-sensor.js</a><br><a href="https://github.com/w3c/sensors/blob/main/polyfills/geolocation.js">geolocation.js</a>
-Boilerplate: omit issues-index, omit conformance, omit feedback-header
+Boilerplate: omit issues-index, omit conformance, omit feedback-header, repository-issue-tracking no
+Include MDN Panels: if possible
 Ignored Vars: p, geo, key
 Default Biblio Status: current
 Note class: note
