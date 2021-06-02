@@ -7,7 +7,7 @@ TR: https://www.w3.org/TR/geolocation-sensor/
 Shortname: geolocation-sensor
 Editor: Anssi Kostiainen 41974, Intel Corporation, https://intel.com/
 Editor: Thomas Steiner 44965, Google Inc., https://google.com/
-Editor: Marijn Kruisselbrink, Google Inc., https://google.com/
+Editor: Marijn Kruisselbrink 72440, Google Inc., https://google.com/
 Group: dap
 Status Text:
   The Devices and Sensors Working Group is pursuing modern security and privacy
