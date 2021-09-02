@@ -135,6 +135,8 @@ The <dfn>Geolocation Sensor</dfn> <a>sensor type</a>'s associated {{Sensor}} sub
 The <a>Geolocation Sensor</a> has an associated {{PermissionName}} which is
 <a for="PermissionName" enum-value>"geolocation"</a>.
 
+The <a>Geolocation Sensor</a> is a [=policy-controlled feature=] identified by the string "geolocation". Its [=default allowlist=] is `'self'`.
+
 A <dfn>latest geolocation reading</dfn> is a [=latest reading=] for a {{Sensor}} of
 <a>Geolocation Sensor</a> <a>sensor type</a>. It includes [=map/entries=] whose [=map/keys=]
 are "latitude", "longitude", "altitude", "accuracy", "altitudeAccuracy", "heading", "speed"
