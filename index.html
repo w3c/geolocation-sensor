@@ -7,7 +7,7 @@
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
   <meta content="Bikeshed version 4f053d00e, updated Tue Aug 10 14:13:32 2021 -0700" name="generator">
   <link href="https://www.w3.org/TR/geolocation-sensor/" rel="canonical">
-  <meta content="b93e9864e3648fd5322ca0a3151166025d224d6e" name="document-revision">
+  <meta content="c7905122de420b9bed6b745c5cd0362f1383a057" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -579,7 +579,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Geolocation Sensor</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-08-16">16 August 2021</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-09-02">2 September 2021</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -758,8 +758,9 @@ hosting device represented in geographic coordinates <a data-link-type="biblio" 
    <p class="note" role="note"><span>Note:</span> An implementation can use multiple location information sources to acquire <a data-link-type="dfn" href="#geolocation" id="ref-for-geolocation②">geolocation</a> information, and this specification is agnostic with respect
 to those sources.</p>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="geolocation-sensor">Geolocation Sensor</dfn> <a data-link-type="dfn" href="https://w3c.github.io/sensors#sensor-type" id="ref-for-sensor-type">sensor type</a>’s associated <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor①">Sensor</a></code> subclass is the <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor③">GeolocationSensor</a></code> class.</p>
-   <p>The <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor">Geolocation Sensor</a> has an associated <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/permissions/#enumdef-permissionname" id="ref-for-enumdef-permissionname">PermissionName</a></code> which is <a class="idl-code" data-link-type="enum-value" href="https://w3c.github.io/permissions/#dom-permissionname-geolocation" id="ref-for-dom-permissionname-geolocation">"geolocation"</a>.</p>
-   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="latest-geolocation-reading">latest geolocation reading</dfn> is a <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading" id="ref-for-latest-reading">latest reading</a> for a <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor②">Sensor</a></code> of <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor①">Geolocation Sensor</a> <a data-link-type="dfn" href="https://w3c.github.io/sensors#sensor-type" id="ref-for-sensor-type①">sensor type</a>. It includes <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry" id="ref-for-map-entry">entries</a> whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-getting-the-keys" id="ref-for-map-getting-the-keys">keys</a> are "latitude", "longitude", "altitude", "accuracy", "altitudeAccuracy", "heading", "speed"
+   <p>The <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor">Geolocation Sensor</a> has an associated <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/permissions/#dom-permissionname" id="ref-for-dom-permissionname">PermissionName</a></code> which is <a class="idl-code" data-link-type="enum-value" href="https://w3c.github.io/permissions/#dom-permissionname-geolocation" id="ref-for-dom-permissionname-geolocation">"geolocation"</a>.</p>
+   <p>The <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor①">Geolocation Sensor</a> is a <a data-link-type="dfn" href="https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature" id="ref-for-policy-controlled-feature">policy-controlled feature</a> identified by the string "geolocation". Its <a data-link-type="dfn" href="https://w3c.github.io/webappsec-permissions-policy/#default-allowlist" id="ref-for-default-allowlist">default allowlist</a> is <code>'self'</code>.</p>
+   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="latest-geolocation-reading">latest geolocation reading</dfn> is a <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading" id="ref-for-latest-reading">latest reading</a> for a <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor②">Sensor</a></code> of <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor②">Geolocation Sensor</a> <a data-link-type="dfn" href="https://w3c.github.io/sensors#sensor-type" id="ref-for-sensor-type①">sensor type</a>. It includes <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry" id="ref-for-map-entry">entries</a> whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-getting-the-keys" id="ref-for-map-getting-the-keys">keys</a> are "latitude", "longitude", "altitude", "accuracy", "altitudeAccuracy", "heading", "speed"
 and whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-getting-the-values" id="ref-for-map-getting-the-values">values</a> contain the device’s <a data-link-type="dfn" href="#geolocation" id="ref-for-geolocation③">geolocation</a>.</p>
    <p class="note" role="note"><span>Note:</span> Consider adding a visual of the standard coordinate system for the Earth.</p>
    <h2 class="heading settled" data-level="5" id="api"><span class="secno">5. </span><span class="content">API</span><a class="self-link" href="#api"></a></h2>
@@ -1302,16 +1303,28 @@ from 2008 until 2017.</p>
     <li><a href="#ref-for-map-getting-the-values">4. Model</a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="term-for-dom-permissionname">
+   <a href="https://w3c.github.io/permissions/#dom-permissionname">https://w3c.github.io/permissions/#dom-permissionname</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-permissionname">4. Model</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-dom-permissionname-geolocation">
    <a href="https://w3c.github.io/permissions/#dom-permissionname-geolocation">https://w3c.github.io/permissions/#dom-permissionname-geolocation</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-permissionname-geolocation">4. Model</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-enumdef-permissionname">
-   <a href="https://w3c.github.io/permissions/#enumdef-permissionname">https://w3c.github.io/permissions/#enumdef-permissionname</a><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="term-for-default-allowlist">
+   <a href="https://w3c.github.io/webappsec-permissions-policy/#default-allowlist">https://w3c.github.io/webappsec-permissions-policy/#default-allowlist</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-enumdef-permissionname">4. Model</a>
+    <li><a href="#ref-for-default-allowlist">4. Model</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-policy-controlled-feature">
+   <a href="https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature">https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-policy-controlled-feature">4. Model</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-aborterror">
@@ -1422,8 +1435,14 @@ from 2008 until 2017.</p>
    <li>
     <a data-link-type="biblio">[permissions]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-dom-permissionname-geolocation">"geolocation"</span>
-     <li><span class="dfn-paneled" id="term-for-enumdef-permissionname">PermissionName</span>
+     <li><span class="dfn-paneled" id="term-for-dom-permissionname">PermissionName</span>
+     <li><span class="dfn-paneled" id="term-for-dom-permissionname-geolocation">geolocation</span>
+    </ul>
+   <li>
+    <a data-link-type="biblio">[permissions-policy-1]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="term-for-default-allowlist">default allowlist</span>
+     <li><span class="dfn-paneled" id="term-for-policy-controlled-feature">policy-controlled feature</span>
     </ul>
    <li>
     <a data-link-type="biblio">[WebIDL]</a> defines the following terms:
@@ -1453,7 +1472,9 @@ from 2008 until 2017.</p>
    <dt id="biblio-infra">[INFRA]
    <dd>Anne van Kesteren; Domenic Denicola. <a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
    <dt id="biblio-permissions">[PERMISSIONS]
-   <dd>Mounir Lamouri; Marcos Caceres; Jeffrey Yasskin. <a href="https://w3c.github.io/permissions/"><cite>Permissions</cite></a>. URL: <a href="https://w3c.github.io/permissions/">https://w3c.github.io/permissions/</a>
+   <dd>Marcos Caceres; Micheal Taylor; Jeffrey Yasskin. <a href="https://w3c.github.io/permissions/"><cite>Permissions</cite></a>. URL: <a href="https://w3c.github.io/permissions/">https://w3c.github.io/permissions/</a>
+   <dt id="biblio-permissions-policy-1">[PERMISSIONS-POLICY-1]
+   <dd>Ian Clelland. <a href="https://w3c.github.io/webappsec-permissions-policy/"><cite>Permissions Policy</cite></a>. URL: <a href="https://w3c.github.io/webappsec-permissions-policy/">https://w3c.github.io/webappsec-permissions-policy/</a>
    <dt id="biblio-webidl">[WebIDL]
    <dd>Boris Zbarsky. <a href="https://heycam.github.io/webidl/"><cite>Web IDL</cite></a>. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
    <dt id="biblio-wgs84">[WGS84]
@@ -1523,7 +1544,7 @@ from 2008 until 2017.</p>
   <aside class="dfn-panel" data-for="geolocation-sensor">
    <b><a href="#geolocation-sensor">#geolocation-sensor</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-geolocation-sensor">4. Model</a> <a href="#ref-for-geolocation-sensor①">(2)</a>
+    <li><a href="#ref-for-geolocation-sensor">4. Model</a> <a href="#ref-for-geolocation-sensor①">(2)</a> <a href="#ref-for-geolocation-sensor②">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="latest-geolocation-reading">
