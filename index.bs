@@ -218,12 +218,12 @@ The {{GeolocationSensor/read()}} method, when called, must run the following alg
     1. Let |p| be a new promise.
     1. Let |options| be the first argument.
     1. Let |signal| be the |options|' dictionary member of the same name if present, or null otherwise.
-    1. If |signal|'s <a>aborted flag</a> is set, then reject |p| with an "{{AbortError!!exception}}" {{DOMException}} and return |p|.
+    1. If |signal| is <a>aborted</a>, then reject |p| with |signal|'s <a>abort reason</a> and return |p|.
     1. Let |geo| be the result of invoking <a>construct a Geolocation Sensor object</a> with |options|. If this throws a {{DOMException}}, catch it, reject |p| with that {{DOMException}}, and return |p|.
     1. Invoke |geo|.{{Sensor/start()}}.
     1. If |signal| is not null, then <a>add the following abort steps</a> to |signal|:
       1. Invoke |geo|.{{Sensor/stop()}}.
-      1. Reject |p| with an "{{AbortError!!exception}}" {{DOMException}} and abort these steps.
+      1. Reject |p| with |signal|'s <a>abort reason</a> and abort these steps.
     1. Run these steps <a>in parallel</a>:
       1. If <a>notify error</a> is invoked with |geo|, invoke |geo|.{{Sensor/stop()}}, and reject |p| with the {{DOMException}} passed as input to <a>notify error</a>.
       1. If <a>notify new reading</a> is invoked with |geo|, then <a>resolve a geolocation promise</a> with |geo| and |p|.
