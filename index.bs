@@ -44,9 +44,6 @@ urlPrefix: https://w3c.github.io/sensors; spec: GENERIC-SENSOR
     text: security and privacy; url: security-and-privacy
     text: extensible; url: extensibility
     text: check sensor policy-controlled features; url: check-sensor-policy-controlled-features
-    text: automation
-    text: mock sensor type
-    text: mock sensor reading values
 urlPrefix: https://dom.spec.whatwg.org; spec: DOM
   type: dfn
     text: add the following abort steps; url: abortsignal-add
@@ -318,27 +315,29 @@ Abstract Operations {#abstract-operations}
 
 Automation {#automation}
 ==========
-This section extends the [=automation=] section defined in the Generic Sensor API [[GENERIC-SENSOR]]
-to provide mocking information about the [=geolocation=] of the hosting device for the purposes of
-testing a user agent's implementation of {{GeolocationSensor}} API.
 
-<h3 id="mock-geolocation-sensor-type">Mock Sensor Type</h3>
+This section extends [[GENERIC-SENSOR#automation]] by providing [=Geolocation Sensor=]-specific virtual sensor metadata.
 
-The {{GeolocationSensor}} class has an associated [=mock sensor type=] which is
-<a for="MockSensorType" enum-value>"geolocation"</a>, its [=mock sensor reading values=]
-dictionary is defined as follows:
+The [=per-type virtual sensor metadata=] [=map=] must have the following [=map/entry=]:
+: [=map/key=]
+:: "`geolocation`"
+: [=map/value=]
+:: A [=virtual sensor metadata=] whose [=virtual sensor metadata/virtual sensor type=] is [=Geolocation Sensor=] and [=reading parsing algorithm=] is [=geolocation reading parsing algorithm=].
 
-<pre class="idl">
-  dictionary GeolocationReadingValues {
-    required double? latitude;
-    required double? longitude;
-    required double? altitude;
-    required double? accuracy;
-    required double? altitudeAccuracy;
-    required double? heading;
-    required double? speed;
-  };
-</pre>
+<h3 dfn>Geolocation reading parsing algorithm</h3>
+<div algorithm="geolocation reading parsing algorithm">
+    : input
+    :: |parameters|, a JSON {{Object}}
+    : output
+    :: A [=sensor reading=] or **undefined**
+
+    1.  Let |reading| be a new [=sensor reading=].
+    1.  Let |value| be a new [=sensor reading=].
+    1.  [=map/For each=] |key| in <a>latest geolocation reading</a> → let |value| be the result of [=parse single-value number reading=] with |parameters| and |key|.
+        1.  If |value| is "undefined".
+            1.  Return "undefined".
+        1.  [=map/Set=] |reading|[|key|] to |value|.
+    1.  Return |reading|.
 
 Use Cases {#use-cases}
 =========
