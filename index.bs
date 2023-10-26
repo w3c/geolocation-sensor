@@ -322,7 +322,7 @@ The [=per-type virtual sensor metadata=] [=map=] must have the following [=map/e
 : [=map/key=]
 :: "`geolocation`"
 : [=map/value=]
-:: A [=virtual sensor metadata=] whose [=virtual sensor metadata/virtual sensor type=] is [=Geolocation Sensor=] and [=reading parsing algorithm=] is [=geolocation reading parsing algorithm=].
+:: A [=virtual sensor metadata=] whose [=virtual sensor metadata/virtual sensor type=] is [=Geolocation Sensor=] and [=reading parsing algorithm=] is the [=geolocation reading parsing algorithm=].
 
 <h3 dfn>Geolocation reading parsing algorithm</h3>
 <div algorithm="geolocation reading parsing algorithm">
@@ -332,12 +332,14 @@ The [=per-type virtual sensor metadata=] [=map=] must have the following [=map/e
     :: A [=sensor reading=] or **undefined**
 
     1.  Let |reading| be a new [=sensor reading=].
-    1.  Let |value| be a new [=sensor reading=].
-    1.  [=map/For each=] |key| in <a>latest geolocation reading</a> → let |value| be the result of [=parse single-value number reading=] with |parameters| and |key|.
-        1.  If |value| is "undefined".
-            1.  Return "undefined".
-        1.  [=map/Set=] |reading|[|key|] to |value|.
+    1.  Let |keys| be the [=/list=] « "`latitude`", "`longitude`", "`altitude`", "`accuracy`", "`altitudeAccuracy`", "`heading`", "`speed`" ».
+    1.  [=list/For each=] |key| of |keys|
+        1.  Let |value| be the result of invoking [=parse single-value number reading=] with |parameters| and |key|.
+            1.  If |value| is **undefined**.
+                1.  Return **undefined**.
+        1.  [=map/Set=] |reading|[|key|] to |value|[|key|].
     1.  Return |reading|.
+</div>
 
 Use Cases {#use-cases}
 =========
