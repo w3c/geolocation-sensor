@@ -7,7 +7,7 @@
   <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
   <meta content="Bikeshed version 82ce88815, updated Thu Sep 7 16:33:55 2023 -0700" name="generator">
   <link href="https://www.w3.org/TR/geolocation-sensor/" rel="canonical">
-  <meta content="7b4a298ec868c102ff98276ee5177b69409fab01" name="document-revision">
+  <meta content="361f1e20604ddf4cc4f510e41fa57809dd32dae9" name="document-revision">
 <style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
     color: var(--a-normal-text);
@@ -669,7 +669,7 @@ var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Geolocation Sensor</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2023-10-26">26 October 2023</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2023-11-27">27 November 2023</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -693,7 +693,7 @@ var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
     </div>
    </details>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2023 <a href="https://www.w3.org/">World Wide Web Consortium</a>. <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup> <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/copyright-software" rel="license" title="W3C Software and Document License">permissive document license</a> rules apply. </p>
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2023 <a href="https://www.w3.org/">World Wide Web Consortium</a>. <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup> <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/policies/#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/copyright/software-license/" rel="license" title="W3C Software and Document License">permissive document license</a> rules apply. </p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
@@ -720,7 +720,7 @@ var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
 	W3C maintains a <a href="https://www.w3.org/groups/wg/das/ipr" rel="disclosure">public list of any patent disclosures</a> made in connection with the deliverables of the group;
 	that page also includes instructions for disclosing a patent.
 	An individual who has actual knowledge of a patent which the individual believes contains <a href="https://www.w3.org/Consortium/Patent-Policy-20200915/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy-20200915/#sec-Disclosure">section 6 of the W3C Patent Policy</a>. </p>
-   <p> This document is governed by the <a href="https://www.w3.org/2023/Process-20230612/" id="w3c_process_revision">12 June 2023 W3C Process Document</a>. </p>
+   <p> This document is governed by the <a href="https://www.w3.org/2023/Process-20231103/" id="w3c_process_revision">03 November 2023 W3C Process Document</a>. </p>
    <p></p>
    <p>The Devices and Sensors Working Group will perform a round of self-review and
 
@@ -852,7 +852,9 @@ to those sources.</p>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="geolocation-sensor">Geolocation Sensor</dfn> <a data-link-type="dfn" href="https://w3c.github.io/sensors#sensor-type" id="ref-for-sensor-type">sensor type</a>’s associated <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor①">Sensor</a></code> subclass is the <code class="idl"><a data-link-type="idl" href="#geolocationsensor" id="ref-for-geolocationsensor③">GeolocationSensor</a></code> class.</p>
    <p>The <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor">Geolocation Sensor</a> has an associated <code class="idl"><a data-link-type="idl">PermissionName</a></code> which is <a class="idl-code" data-link-type="enum-value">"geolocation"</a>.</p>
    <p>The <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor①">Geolocation Sensor</a> is a <a data-link-type="dfn" href="https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature" id="ref-for-policy-controlled-feature">policy-controlled feature</a> identified by the string "geolocation". Its <a data-link-type="dfn" href="https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature-default-allowlist" id="ref-for-policy-controlled-feature-default-allowlist">default allowlist</a> is <code>'self'</code>.</p>
-   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="latest-geolocation-reading">latest geolocation reading</dfn> is a <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading" id="ref-for-latest-reading">latest reading</a> for a <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor②">Sensor</a></code> of <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor②">Geolocation Sensor</a> <a data-link-type="dfn" href="https://w3c.github.io/sensors#sensor-type" id="ref-for-sensor-type①">sensor type</a>. It includes <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry" id="ref-for-map-entry">entries</a> whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-getting-the-keys" id="ref-for-map-getting-the-keys">keys</a> are "latitude", "longitude", "altitude", "accuracy", "altitudeAccuracy", "heading", "speed"
+   <p>The <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor②">Geolocation Sensor</a> has an associated <a data-link-type="dfn" href="https://w3c.github.io/sensors/#virtual-sensor-type" id="ref-for-virtual-sensor-type">virtual sensor type</a> which is
+"<code><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="geolocation virtual sensor type" data-noexport id="geolocation-virtual-sensor-type">geolocation</dfn></code>".</p>
+   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="latest-geolocation-reading">latest geolocation reading</dfn> is a <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading" id="ref-for-latest-reading">latest reading</a> for a <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor②">Sensor</a></code> of <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor③">Geolocation Sensor</a> <a data-link-type="dfn" href="https://w3c.github.io/sensors#sensor-type" id="ref-for-sensor-type①">sensor type</a>. It includes <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry" id="ref-for-map-entry">entries</a> whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-getting-the-keys" id="ref-for-map-getting-the-keys">keys</a> are "latitude", "longitude", "altitude", "accuracy", "altitudeAccuracy", "heading", "speed"
 and whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-getting-the-values" id="ref-for-map-getting-the-values">values</a> contain the device’s <a data-link-type="dfn" href="#geolocation" id="ref-for-geolocation③">geolocation</a>.</p>
    <p class="note" role="note"><span class="marker">Note:</span> Consider adding a visual of the standard coordinate system for the Earth.</p>
    <h2 class="heading settled" data-level="5" id="api"><span class="secno">5. </span><span class="content">API</span><a class="self-link" href="#api"></a></h2>
@@ -1023,15 +1025,15 @@ per second.</p>
     </ol>
    </div>
    <h2 class="heading settled" data-level="7" id="automation"><span class="secno">7. </span><span class="content">Automation</span><a class="self-link" href="#automation"></a></h2>
-   <p>This section extends <a href="https://w3c.github.io/sensors/#automation"><cite>Generic Sensor API</cite> § 9 Automation</a> by providing <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor③">Geolocation Sensor</a>-specific virtual sensor metadata.</p>
+   <p>This section extends <a href="https://w3c.github.io/sensors/#automation"><cite>Generic Sensor API</cite> § 9 Automation</a> by providing <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor④">Geolocation Sensor</a>-specific virtual sensor metadata.</p>
    <p>The <a data-link-type="dfn" href="https://w3c.github.io/sensors/#per-type-virtual-sensor-metadata" id="ref-for-per-type-virtual-sensor-metadata">per-type virtual sensor metadata</a> <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ordered-map" id="ref-for-ordered-map">map</a> must have the following <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry" id="ref-for-map-entry①">entry</a>:</p>
    <dl>
     <dt data-md><a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-key" id="ref-for-map-key">key</a>
     <dd data-md>
-     <p>"<code>geolocation</code>"</p>
+     <p>"<code><a data-link-type="dfn" href="#geolocation-virtual-sensor-type" id="ref-for-geolocation-virtual-sensor-type">geolocation</a></code>"</p>
     <dt data-md><a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-value" id="ref-for-map-value">value</a>
     <dd data-md>
-     <p>A <a data-link-type="dfn" href="https://w3c.github.io/sensors/#virtual-sensor-metadata" id="ref-for-virtual-sensor-metadata">virtual sensor metadata</a> whose <a data-link-type="dfn" href="https://w3c.github.io/sensors/#virtual-sensor-metadata-virtual-sensor-type" id="ref-for-virtual-sensor-metadata-virtual-sensor-type">virtual sensor type</a> is <a data-link-type="dfn" href="#geolocation-sensor" id="ref-for-geolocation-sensor④">Geolocation Sensor</a> and <a data-link-type="dfn" href="https://w3c.github.io/sensors/#virtual-sensor-metadata-reading-parsing-algorithm" id="ref-for-virtual-sensor-metadata-reading-parsing-algorithm">reading parsing algorithm</a> is the <a data-link-type="dfn" href="#geolocation-reading-parsing-algorithm" id="ref-for-geolocation-reading-parsing-algorithm">geolocation reading parsing algorithm</a>.</p>
+     <p>A <a data-link-type="dfn" href="https://w3c.github.io/sensors/#virtual-sensor-metadata" id="ref-for-virtual-sensor-metadata">virtual sensor metadata</a> whose <a data-link-type="dfn" href="https://w3c.github.io/sensors/#virtual-sensor-metadata-reading-parsing-algorithm" id="ref-for-virtual-sensor-metadata-reading-parsing-algorithm">reading parsing algorithm</a> is the <a data-link-type="dfn" href="#geolocation-reading-parsing-algorithm" id="ref-for-geolocation-reading-parsing-algorithm">geolocation reading parsing algorithm</a>.</p>
    </dl>
    <h3 class="heading settled dfn-paneled" data-dfn-type="dfn" data-level="7.1" data-lt="Geolocation reading parsing algorithm" data-noexport id="geolocation-reading-parsing-algorithm"><span class="secno">7.1. </span><span class="content">Geolocation reading parsing algorithm</span><a class="self-link" href="#geolocation-reading-parsing-algorithm" id="ref-for-geolocation-reading-parsing-algorithm①"></a></h3>
    <div class="algorithm" data-algorithm="geolocation reading parsing algorithm">
@@ -1215,6 +1217,7 @@ from 2008 until 2017.</p>
    <li><a href="#dom-geolocationsensor-geolocationsensor">GeolocationSensor(options)</a><span>, in § 5.1</span>
    <li><a href="#dictdef-geolocationsensoroptions">GeolocationSensorOptions</a><span>, in § 5.1</span>
    <li><a href="#dictdef-geolocationsensorreading">GeolocationSensorReading</a><span>, in § 5.1</span>
+   <li><a href="#geolocation-virtual-sensor-type">geolocation virtual sensor type</a><span>, in § 4</span>
    <li>
     heading
     <ul>
@@ -1283,7 +1286,7 @@ from 2008 until 2017.</p>
      <li><span class="dfn-paneled" id="c29c300e">start()</span>
      <li><span class="dfn-paneled" id="8bcc9280">stop()</span>
      <li><span class="dfn-paneled" id="bb15fee5">virtual sensor metadata</span>
-     <li><span class="dfn-paneled" id="d5e5825c">virtual sensor type</span>
+     <li><span class="dfn-paneled" id="4fa114dd">virtual sensor type</span>
     </ul>
    <li>
     <a data-link-type="biblio">[HR-TIME-2]</a> defines the following terms:
@@ -1720,7 +1723,7 @@ window.dfnpanelData['44637b0a'] = {"dfnID": "44637b0a", "url": "https://w3c.gith
 window.dfnpanelData['c29c300e'] = {"dfnID": "c29c300e", "url": "https://w3c.github.io/sensors/#dom-sensor-start", "dfnText": "start()", "refSections": [{"refs": [{"id": "ref-for-dom-sensor-start"}], "title": "5.1.1. GeolocationSensor.read()"}], "external": true};
 window.dfnpanelData['8bcc9280'] = {"dfnID": "8bcc9280", "url": "https://w3c.github.io/sensors/#dom-sensor-stop", "dfnText": "stop()", "refSections": [{"refs": [{"id": "ref-for-dom-sensor-stop"}, {"id": "ref-for-dom-sensor-stop\u2460"}, {"id": "ref-for-dom-sensor-stop\u2461"}], "title": "5.1.1. GeolocationSensor.read()"}], "external": true};
 window.dfnpanelData['bb15fee5'] = {"dfnID": "bb15fee5", "url": "https://w3c.github.io/sensors/#virtual-sensor-metadata", "dfnText": "virtual sensor metadata", "refSections": [{"refs": [{"id": "ref-for-virtual-sensor-metadata"}], "title": "7. Automation"}], "external": true};
-window.dfnpanelData['d5e5825c'] = {"dfnID": "d5e5825c", "url": "https://w3c.github.io/sensors/#virtual-sensor-metadata-virtual-sensor-type", "dfnText": "virtual sensor type", "refSections": [{"refs": [{"id": "ref-for-virtual-sensor-metadata-virtual-sensor-type"}], "title": "7. Automation"}], "external": true};
+window.dfnpanelData['4fa114dd'] = {"dfnID": "4fa114dd", "url": "https://w3c.github.io/sensors/#virtual-sensor-type", "dfnText": "virtual sensor type", "refSections": [{"refs": [{"id": "ref-for-virtual-sensor-type"}], "title": "4. Model"}], "external": true};
 window.dfnpanelData['470a2a07'] = {"dfnID": "470a2a07", "url": "http://w3c.github.io/hr-time/#dom-domhighrestimestamp", "dfnText": "DOMHighResTimeStamp", "refSections": [{"refs": [{"id": "ref-for-dom-domhighrestimestamp"}], "title": "5.1. The GeolocationSensor Interface"}], "external": true};
 window.dfnpanelData['a72449dd'] = {"dfnID": "a72449dd", "url": "https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel", "dfnText": "in parallel", "refSections": [{"refs": [{"id": "ref-for-in-parallel"}], "title": "5.1.1. GeolocationSensor.read()"}], "external": true};
 window.dfnpanelData['8958b003'] = {"dfnID": "8958b003", "url": "https://infra.spec.whatwg.org/#map-entry", "dfnText": "entry", "refSections": [{"refs": [{"id": "ref-for-map-entry"}], "title": "4. Model"}, {"refs": [{"id": "ref-for-map-entry\u2460"}], "title": "7. Automation"}], "external": true};
@@ -1743,7 +1746,8 @@ window.dfnpanelData['8c800cdf'] = {"dfnID": "8c800cdf", "url": "https://webidl.s
 window.dfnpanelData['b4cfa5ce'] = {"dfnID": "b4cfa5ce", "url": "https://webidl.spec.whatwg.org/#dfn-throw", "dfnText": "throw", "refSections": [{"refs": [{"id": "ref-for-dfn-throw"}], "title": "6.1. Construct a geolocation sensor object"}], "external": true};
 window.dfnpanelData['11e0b87f'] = {"dfnID": "11e0b87f", "url": "https://webidl.spec.whatwg.org/#idl-unrestricted-double", "dfnText": "unrestricted double", "refSections": [{"refs": [{"id": "ref-for-idl-unrestricted-double"}, {"id": "ref-for-idl-unrestricted-double\u2460"}, {"id": "ref-for-idl-unrestricted-double\u2461"}, {"id": "ref-for-idl-unrestricted-double\u2462"}, {"id": "ref-for-idl-unrestricted-double\u2463"}, {"id": "ref-for-idl-unrestricted-double\u2464"}, {"id": "ref-for-idl-unrestricted-double\u2465"}], "title": "5.1. The GeolocationSensor Interface"}], "external": true};
 window.dfnpanelData['geolocation'] = {"dfnID": "geolocation", "url": "#geolocation", "dfnText": "geolocation", "refSections": [{"refs": [{"id": "ref-for-geolocation\u2460"}], "title": "1. Introduction"}, {"refs": [{"id": "ref-for-geolocation\u2461"}, {"id": "ref-for-geolocation\u2462"}], "title": "4. Model"}, {"refs": [{"id": "ref-for-geolocation\u2463"}], "title": "5.1.2. GeolocationSensor.latitude"}, {"refs": [{"id": "ref-for-geolocation\u2464"}], "title": "5.1.3. GeolocationSensor.longitude"}, {"refs": [{"id": "ref-for-geolocation\u2465"}], "title": "5.1.4. GeolocationSensor.altitude"}], "external": false};
-window.dfnpanelData['geolocation-sensor'] = {"dfnID": "geolocation-sensor", "url": "#geolocation-sensor", "dfnText": "Geolocation Sensor", "refSections": [{"refs": [{"id": "ref-for-geolocation-sensor"}, {"id": "ref-for-geolocation-sensor\u2460"}, {"id": "ref-for-geolocation-sensor\u2461"}], "title": "4. Model"}, {"refs": [{"id": "ref-for-geolocation-sensor\u2462"}, {"id": "ref-for-geolocation-sensor\u2463"}], "title": "7. Automation"}], "external": false};
+window.dfnpanelData['geolocation-sensor'] = {"dfnID": "geolocation-sensor", "url": "#geolocation-sensor", "dfnText": "Geolocation Sensor", "refSections": [{"refs": [{"id": "ref-for-geolocation-sensor"}, {"id": "ref-for-geolocation-sensor\u2460"}, {"id": "ref-for-geolocation-sensor\u2461"}, {"id": "ref-for-geolocation-sensor\u2462"}], "title": "4. Model"}, {"refs": [{"id": "ref-for-geolocation-sensor\u2463"}], "title": "7. Automation"}], "external": false};
+window.dfnpanelData['geolocation-virtual-sensor-type'] = {"dfnID": "geolocation-virtual-sensor-type", "url": "#geolocation-virtual-sensor-type", "dfnText": "geolocation", "refSections": [{"refs": [{"id": "ref-for-geolocation-virtual-sensor-type"}], "title": "7. Automation"}], "external": false};
 window.dfnpanelData['latest-geolocation-reading'] = {"dfnID": "latest-geolocation-reading", "url": "#latest-geolocation-reading", "dfnText": "latest geolocation reading", "refSections": [{"refs": [{"id": "ref-for-latest-geolocation-reading"}], "title": "5.1.1. GeolocationSensor.read()"}], "external": false};
 window.dfnpanelData['geolocationsensor'] = {"dfnID": "geolocationsensor", "url": "#geolocationsensor", "dfnText": "GeolocationSensor", "refSections": [{"refs": [{"id": "ref-for-geolocationsensor\u2460"}, {"id": "ref-for-geolocationsensor\u2461"}], "title": "1. Introduction"}, {"refs": [{"id": "ref-for-geolocationsensor\u2462"}], "title": "4. Model"}, {"refs": [{"id": "ref-for-geolocationsensor\u2463"}], "title": "5.1. The GeolocationSensor Interface"}, {"refs": [{"id": "ref-for-geolocationsensor\u2464"}], "title": "5.1.2. GeolocationSensor.latitude"}, {"refs": [{"id": "ref-for-geolocationsensor\u2465"}], "title": "5.1.3. GeolocationSensor.longitude"}, {"refs": [{"id": "ref-for-geolocationsensor\u2466"}], "title": "5.1.4. GeolocationSensor.altitude"}, {"refs": [{"id": "ref-for-geolocationsensor\u2467"}], "title": "5.1.5. GeolocationSensor.accuracy"}, {"refs": [{"id": "ref-for-geolocationsensor\u2468"}], "title": "5.1.6. GeolocationSensor.altitudeAccuracy"}, {"refs": [{"id": "ref-for-geolocationsensor\u2460\u24ea"}], "title": "5.1.7. GeolocationSensor.heading"}, {"refs": [{"id": "ref-for-geolocationsensor\u2460\u2460"}], "title": "5.1.8. GeolocationSensor.speed"}, {"refs": [{"id": "ref-for-geolocationsensor\u2460\u2461"}, {"id": "ref-for-geolocationsensor\u2460\u2462"}, {"id": "ref-for-geolocationsensor\u2460\u2463"}], "title": "6.1. Construct a geolocation sensor object"}], "external": false};
 window.dfnpanelData['dom-geolocationsensor-read'] = {"dfnID": "dom-geolocationsensor-read", "url": "#dom-geolocationsensor-read", "dfnText": "read", "refSections": [{"refs": [{"id": "ref-for-dom-geolocationsensor-read"}, {"id": "ref-for-dom-geolocationsensor-read\u2460"}], "title": "5.1.1. GeolocationSensor.read()"}], "external": false};
