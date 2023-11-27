@@ -134,6 +134,9 @@ The <a>Geolocation Sensor</a> has an associated {{PermissionName}} which is
 
 The <a>Geolocation Sensor</a> is a [=policy-controlled feature=] identified by the string "geolocation". Its [=default allowlist=] is `'self'`.
 
+The <a>Geolocation Sensor</a> has an associated [=virtual sensor type=] which is
+"<code><dfn data-lt="geolocation virtual sensor type">geolocation</dfn></code>".
+
 A <dfn>latest geolocation reading</dfn> is a [=latest reading=] for a {{Sensor}} of
 <a>Geolocation Sensor</a> <a>sensor type</a>. It includes [=map/entries=] whose [=map/keys=]
 are "latitude", "longitude", "altitude", "accuracy", "altitudeAccuracy", "heading", "speed"
@@ -320,9 +323,9 @@ This section extends [[GENERIC-SENSOR#automation]] by providing [=Geolocation Se
 
 The [=per-type virtual sensor metadata=] [=map=] must have the following [=map/entry=]:
 : [=map/key=]
-:: "`geolocation`"
+:: "<code>[=geolocation virtual sensor type|geolocation=]</code>"
 : [=map/value=]
-:: A [=virtual sensor metadata=] whose [=virtual sensor metadata/virtual sensor type=] is [=Geolocation Sensor=] and [=reading parsing algorithm=] is the [=geolocation reading parsing algorithm=].
+:: A [=virtual sensor metadata=] whose [=virtual sensor metadata/reading parsing algorithm=] is the [=geolocation reading parsing algorithm=].
 
 <h3 dfn>Geolocation reading parsing algorithm</h3>
 <div algorithm="geolocation reading parsing algorithm">
