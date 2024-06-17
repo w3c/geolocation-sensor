@@ -7,7 +7,7 @@
   <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
   <meta content="Bikeshed version 82ce88815, updated Thu Sep 7 16:33:55 2023 -0700" name="generator">
   <link href="https://www.w3.org/TR/geolocation-sensor/" rel="canonical">
-  <meta content="ef74cf70082bb28eb4262ad3768c376b0f9caab8" name="document-revision">
+  <meta content="a4118134bd382ee75d1e313271a6acb12fc99cd3" name="document-revision">
 <style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
     color: var(--a-normal-text);
@@ -669,7 +669,7 @@ var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Geolocation Sensor</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2024-01-05">5 January 2024</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2024-06-17">17 June 2024</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -708,20 +708,35 @@ var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
 	It is provided for discussion only and may change at any moment.
 	Its publication here does not imply endorsement of its contents by W3C.
 	Don’t cite this document other than as work in progress. </p>
-   <p> If you wish to make comments regarding this document, please send them to <a href="mailto:public-device-apis@w3.org?Subject=%5Bgeolocation-sensor%5D%20PUT%20SUBJECT%20HERE">public-device-apis@w3.org</a> (<a href="mailto:public-device-apis-request@w3.org?subject=subscribe">subscribe</a>, <a href="https://lists.w3.org/Archives/Public/public-device-apis/">archives</a>).
+   <p> If you wish to make comments regarding this document, please send them to <a href="mailto:public-device-apis@w3.org?Subject=%5Bgeolocation-sensor%5D%20PUT%20SUBJECT%20HERE">public-device-apis@w3.org</a> (<a href="mailto:public-device-apis-request@w3.org?subject=subscribe">subscribe</a>, <a href="https://lists.w3.org/Archives/Public/public-device-apis/">archives</a>)
+  
+	.
 	When sending e-mail,
 	please put the text “geolocation-sensor” in the subject,
 	preferably like this:
 	“[geolocation-sensor] <em>…summary of comment…</em>”.
 	All comments are welcome. </p>
-   <p> This document was produced by the <a href="https://www.w3.org/groups/wg/das">Devices and Sensors Working Group</a>. </p>
+   <p> This document was published by the <a href="https://www.w3.org/groups/wg/das">Devices and Sensors Working Group</a>. </p>
    <p> This document was produced by a group operating under
 	the <a href="https://www.w3.org/Consortium/Patent-Policy/">W3C Patent Policy</a>.
 	W3C maintains a <a href="https://www.w3.org/groups/wg/das/ipr" rel="disclosure">public list of any patent disclosures</a> made in connection with the deliverables of the group;
 	that page also includes instructions for disclosing a patent.
-	An individual who has actual knowledge of a patent which the individual believes contains <a href="https://www.w3.org/Consortium/Patent-Policy-20200915/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy-20200915/#sec-Disclosure">section 6 of the W3C Patent Policy</a>. </p>
+	An individual who has actual knowledge of a patent which the individual believes contains <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the W3C Patent Policy</a>. </p>
    <p> This document is governed by the <a href="https://www.w3.org/2023/Process-20231103/" id="w3c_process_revision">03 November 2023 W3C Process Document</a>. </p>
    <p></p>
+   <p><strong>This specification presents a <a href="#use-cases-categorization">§ 8.1 Categorization of use cases</a> informed by feedback
+
+and requests from the wider community, end users and web developers. These use cases
+welcome further review from the wider web community to ensure the documented use case set
+satisfies the needs of all stakeholders and provides appropriate abstractions for these capabilities.
+Review and feedback is sought after in particular for the new <a href="#use-cases-background-continuous">§ 8.4 Background—Continuous geolocation updates</a> and <a href="#use-cases-background-geofence">§ 8.5 Background—One-off geolocation fence alert</a> use case categories. All feedback, including
+contributions for new informative use cases and other considerations,
+is welcome via <a href="https://github.com/w3c/geolocation-sensor/issues">GitHub issues</a>.</strong></p>
+   <strong> </strong>
+   <p><strong>In line with the expectations of the Working Draft maturity stage,
+
+the normative <a href="#api">§ 5 API</a> definition may change based on stakeholders' feedback,
+implementation experience, security and privacy, and other considerations.</strong></p>
    <p>The Devices and Sensors Working Group will perform a round of self-review and
 
 revisions on the security and privacy aspects of the API before
@@ -858,6 +873,12 @@ to those sources.</p>
 and whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-getting-the-values" id="ref-for-map-getting-the-values">values</a> contain the device’s <a data-link-type="dfn" href="#geolocation" id="ref-for-geolocation③">geolocation</a>.</p>
    <p class="note" role="note"><span class="marker">Note:</span> Consider adding a visual of the standard coordinate system for the Earth.</p>
    <h2 class="heading settled" data-level="5" id="api"><span class="secno">5. </span><span class="content">API</span><a class="self-link" href="#api"></a></h2>
+   <div class="issue no-marker" id="issue-d41d8cd9">
+    <a class="self-link" href="#issue-d41d8cd9"></a><a class="marker" href="https://github.com/w3c/geolocation-sensor/issues/62">Issue #62 on GitHub: “Background geofencing”</a>
+    <p dir="auto">There are a couple of related issues touching on aspects of supporting background geolocation. Let's use this one to track background geofencing specifically.</p>
+    <p dir="auto">For reference, <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/mkruisselbrink/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/mkruisselbrink">@mkruisselbrink</a> sent a <a href="https://lists.w3.org/Archives/Public/public-geolocation//2014Sep/0012.html" rel="nofollow">proposed API</a> to the Geolocation WG mailing list back in 2014. That seems like a reasonable place to start if someone wants to pick up this work.</p>
+    <p dir="auto">Note that at time of writing no implementers appear to be interested in developing an API for background geolocation or geofencing and so any specification work done in this group will be purely speculative.</p>
+   </div>
    <h3 class="heading settled" data-level="5.1" id="geolocationsensor-interface"><span class="secno">5.1. </span><span class="content">The GeolocationSensor Interface</span><a class="self-link" href="#geolocationsensor-interface"></a></h3>
 <pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SecureContext" id="ref-for-SecureContext"><c- g>SecureContext</c-></a>,
  <a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed" id="ref-for-Exposed"><c- g>Exposed</c-></a>=(<c- n>DedicatedWorker</c->, <c- n>Window</c->)]
