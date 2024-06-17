@@ -10,6 +10,19 @@ Editor: Thomas Steiner 44965, Google Inc., https://google.com/
 Editor: Marijn Kruisselbrink 72440, Google Inc., https://google.com/
 Group: dap
 Status Text:
+  <strong>This specification presents a [[#use-cases-categorization]] informed by feedback
+  and requests from the wider community, end users and web developers. These use cases
+  welcome further review from the wider web community to ensure the documented use case set
+  satisfies the needs of all stakeholders and provides appropriate abstractions for these capabilities.
+  Review and feedback is sought after in particular for the new [[#use-cases-background-continuous]]
+  and [[#use-cases-background-geofence]] use case categories. All feedback, including
+  contributions for new informative use cases and other considerations,
+  is welcome via <a href="https://github.com/w3c/geolocation-sensor/issues">GitHub issues</a>.
+
+  In line with the expectations of the Working Draft maturity stage,
+  the normative [[#api]] definition may change based on stakeholders' feedback,
+  implementation experience, security and privacy, and other considerations.</strong>
+
   The Devices and Sensors Working Group will perform a round of self-review and
   revisions on the security and privacy aspects of the API before
   requesting horizontal review. Existing security and privacy issues can
@@ -146,6 +159,8 @@ Note: Consider adding a visual of the standard coordinate system for the Earth.
 
 API {#api}
 ===
+
+Issue(62):
 
 The GeolocationSensor Interface {#geolocationsensor-interface}
 -------------------------------
