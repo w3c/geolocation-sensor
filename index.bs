@@ -10,24 +10,19 @@ Editor: Thomas Steiner 44965, Google Inc., https://google.com/
 Editor: Marijn Kruisselbrink 72440, Google Inc., https://google.com/
 Group: dap
 Status Text:
-  <strong>This specification presents a [[#use-cases-categorization]] informed by feedback
-  and requests from the wider community, end users and web developers. These use cases
-  welcome further review from the wider web community to ensure the documented use case set
-  satisfies the needs of all stakeholders and provides appropriate abstractions for these capabilities.
-  Review and feedback is sought after in particular for the new [[#use-cases-background-continuous]]
-  and [[#use-cases-background-geofence]] use case categories. All feedback, including
-  contributions for new informative use cases and other considerations,
-  is welcome via <a href="https://github.com/w3c/geolocation-sensor/issues">GitHub issues</a>.
-
-  In line with the expectations of the Working Draft maturity stage,
-  the normative [[#api]] definition may change based on stakeholders' feedback,
-  implementation experience, security and privacy, and other considerations.</strong>
-
-  The Devices and Sensors Working Group will perform a round of self-review and
-  revisions on the security and privacy aspects of the API before
-  requesting horizontal review. Existing security and privacy issues can
-  be found <a
-  href="https://www.w3.org/PM/horizontal/review.html?shortname=geolocation-sensor">here</a>.
+  After careful consideration of the feedback received during the
+  Working Draft review period, the Devices and Sensors Working Group
+  has decided to publish this specification as a <a href="https://www.w3.org/policies/process/#discontinuedREC">Discontinued Draft</a>.
+  The Working Group acknowledges that there are still open issues
+  and improvements that can be made to the specification, but
+  given the limited resources available, it is not feasible to
+  continue active development at this time. The Working Group
+  encourages the community to continue contributing to the
+  <a href="https://github.com/w3c/geolocation/issues/214">
+  Background Geolocation use cases</a> for consideration in future work.
+  The Working Group remains committed to advancing web standards
+  and will explore opportunities to revisit this specification
+  in the future when resources permit.
 Abstract:
   This specification defines the {{GeolocationSensor}} interface for obtaining
   the [=geolocation=] of the hosting device.
