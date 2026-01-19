@@ -12,7 +12,7 @@ Group: dap
 Status Text:
   After careful consideration of the feedback received during the
   Working Draft review period, the Devices and Sensors Working Group
-  has decided to publish this specification as a Discontinued Draft.
+  has decided to publish this specification as a <a href="https://www.w3.org/policies/process/#discontinuedREC">Discontinued Draft</a>.
   The Working Group acknowledges that there are still open issues
   and improvements that can be made to the specification, but
   given the limited resources available, it is not feasible to
