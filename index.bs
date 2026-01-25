@@ -60,7 +60,6 @@ urlPrefix: http://w3c.github.io/hr-time/; spec: HR-TIME-2
   type: interface
     text: DOMHighResTimeStamp; url: dom-domhighrestimestamp
 </pre>
-</pre>
 <pre class="biblio">
 {
   "WGS84": {
@@ -82,7 +81,7 @@ The {{GeolocationSensor}} API extends the {{Sensor}} interface [[GENERIC-SENSOR]
 information about the [=geolocation=] of the hosting device.
 
 The feature set of the {{GeolocationSensor}} is similar to that of the Geolocation API
-[[GEOLOCATION-API]], but it is surfaced through a modern API that is consistent across
+[[GEOLOCATION]], but it is surfaced through a modern API that is consistent across
 <a href="https://www.w3.org/das/roadmap">contemporary sensor APIs</a>, improves
 <a>security and privacy</a>, and is <a>extensible</a>. The API aims to be
 <a href="https://github.com/kenchris/sensor-polyfills/blob/master/src/geolocation-sensor.js">polyfillable</a>
@@ -368,7 +367,7 @@ The mentioned use cases can roughly be grouped into four categories:
   * Getting **continuous geolocation updates** (*aka.* background geotracking).
   * Getting a **one-off geolocation fence alert** (*aka.* background geofencing).
 
-Note: Only the **foreground operations** were possible with [[GEOLOCATION-API]],
+Note: Only the **foreground operations** were possible with [[GEOLOCATION]],
 the **background operations** are completely novel.
 
 Core constraints when obtaining the gelocation are **accuracy** (*how close to the
