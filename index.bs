@@ -1,7 +1,8 @@
 <pre class="metadata">
 Title: Geolocation Sensor
 Level: none
-Status: ED
+Status: DISC
+Date: 2026-02-03
 ED: https://w3c.github.io/geolocation-sensor/
 TR: https://www.w3.org/TR/geolocation-sensor/
 Shortname: geolocation-sensor
