@@ -56,9 +56,6 @@ urlPrefix: https://dom.spec.whatwg.org; spec: DOM
   type: dfn
     text: add the following abort steps; url: abortsignal-add
     text: aborted flag; url: abortsignal-aborted-flag
-urlPrefix: http://w3c.github.io/hr-time/; spec: HR-TIME-2
-  type: interface
-    text: DOMHighResTimeStamp; url: dom-domhighrestimestamp
 </pre>
 <pre class="biblio">
 {
@@ -195,14 +192,14 @@ The GeolocationSensor Interface {#geolocationsensor-interface}
 </pre>
 
 <div class="note">
-Normative changes to the <code>
-<a href="https://dev.w3.org/geo/api/spec-source.html#coordinates_interface">
-Coordinates</a></code> interface of the Geolocation API are the following:
+Normative changes to the 
+{{GeolocationCoordinates}} 
+interface of the Geolocation API are the following:
 <ul>
-  <li>Use <a href="https://heycam.github.io/webidl/#idl-unrestricted-double">
-  unrestricted double</a> to not throw TypeError on NaN, +Infinity or −Infinity.
+  <li>Use {{unrestricted double}}
+  to not throw TypeError on NaN, +Infinity or −Infinity.
   (Geolocation API defines NaN as a valid value for heading, yet uses double as its type.)
-  <li>Use <a href="https://heycam.github.io/webidl/#dfn-nullable-type">nullable</a> to allow
+  <li>Use [=nullable type=] to allow
   all attributes to default to null. (Geolocation API does not provide synchronous means to
   access these attributes, thus latitude, longitude, and altitude are not nullable and "must be
   supported by all implementations".)
