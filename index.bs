@@ -63,7 +63,7 @@ urlPrefix: https://dom.spec.whatwg.org; spec: DOM
     "authors": [
       "National Imagery and Mapping Agency"
     ],
-    "href": "http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf",
+    "href": "https://web.archive.org/web/20210304035901/https://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf",
     "title": "Department of Defence World Geodetic System 1984",
     "status": "Technical Report, Third Edition",
     "publisher": "National Imagery and Mapping Agency"
